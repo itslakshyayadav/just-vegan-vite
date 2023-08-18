@@ -1,7 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import Home from "./pages/home";
 import Dishes from "./pages/dishes";
-import Blog from "./pages/blog";
+import AdminDish from "./pages/admin-dish";
 const router = createBrowserRouter([
   {
     path: "",
@@ -12,8 +12,8 @@ const router = createBrowserRouter([
         element: <Dishes />,
       },
       {
-        path: "/blog",
-        element: <Blog />,
+        path: "/admin-dish",
+        element: <AdminDish />,
       },
     ],
   },
