@@ -13,6 +13,9 @@ export default function Home() {
         <Link to="/offers" className="border py-3 px-5 text-white">
           Offers
         </Link>
+        <Link to="/offercard-admin" className="border py-3 px-5 text-white">
+          OfferCard-Admin
+        </Link>
       </div>
       <div className="container mx-auto">
         <Outlet></Outlet>
