@@ -1,7 +1,6 @@
 import React from "react";
 
 const CardOffers = (props) => {
-  console.log(props);
   const { element, copyText } = props;
   return (
     <>

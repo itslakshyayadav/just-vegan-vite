@@ -16,9 +16,9 @@ const Dishes = () => {
 
   return (
     <div className="flex  flex-wrap gap-5 justify-center">
-      {dishes.map((element) => {
+      {dishes.map((element, index) => {
         return (
-          <div key={element}>
+          <div key={"dish-card" + index}>
             <div className="mt-6 max-w-xs   border-2 border-black-600	p-4  bg-blue-50  min-h-120 max-h-120 ">
               <img className="rounded-lg " src={element.imgUrl} alt="" />
 

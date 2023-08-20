@@ -1,25 +1,41 @@
-import { Link, Outlet } from "react-router-dom";
+import { useEffect, useState } from "react";
+import Dishes from "./dishes/dishes";
 
 export default function Home() {
+  const carouselImages = [
+    "https://wallpapers.com/images/hd/food-4k-1pf6px6ryqfjtnyr.jpg",
+    "https://wallpapersmug.com/download/1920x1080/ddcbbf/food-pizza-baking.jpg",
+    "https://c4.wallpaperflare.com/wallpaper/869/719/717/cuisine-food-india-indian-wallpaper-preview.jpg",
+    "https://arcoguesthouse.com/wp-content/uploads/2021/02/Why-food-is-for-the-mind-and-soul-in-restaurants.jpg",
+  ];
+
+  const [currentImgIndex, setCurrentImgIndex] = useState(0);
+
+  useEffect(() => {
+    const requestId = setInterval(() => {
+      if (currentImgIndex === 3) {
+        setCurrentImgIndex(0);
+      } else {
+        setCurrentImgIndex((currentImgIndex) => currentImgIndex + 1);
+      }
+    }, 3000);
+
+    return () => {
+      clearInterval(requestId);
+    };
+  }, [currentImgIndex]);
+
   return (
-    <>
-      <div className="flex gap-3  bg-red-900 px-2 py-2">
-        <Link to="/admin-dish" className="border py-3 px-5 text-white">
-          Admin-Form
-        </Link>
-        <Link to="/dishes" className="border py-3 px-5 text-white">
-          Dishes
-        </Link>
-        <Link to="/offers" className="border py-3 px-5 text-white">
-          Offers
-        </Link>
-        <Link to="/offercard-admin" className="border py-3 px-5 text-white">
-          OfferCard-Admin
-        </Link>
+    <div className="flex flex-col">
+      <div className="max-h-[512px] overflow-hidden">
+        <img
+          key={carouselImages[currentImgIndex]}
+          className="w-full object-cover slide-left"
+          src={carouselImages[currentImgIndex]}
+          alt=""
+        />
       </div>
-      <div className="container mx-auto">
-        <Outlet></Outlet>
-      </div>
-    </>
+      <Dishes></Dishes>
+    </div>
   );
 }

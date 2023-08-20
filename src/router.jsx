@@ -1,15 +1,20 @@
 import { createBrowserRouter } from "react-router-dom";
+import Root from "./pages/root";
+import Dishes from "./pages/dishes/dishes";
+import AdminDish from "./pages/dishes/admin-dish";
+import Offers from "./pages/offers/offers";
+import OfferCardAdmin from "./pages/offers/offercard-admin";
 import Home from "./pages/home";
-import Dishes from "./pages/dishes";
-import AdminDish from "./pages/admin-dish";
-import Offers from "./pages/offers";
-import OfferCardAdmin from "./pages/offercard-admin";
 
 const router = createBrowserRouter([
   {
-    path: "",
-    element: <Home />,
+    path: "/",
+    element: <Root />,
     children: [
+      {
+        path: "/",
+        element: <Home />,
+      },
       {
         path: "/dishes",
         element: <Dishes />,
