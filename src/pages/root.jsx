@@ -13,6 +13,8 @@ export default function Home() {
     console.log("use effecrt root called");
     if (location.pathname === "/login") {
       setHideNavbar(true);
+    } else if (location.pathname === "/sign-up") {
+      setHideNavbar(true);
     } else {
       setHideNavbar(false);
     }

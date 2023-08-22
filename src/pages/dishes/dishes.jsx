@@ -32,7 +32,7 @@ const Dishes = () => {
                 </h2>
 
                 <p className="mb-3 font-bold text-neutral-700 dark:text-neutral-400">
-                  ₹{element.price}
+                  ₹{element.price ? element.price : "110"}
                 </p>
                 <button
                   href="#"

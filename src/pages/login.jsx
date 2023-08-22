@@ -3,7 +3,8 @@ import { useEffect, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import { useNavigate, Link } from "react-router-dom";
 import "react-toastify/dist/ReactToastify.css";
-import justVeganLogo from "../assets/logo/just-vegan.png";
+// import justVeganLogo from "../assets/logo/just-vegan.png";
+import BrandLogo from "../components/base-components/BrandLogo.jsx";
 
 export default function Login() {
   const [login, setLogin] = useState({
@@ -67,7 +68,8 @@ export default function Login() {
             <div className=" ">
               <div className="mb-20">
                 <Link to="/">
-                  <img className="w-16" src={justVeganLogo} alt="logo" />
+                  <BrandLogo />
+                  {/* <img className="w-16" src={justVeganLogo} alt="logo" /> */}
                 </Link>
                 <h1 className="text-center font-semibold text-5xl mb-2.5">
                   Welcome Back
