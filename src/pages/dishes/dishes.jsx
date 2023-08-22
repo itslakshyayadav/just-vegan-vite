@@ -19,12 +19,16 @@ const Dishes = () => {
       {dishes.map((element, index) => {
         return (
           <div key={"dish-card" + index}>
-            <div className="mt-6 max-w-xs   border-2 border-black-600	p-4  bg-blue-50  min-h-120 max-h-120 ">
-              <img className="rounded-lg " src={element.imgUrl} alt="" />
+            <div className="mt-6 max-w-xs   border-2 border-black-600	p-4   min-h-120 max-h-120 ">
+              <img
+                className="rounded-lg object-cover object-center w- h-36 "
+                src={element.imgUrl}
+                alt=""
+              />
 
               <div className="p-5">
                 <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-                  Title : {element.dishName}
+                  {element.dishName}
                 </h5>
 
                 <p className="mb-3 font-normal text-red-700 dark:text-gray-400">

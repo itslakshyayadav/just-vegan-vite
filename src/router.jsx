@@ -5,6 +5,8 @@ import AdminDish from "./pages/dishes/admin-dish";
 import Offers from "./pages/offers/offers";
 import OfferCardAdmin from "./pages/offers/offercard-admin";
 import Home from "./pages/home";
+import Login from "./pages/login";
+import SignUp from "./pages/sign-up";
 
 const router = createBrowserRouter([
   {
@@ -30,6 +32,14 @@ const router = createBrowserRouter([
       {
         path: "/offercard-admin",
         element: <OfferCardAdmin />,
+      },
+      {
+        path: "/login",
+        element: <Login />,
+      },
+      {
+        path: "/sign-up",
+        element: <SignUp />,
       },
     ],
   },

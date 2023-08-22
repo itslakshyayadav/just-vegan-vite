@@ -26,7 +26,7 @@ export default function Home() {
   }, [currentImgIndex]);
 
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col p-5">
       <div className="max-h-[512px] overflow-hidden">
         <img
           key={carouselImages[currentImgIndex]}
@@ -35,7 +35,9 @@ export default function Home() {
           alt=""
         />
       </div>
-      <Dishes></Dishes>
+      <div>
+        <Dishes></Dishes>
+      </div>
     </div>
   );
 }
