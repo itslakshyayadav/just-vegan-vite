@@ -15,36 +15,36 @@ const Dishes = () => {
   }, []);
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-6  gap-4 px-8">
-      {dishes.map((element, index) => {
-        return (
-          <div key={"dish-card" + index}>
-            <div className="mt-6 max-w-xs   border-2 border-black-600	p-4   min-h-120 max-h-120 ">
+    <div className="container mx-auto max-w-4xl lg:max-w-6xl my-6 px-4 md:px-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-2 lg:gap-3">
+        {dishes.map((element, index) => {
+          return (
+            <div key={"dish-card" + index} className="mt-6 border rounded-2xl">
               <img
-                className="rounded-lg object-cover object-center w-full h-36 "
+                className="rounded-t-2xl object-cover object-center w-full h-40"
                 src={element.imgUrl}
                 alt=""
               />
 
-              <div>
-                <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+              <div className="p-3">
+                <h2 className="mb-2 text-lg font-semibold tracking-tight text-neutral-800 dark:text-white">
                   {element.dishName}
-                </h5>
+                </h2>
 
-                <p className="mb-3 font-normal text-red-700 dark:text-gray-400">
-                  Price : {element.price}
+                <p className="mb-3 font-bold text-neutral-700 dark:text-neutral-400">
+                  ₹{element.price}
                 </p>
-                <a
+                <button
                   href="#"
-                  className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                  className="inline-flex items-center px-4 py-2 text-sm text-center text-white bg-emerald-700 rounded-md hover:bg-emerald-800 focus:ring-4 focus:outline-none focus:ring-emerald-300 dark:bg-emerald-600 dark:hover:bg-emerald-700 dark:focus:ring-emerald-800"
                 >
                   Add to cart
-                </a>
+                </button>
               </div>
             </div>
-          </div>
-        );
-      })}
+          );
+        })}
+      </div>
     </div>
   );
 };

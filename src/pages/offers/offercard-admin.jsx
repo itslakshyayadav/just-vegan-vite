@@ -38,7 +38,7 @@ function OfferCardAdmin() {
     <>
       <form onSubmit={handleSubmit}>
         <div className="container m-auto py-4 max-w-screen-md p-2">
-          <div className=" border-2 rounded-sm px-5 py-3 ">
+          <div className="  rounded-sm px-5 py-3 ">
             <div>
               <h1 className="text-center font-semibold text-gray-700 text-3xl">
                 Offers Admin

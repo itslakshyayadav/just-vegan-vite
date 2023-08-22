@@ -1,14 +1,17 @@
 import loginFormImgSrc from "../assets/loginform-image/go-vegan.jpg";
 import { useEffect, useState } from "react";
-// import { ToastContainer, toast } from "react-toastify";
-// import "react-toastify/dist/ReactToastify.css";
-export default function Login() {
-  //   const notify = () => toast;
+import { ToastContainer, toast } from "react-toastify";
+import { useNavigate, Link } from "react-router-dom";
+import "react-toastify/dist/ReactToastify.css";
+import justVeganLogo from "../assets/logo/just-vegan.png";
 
+export default function Login() {
   const [login, setLogin] = useState({
     emailId: "",
     password: "",
   });
+
+  const navigate = useNavigate();
 
   //   const [userData, setUserData] = useState({});
 
@@ -50,7 +53,9 @@ export default function Login() {
       .then((response) => {
         console.log(response.payload);
         localStorage.setItem("userAuth", JSON.stringify(response.payload));
-        window.location = "/";
+        toast("You are logged in successfully.");
+        // window.location = "/";
+        navigate("/");
       });
   };
 
@@ -61,6 +66,9 @@ export default function Login() {
           <div className="w-4/6  p-8">
             <div className=" ">
               <div className="mb-20">
+                <Link to="/">
+                  <img className="w-16" src={justVeganLogo} alt="logo" />
+                </Link>
                 <h1 className="text-center font-semibold text-5xl mb-2.5">
                   Welcome Back
                 </h1>
@@ -70,6 +78,7 @@ export default function Login() {
               </div>
               <div className="text-center mb-4">
                 {/* <label htmlFor="emailId"> UserName : </label> */}
+
                 <input
                   style={{ backgroundColor: "rgb(246,247,245)" }}
                   type="text"
@@ -104,37 +113,44 @@ export default function Login() {
                     forgot Username?
                   </a>
                 </li>
+                <li>
+                  <a
+                    href="sign-up"
+                    className="text-cyan-950 underline decoration-1"
+                  >
+                    Sign-up
+                  </a>
+                </li>
               </ul>
               <div className="text-center ">
                 <button
                   type="submit"
-                  style={{ backgroundColor: "rgb(224,226,217)" }}
-                  className="w-1/2 p-3 rounded-md "
-                  //   onClick={notify}
+                  // style={{ backgroundColor: "rgb(224,226,217)" }}
+                  className="w-1/2 p-3 text-white rounded-md bg-emerald-500"
+                  // style={{ backgroundColor: "rgb(83,197,8)" }}
                 >
                   Login
                 </button>
-                {/* <ToastContainer
-                //   position="top-right"
-                //   autoClose={5000}
-                //   hideProgressBar={false}
-                //   newestOnTop={false}
-                //   closeOnClick
-                //   rtl={false}
-                //   pauseOnFocusLoss
-                //   draggable
-                //   pauseOnHover
-                //   theme="light"
-                /> */}
+                <ToastContainer
+                  position="top-right"
+                  autoClose={5000}
+                  hideProgressBar={false}
+                  newestOnTop={false}
+                  closeOnClick
+                  rtl={false}
+                  pauseOnFocusLoss
+                  draggable
+                  pauseOnHover
+                  theme="light"
+                />
               </div>
             </div>
           </div>
-          <div className="w-2/5">
+          <div className="w-2/5 h-screen">
             <img
               src={loginFormImgSrc}
               alt=""
-              className="w-full object-cover object-center"
-              style={{ height: "41.7rem" }}
+              className="w-full object-cover object-center h-full"
             />
           </div>
         </div>

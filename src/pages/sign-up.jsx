@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import loginFormImgSrc from "../assets/loginform-image/go-vegan.jpg";
 export default function SignUP() {
   const [signup, setSignup] = useState({
     name: "",
@@ -103,8 +104,9 @@ export default function SignUP() {
               <div className="text-center ">
                 <button
                   type="submit"
-                  style={{ backgroundColor: "rgb(224,226,217)" }}
-                  className="w-1/2 p-3 rounded-md mb-6"
+                  // style={{ backgroundColor: "rgb(224,226,217)" }}
+                  style={{ backgroundColor: "rgb(83,197,8)" }}
+                  className="w-1/2 p-3 text-white rounded-md mb-6"
                 >
                   create account
                 </button>
@@ -122,12 +124,11 @@ export default function SignUP() {
               </ul>
             </div>
           </div>
-          <div className="w-2/5">
+          <div className="w-2/5 h-screen">
             <img
-              //   src={loginFormImgSrc}
+              src={loginFormImgSrc}
               alt=""
-              className=" w-full   "
-              style={{ height: "41.7rem" }}
+              className="w-full h-full object-cover object-center"
             />
           </div>
         </div>
