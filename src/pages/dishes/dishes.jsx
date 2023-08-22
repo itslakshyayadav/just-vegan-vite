@@ -15,18 +15,18 @@ const Dishes = () => {
   }, []);
 
   return (
-    <div className="flex  flex-wrap gap-5 justify-center">
+    <div className="grid grid-cols-1 md:grid-cols-6  gap-4 px-8">
       {dishes.map((element, index) => {
         return (
           <div key={"dish-card" + index}>
             <div className="mt-6 max-w-xs   border-2 border-black-600	p-4   min-h-120 max-h-120 ">
               <img
-                className="rounded-lg object-cover object-center w- h-36 "
+                className="rounded-lg object-cover object-center w-full h-36 "
                 src={element.imgUrl}
                 alt=""
               />
 
-              <div className="p-5">
+              <div>
                 <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
                   {element.dishName}
                 </h5>
@@ -38,7 +38,7 @@ const Dishes = () => {
                   href="#"
                   className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                 >
-                  Add
+                  Add to cart
                 </a>
               </div>
             </div>

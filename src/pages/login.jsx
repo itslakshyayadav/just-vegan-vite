@@ -1,7 +1,10 @@
 import loginFormImgSrc from "../assets/loginform-image/go-vegan.jpg";
 import { useEffect, useState } from "react";
-
+// import { ToastContainer, toast } from "react-toastify";
+// import "react-toastify/dist/ReactToastify.css";
 export default function Login() {
+  //   const notify = () => toast;
+
   const [login, setLogin] = useState({
     emailId: "",
     password: "",
@@ -107,9 +110,22 @@ export default function Login() {
                   type="submit"
                   style={{ backgroundColor: "rgb(224,226,217)" }}
                   className="w-1/2 p-3 rounded-md "
+                  //   onClick={notify}
                 >
                   Login
                 </button>
+                {/* <ToastContainer
+                //   position="top-right"
+                //   autoClose={5000}
+                //   hideProgressBar={false}
+                //   newestOnTop={false}
+                //   closeOnClick
+                //   rtl={false}
+                //   pauseOnFocusLoss
+                //   draggable
+                //   pauseOnHover
+                //   theme="light"
+                /> */}
               </div>
             </div>
           </div>

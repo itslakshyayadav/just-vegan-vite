@@ -26,7 +26,7 @@ export default function Home() {
   }, [currentImgIndex]);
 
   return (
-    <div className="flex flex-col p-5">
+    <div className="flex flex-col p-0 md:p-3 xl:p-5">
       <div className="max-h-[512px] overflow-hidden">
         <img
           key={carouselImages[currentImgIndex]}

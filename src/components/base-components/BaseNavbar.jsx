@@ -4,19 +4,24 @@ import justVeganLogo from "../../assets/logo/just-vegan.png";
 export default function BaseNavbar() {
   const userAuthStore = localStorage.getItem("userAuth");
   const userAuthObject = JSON.parse(userAuthStore);
+  console.log(userAuthObject.name);
 
   const navLinks = [
     {
       name: "Dishes",
+      to: "dishes",
     },
     {
       name: "Offers",
+      to: "offers",
     },
     {
       name: " Admin Dishes",
+      to: "admin-dish",
     },
     {
       name: "Admin Offers",
+      to: "offercard-admin",
     },
   ];
 
@@ -30,7 +35,7 @@ export default function BaseNavbar() {
           {navLinks.map((elements, index) => {
             return (
               <li key={"navbar" + index}>
-                <Link to="/dishes" className=" py-3 px-5 text-white">
+                <Link to={elements.to} className=" py-3 px-5 text-white">
                   {elements.name}
                 </Link>
               </li>
@@ -69,13 +74,7 @@ export default function BaseNavbar() {
 
         <a href="sign-up">
           <button type="button" className="bg-neutral-100 px-6 py-3 rounded-lg">
-            Sign-up
-          </button>
-        </a>
-
-        <a href="login">
-          <button type="button" className="bg-neutral-100 px-6 py-3 rounded-lg">
-            Logout
+            Sign up
           </button>
         </a>
       </div>
