@@ -5,6 +5,7 @@ import { useNavigate, Link } from "react-router-dom";
 import "react-toastify/dist/ReactToastify.css";
 // import justVeganLogo from "../assets/logo/just-vegan.png";
 import BrandLogo from "../components/base-components/BrandLogo.jsx";
+import { API_BASE_PATH } from "../helpers/constants";
 
 export default function Login() {
   const [login, setLogin] = useState({
@@ -45,7 +46,7 @@ export default function Login() {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    fetch("http://192.168.29.179:3001/auth/login", {
+    fetch(`${API_BASE_PATH}/auth/login`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(login),

@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { API_BASE_PATH } from "../helpers/constants";
+
 function AdminForm() {
   const [formdata, setFromdata] = useState({
     dishName: "",
@@ -41,7 +43,7 @@ function AdminForm() {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    fetch("http://192.168.29.179:3001/dishes", {
+    fetch(`${API_BASE_PATH}/dishes`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(formdata),

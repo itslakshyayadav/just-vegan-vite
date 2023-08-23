@@ -1,11 +1,12 @@
 import { useState, useEffect } from "react";
+import { API_BASE_PATH } from "../helpers/constants";
 
 const Dishes = () => {
   const [dishes, setDishes] = useState([]);
 
   useEffect(() => {
     const fetchUserData = async () => {
-      const response = await fetch("http://192.168.29.179:3001/dishes");
+      const response = await fetch(`${API_BASE_PATH}/dishes`);
       const data = await response.json();
       console.log(data);
       setDishes(data.payload);

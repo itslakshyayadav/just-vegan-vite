@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 import loginFormImgSrc from "../assets/loginform-image/go-vegan.jpg";
+import { API_BASE_PATH } from "../helpers/constants";
+
 export default function SignUP() {
   const [signup, setSignup] = useState({
     name: "",
@@ -25,7 +27,7 @@ export default function SignUP() {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    fetch("http://192.168.29.179:3001/users", {
+    fetch(`${API_BASE_PATH}/users`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(signup),

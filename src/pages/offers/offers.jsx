@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import CardOffers from "./cards-offer";
+import { API_BASE_PATH } from "../helpers/constants";
 
 function Offers() {
   const [offers, setOffers] = useState([]);
@@ -11,7 +12,7 @@ function Offers() {
 
   useEffect(() => {
     const fetchUserData = async () => {
-      const response = await fetch("http://192.168.29.179:3001/offers");
+      const response = await fetch(`${API_BASE_PATH}/offers`);
       const data = await response.json();
       console.log(data);
       setOffers(data.payload);

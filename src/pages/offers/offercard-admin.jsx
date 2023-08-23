@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { API_BASE_PATH } from "../helpers/constants";
 
 function OfferCardAdmin() {
   const [offers, setOffers] = useState({
@@ -25,7 +26,7 @@ function OfferCardAdmin() {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    fetch("http://192.168.29.179:3001/offers", {
+    fetch(`${API_BASE_PATH}/offers`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(offers),
@@ -38,7 +39,7 @@ function OfferCardAdmin() {
     <>
       <form onSubmit={handleSubmit}>
         <div className="container m-auto py-4 max-w-screen-md p-2">
-          <div className="  rounded-sm px-5 py-3 ">
+          <div className="border-2 rounded-sm px-5 py-3 ">
             <div>
               <h1 className="text-center font-semibold text-gray-700 text-3xl">
                 Offers Admin
