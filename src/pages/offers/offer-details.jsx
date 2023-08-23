@@ -1,40 +1,35 @@
-import { useParams } from "react-router-dom";
 import { API_BASE_PATH } from "@/helpers/constants";
-import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 
-export default function DishDetails() {
+import { useState, useEffect } from "react";
+export default function OfferDetails() {
   let params = useParams();
   console.log(`params dish details`);
   console.log(params);
-  const [dishDetails, setDisheDetails] = useState({});
-
+  const [offerDetails, setOfferDetails] = useState({});
   useEffect(() => {
     const fetchUserData = async () => {
-      const response = await fetch(`${API_BASE_PATH}/dishes/${params.dishId}`);
+      const response = await fetch(`${API_BASE_PATH}/offers/${params.offerId}`);
       const data = await response.json();
       console.log(data);
-      setDisheDetails(data.payload);
+      setOfferDetails(data.payload);
     };
-
     fetchUserData();
   }, []);
-
   return (
     <div className=" px-5 py-5">
       <div className="flex gap-4 justify-center">
         <div className="">
           <img
-            src={dishDetails.imgUrl}
+            src={offerDetails.imgUrl}
             className="w-80 h-80 object-cover object-center rounded-lg"
             alt=""
           />
         </div>
         <div>
-          <h1 className="text-lg font-bold">{dishDetails.dishName}</h1>
-          <p>₹{dishDetails.price}</p>
-          <p>{dishDetails.dishCategory}</p>
-          <p>{dishDetails.description}</p>
-          {dishDetails.energy}
+          <h1 className="text-lg font-bold">{offerDetails.offerName}</h1>
+          <p>{offerDetails.offerCode}</p>
+          <p>{offerDetails.offerDescription}</p>
         </div>
       </div>
     </div>

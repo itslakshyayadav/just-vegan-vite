@@ -11,6 +11,7 @@ import DishDetails from "@/pages/dishes/dish-details";
 import AdminMain from "@/pages/admin/admin-main";
 import AdminDishes from "@/pages/admin/admin-dishes";
 import AdminDishDetails from "./pages/admin/admin-dish-details";
+import OfferDetails from "@/pages/offers/offer-details";
 
 const router = createBrowserRouter([
   {
@@ -55,7 +56,10 @@ const router = createBrowserRouter([
         path: "/offers",
         element: <Offers />,
       },
-
+      {
+        path: "/offers/:offerId",
+        element: <OfferDetails />,
+      },
       {
         path: "/login",
         element: <Login />,

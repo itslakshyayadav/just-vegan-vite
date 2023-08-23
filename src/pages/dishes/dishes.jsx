@@ -21,7 +21,7 @@ const Dishes = () => {
         {dishes.map((dishItem, index) => {
           return (
             <div key={"dish-card" + index} className="mt-6 border rounded-2xl">
-              <Link to={"/dishes/" + dishItem._id}>
+              <Link to={`/dishes/${dishItem._id}`}>
                 <img
                   className="rounded-t-2xl object-cover object-center w-full h-40"
                   src={dishItem.imgUrl}
