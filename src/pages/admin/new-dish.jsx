@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { API_BASE_PATH } from "@/helpers/constants";
 
-function AdminForm() {
+function NewDish() {
   const [formdata, setFromdata] = useState({
     dishName: "",
     price: "",
@@ -243,4 +243,4 @@ function AdminForm() {
     </>
   );
 }
-export default AdminForm;
+export default NewDish;

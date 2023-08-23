@@ -19,12 +19,8 @@ export default function BaseNavbar() {
       to: "offers",
     },
     {
-      name: " Admin Dishes",
-      to: "admin-dish",
-    },
-    {
-      name: "Admin Offers",
-      to: "offercard-admin",
+      name: "Admin",
+      to: "admin",
     },
   ];
 
