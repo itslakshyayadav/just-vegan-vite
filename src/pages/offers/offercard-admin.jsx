@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { API_BASE_PATH } from "../helpers/constants";
+import { API_BASE_PATH } from "@/helpers/constants";
 
 function OfferCardAdmin() {
   const [offers, setOffers] = useState({
@@ -39,7 +39,7 @@ function OfferCardAdmin() {
     <>
       <form onSubmit={handleSubmit}>
         <div className="container m-auto py-4 max-w-screen-md p-2">
-          <div className="border-2 rounded-sm px-5 py-3 ">
+          <div className=" border-2 rounded-sm px-5 py-3 ">
             <div>
               <h1 className="text-center font-semibold text-gray-700 text-3xl">
                 Offers Admin

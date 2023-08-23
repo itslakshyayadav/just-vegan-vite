@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { API_BASE_PATH } from "../helpers/constants";
+import { API_BASE_PATH } from "@/helpers/constants";
 
 function AdminForm() {
   const [formdata, setFromdata] = useState({

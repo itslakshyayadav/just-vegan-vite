@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
-// import justVeganLogo from "../../assets/logo/just-vegan.png";
-import BrandLogo from "./BrandLogo";
+import BrandLogo from "@/components/base-components/BrandLogo";
 
 export default function BaseNavbar() {
   const userAuthStore = localStorage.getItem("userAuth");
@@ -39,7 +38,6 @@ export default function BaseNavbar() {
       <div className="flex gap-8 items-center">
         <Link to="/">
           <BrandLogo />
-          {/* <img className="w-16" src={justVeganLogo} alt="logo" /> */}
         </Link>
         <ul className="flex gap-3">
           {navLinks.map((elements, index) => {

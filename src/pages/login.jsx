@@ -70,7 +70,6 @@ export default function Login() {
               <div className="mb-20">
                 <Link to="/">
                   <BrandLogo />
-                  {/* <img className="w-16" src={justVeganLogo} alt="logo" /> */}
                 </Link>
                 <h1 className="text-center font-semibold text-5xl mb-2.5">
                   Welcome Back

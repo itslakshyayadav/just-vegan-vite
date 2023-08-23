@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import CardOffers from "./cards-offer";
-import { API_BASE_PATH } from "../helpers/constants";
+import { API_BASE_PATH } from "@/helpers/constants";
 
 function Offers() {
   const [offers, setOffers] = useState([]);

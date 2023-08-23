@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { API_BASE_PATH } from "../helpers/constants";
+import { API_BASE_PATH } from "@/helpers/constants";
 
 const Dishes = () => {
   const [dishes, setDishes] = useState([]);
