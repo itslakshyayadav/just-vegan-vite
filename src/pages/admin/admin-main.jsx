@@ -28,7 +28,10 @@ export default function AdminMain() {
           {navLinks.map((link, index) => {
             return (
               <li key={"navbar" + index}>
-                <Link to={link.to} className="py-3 px-5 border">
+                <Link
+                  to={link.to}
+                  className="py-3 bg-lime-500 text-white px-5 border"
+                >
                   {link.name}
                 </Link>
               </li>

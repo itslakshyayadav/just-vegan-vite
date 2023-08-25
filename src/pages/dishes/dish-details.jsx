@@ -31,30 +31,27 @@ export default function DishDetails() {
         </div>
         <div>
           <h1 className="text-lg font-bold">{dishDetails.dishName}</h1>
-          <p className=" font-semibold">{dishDetails.description}</p>
+          <p className="capitalize font-semibold">{dishDetails.description}</p>
 
-          <p className="mb-2 capitalize">
-            <small className="font-semibold">cat : </small>
-            {dishDetails.dishCategory}
-          </p>
+          <p className="mb-2 capitalize">{dishDetails.dishCategory}</p>
           <hr className="mb-2 " />
           <div className="grid grid-cols-3 gap-2 mb-2 ">
-            <div className=" flex gap-3 px-2 justify-center rounded-md items-center border w-26 text-center">
+            <div className=" flex gap-3 font-semibold px-2 justify-center rounded-md items-center border w-26 text-center">
               <small>ENERGY (g)</small> {dishDetails.energy}
             </div>
-            <div className=" flex gap-3 justify-center rounded-md items-center border w-26 text-center">
+            <div className=" flex gap-3 font-semibold justify-center rounded-md items-center border w-26 text-center">
               <small>FAT (g)</small>
               {dishDetails.fat}
             </div>
-            <div className="flex gap-3 justify-center rounded-md items-center border w-26 text-center">
+            <div className="flex gap-3 font-semibold justify-center rounded-md items-center border w-26 text-center">
               <small>CARBS (g)</small>
               {dishDetails.carbs}
             </div>
-            <div className="flex gap-3 justify-center rounded-md items-center border w-26 text-center">
+            <div className="flex gap-3 font-semibold justify-center rounded-md items-center border w-26 text-center">
               <small>PROTEIN (g)</small>
               {dishDetails.protein}
             </div>
-            <div className="flex gap-3 justify-center rounded-md items-center border w-26 text-center">
+            <div className="flex gap-3 font-semibold justify-center rounded-md items-center border w-26 text-center">
               <small>FIBER (g)</small>
               {dishDetails.fiber}
             </div>

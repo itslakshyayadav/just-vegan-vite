@@ -104,6 +104,7 @@ function NewDish() {
                 <label htmlFor="isVaccumSealed">
                   <input
                     name="isVaccumSealed"
+                    id="isVaccumSealed"
                     checked={formdata.isVaccumSealed}
                     onChange={handleChecked}
                     type="checkbox"
@@ -112,6 +113,7 @@ function NewDish() {
                 </label>
                 <label htmlFor="isActive">
                   <input
+                    id="isActive"
                     name="isActive"
                     checked={formdata.isActive}
                     onChange={handleChecked}
@@ -121,6 +123,7 @@ function NewDish() {
                 </label>
                 <label htmlFor="isCertified">
                   <input
+                    id="isCertified"
                     name="isCertified"
                     checked={formdata.isCertified}
                     onChange={handleChecked}
@@ -130,6 +133,7 @@ function NewDish() {
                 </label>
                 <label htmlFor="isPreservativeFree">
                   <input
+                    id="isPreservativeFree"
                     name="isPreservativeFree"
                     checked={formdata.isPreservativeFree}
                     onChange={handleChecked}
