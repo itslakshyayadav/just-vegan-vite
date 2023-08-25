@@ -1,19 +1,23 @@
-import { useState } from "react";
+// import { useState } from "react";
 import { Link, Outlet } from "react-router-dom";
 
 export default function AdminMain() {
   const navLinks = [
     {
       name: "New Dish",
-      to: "new-dish",
+      to: "/admin/new-dish",
     },
     {
       name: "Admin Dishes",
-      to: "admin-dishes",
+      to: "/admin/admin-dishes",
+    },
+    {
+      name: "New Offer",
+      to: "/admin/new-offer",
     },
     {
       name: "Admin Offers",
-      to: "admin-offer",
+      to: "/admin/admin-offers",
     },
   ];
 

@@ -11,6 +11,7 @@ export default function OfferDetails() {
     const fetchUserData = async () => {
       const response = await fetch(`${API_BASE_PATH}/offers/${params.offerId}`);
       const data = await response.json();
+
       console.log(data);
       setOfferDetails(data.payload);
     };

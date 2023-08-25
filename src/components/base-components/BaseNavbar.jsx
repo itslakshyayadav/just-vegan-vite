@@ -52,14 +52,14 @@ export default function BaseNavbar() {
       </div>
 
       <div className="flex gap-2">
-        <a href="" className="bg-neutral-100 px-6 py-3 rounded-lg">
+        <a href="" className="bg-lime-500 px-6 py-3 rounded-lg">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
             viewBox="0 0 24 24"
             strokeWidth={1.5}
             stroke="currentColor"
-            className="w-5 h-5"
+            className="w-5 h-5 text-white"
           >
             <path
               strokeLinecap="round"
@@ -71,23 +71,32 @@ export default function BaseNavbar() {
 
         {userAuthObject && userAuthObject.accessToken ? (
           <>
-            <Link to="/login" className="bg-neutral-100 px-6 py-3 rounded-lg">
+            <Link
+              to="/login"
+              className="bg-lime-500 text-white px-6 py-3 rounded-lg"
+            >
               {userAuthObject.name}
             </Link>
             <Link
               to="/login"
               onClick={handleLogout}
-              className="bg-neutral-100 px-6 py-3 rounded-lg"
+              className="bg-lime-500 text-white px-6 py-3 rounded-lg"
             >
               Logout
             </Link>
           </>
         ) : (
           <>
-            <Link to="/login" className="bg-neutral-100 px-6 py-3 rounded-lg">
+            <Link
+              to="/login"
+              className="bg-lime-500 text-white px-6 py-3 rounded-lg"
+            >
               Login
             </Link>
-            <Link to="/sign-up" className="bg-neutral-100 px-6 py-3 rounded-lg">
+            <Link
+              to="/sign-up"
+              className="bg-lime-500 text-white px-6 py-3 rounded-lg"
+            >
               Sign Up
             </Link>
           </>

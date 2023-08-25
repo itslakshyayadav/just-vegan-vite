@@ -5,7 +5,7 @@ function NewDish() {
   const [formdata, setFromdata] = useState({
     dishName: "",
     price: "",
-    dishCategory: "",
+    dishCategory: "lunch",
     isVaccumSealed: false,
     isActive: false,
     isPreservativeFree: false,
@@ -76,15 +76,16 @@ function NewDish() {
             </div>
             <div className="flex flex-col gap-2">
               <label htmlFor="dishCategory">Dish Category*</label>
-              <input
+              <select
                 name="dishCategory"
-                required
                 value={formdata.dishCategory}
                 onChange={handleChange}
-                type="text"
-                placeholder="Choose Your Option"
-                className=" px-2 py-1 border-2 rounded-sm mb-2.5"
-              />
+                className="px-2 py-1 border-2 rounded-sm"
+              >
+                <option value="lunch">Lunch</option>
+                <option value="dinner">Dinner</option>
+                <option value="breakfast">Breakfast</option>
+              </select>
             </div>
             <div className="flex flex-col gap-2">
               <label htmlFor="price">Price*</label>
