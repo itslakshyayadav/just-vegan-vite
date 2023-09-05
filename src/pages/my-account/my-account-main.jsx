@@ -35,10 +35,10 @@ export default function MyAccountMain() {
                     <div className="flex flex-col  ">
                         {accountPage.map((link, index) => {
                             return (
-                                <div key={"navbar" + index} className=" w-48  py-3 text-black px-5 border   ">
+                                <div key={"navbar" + index} className=" w-48 hover:bg-blue-600 hover:text-white py-3 text-black px-5 border   ">
                                     <Link
                                         to={link.to}
-                                        className="  "
+                                        className="   "
                                     >
                                         {link.name}
                                     </Link>

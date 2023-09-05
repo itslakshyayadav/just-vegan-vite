@@ -30,7 +30,7 @@ export default function MyAddress() {
                     <div key={"address" + index}>
 
                         <form className="">
-                            <div className="container border-2 m-auto mb-2   max-w-screen-md ">
+                            <div className="container  border-2 m-auto mb-2 rounded-md   max-w-screen-md ">
                                 <div className=" rounded-sm  ">
                                     <div className="flex  justify-between border-b-2 px-3 py-3 items-center" style={{ backgroundColor: "rgb(247,247,247)" }}>
                                         <div>
