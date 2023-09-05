@@ -4,8 +4,10 @@
 export default function MyOrders() {
     return (
         <>
-            <h1>my orders</h1>
+            <div className="   m-auto    max-w-screen-md ">
 
+                <h1>my orders</h1>
+            </div>
         </>
     )
 }

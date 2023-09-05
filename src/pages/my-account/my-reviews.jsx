@@ -1,7 +1,10 @@
 export default function MyReviews() {
     return (
         <>
-            <h1>my reviews</h1>
+            <div className="   m-auto    max-w-screen-md ">
+
+                <h1>my Review</h1>
+            </div>
         </>
     )
 }
