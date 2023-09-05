@@ -14,6 +14,17 @@ import AdminDishDetails from "./pages/admin/admin-dish-details";
 import OfferDetails from "@/pages/offers/offer-details";
 import AdminOffers from "@/pages/admin/admin-offers";
 import AdminOfferDetails from "@/pages/admin/admin-offer-details";
+import MyAccountMain from "./pages/my-account/my-account-main";
+import MyAddress from "./pages/my-account/my-address";
+import MyOrders from "./pages/my-account/my-orders";
+import MyFavourite from "./pages/my-account/my-favourite";
+import MyReviews from "./pages/my-account/my-reviews";
+import MyAccount from "./pages/my-account/my-account";
+
+
+
+
+
 
 const router = createBrowserRouter([
   {
@@ -69,6 +80,33 @@ const router = createBrowserRouter([
       {
         path: "/offers/:offerId",
         element: <OfferDetails />,
+      },
+      {
+        path: "/my-account",
+        element: <MyAccountMain />,
+        children: [
+          {
+            path: "/my-account/my-account",
+            element: <MyAccount />,
+          },
+          {
+            path: "/my-account/my-address",
+            element: <MyAddress />,
+          },
+          {
+            path: "/my-account/my-orders",
+            element: <MyOrders />,
+          },
+          {
+            path: "/my-account/my-favourite",
+            element: <MyFavourite />,
+          },
+          {
+            path: "/my-account/my-reviews",
+            element: <MyReviews />,
+          },
+
+        ]
       },
       {
         path: "/login",

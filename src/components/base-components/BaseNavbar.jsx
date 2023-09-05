@@ -73,15 +73,15 @@ export default function BaseNavbar() {
           {userAuthObject && userAuthObject.accessToken ? (
             <>
               <Link
-                to="/login"
-                className=" text-white px-6 py-3 rounded-lg border border-green-500 md:hover:text-green-500 "
+                to="/my-account"
+                className=" text-white px-6 py-3 rounded-lg border  md:hover:text-green-500 "
               >
                 {userAuthObject.name}
               </Link>
               <Link
                 to="/login"
                 onClick={handleLogout}
-                className=" text-white px-6 py-3 rounded-lg border border-green-500 md:hover:text-green-500 "
+                className=" text-white px-6 py-3 rounded-lg border  md:hover:text-green-500 "
               >
                 Logout
               </Link>
@@ -90,13 +90,13 @@ export default function BaseNavbar() {
             <>
               <Link
                 to="/login"
-                className=" text-white px-6 py-3 rounded-lg border border-green-500 md:hover:text-green-500 "
+                className=" text-white px-6 py-3 rounded-lg border  md:hover:text-green-500 "
               >
                 Login
               </Link>
               <Link
                 to="/sign-up"
-                className=" text-white px-6 py-3 rounded-lg border border-green-500 md:hover:text-green-500 "
+                className=" text-white px-6 py-3 rounded-lg border  md:hover:text-green-500 "
               >
                 Sign Up
               </Link>
