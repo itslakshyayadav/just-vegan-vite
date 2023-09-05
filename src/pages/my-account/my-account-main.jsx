@@ -30,13 +30,15 @@ export default function MyAccountMain() {
         <>
 
             <div className="container mx-auto max-w-4xl lg:max-w-6xl my-6 px-4 md:px-6">
-                <div className="container">
-                    <div className="grid grid-cols-1 ">
+
+                <div className="grid grid-cols-9  ">
+                    <div className="flex flex-col  ">
                         {accountPage.map((link, index) => {
                             return (
-                                <div key={"navbar" + index} className=" py-3 text-black px-5 border w-40 ">
+                                <div key={"navbar" + index} className=" w-48  py-3 text-black px-5 border   ">
                                     <Link
                                         to={link.to}
+                                        className="  "
                                     >
                                         {link.name}
                                     </Link>
@@ -44,10 +46,15 @@ export default function MyAccountMain() {
                             );
                         })}
                     </div>
+                    <div className="col-span-8 ">
+                        <Outlet></Outlet>
+
+                    </div>
+
+
                 </div>
 
             </div>
-            <Outlet></Outlet>
         </>
     )
 }
