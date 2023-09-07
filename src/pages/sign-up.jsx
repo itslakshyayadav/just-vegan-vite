@@ -7,6 +7,8 @@ export default function SignUP() {
     name: "",
     emailId: "",
     password: "",
+    phone: "",
+    userType: "customer"
   });
 
   const handleChange = (event) => {
@@ -35,8 +37,8 @@ export default function SignUP() {
       .then((res) => res.json())
       .then((response) => {
         console.log(response.payload);
-        localStorage.setItem("userAuth", JSON.stringify(response.payload));
-        window.location = "/";
+        // localStorage.setItem("userAuth", JSON.stringify(response.payload));
+        // window.location = "/";
       });
   };
 
@@ -79,6 +81,18 @@ export default function SignUP() {
                   placeholder="Email"
                 />
               </div>
+              <div className="text-center mb-4">
+                <input
+                  style={{ backgroundColor: "rgb(246,247,245)" }}
+                  type="text"
+                  required
+                  name="phone"
+                  value={signup.phone}
+                  onChange={handleChange}
+                  className="w-2/3  px-2 py-2  rounded-md"
+                  placeholder="Enter phone"
+                />
+              </div>
               <div className="text-center mb-6">
                 <input
                   style={{ backgroundColor: "rgb(246,247,245)" }}
@@ -95,11 +109,11 @@ export default function SignUP() {
                 <input
                   style={{ backgroundColor: "rgb(246,247,245)" }}
                   type="password"
-                  name=""
-                  //   value={login.password}
+                  name="confirmPassword"
+                  value={signup.confirmPassword}
                   onChange={handleChange}
                   className="w-2/3  px-2 py-2  rounded-md"
-                  placeholder="confrim password"
+                  placeholder="Confirm password"
                 />
               </div>
 

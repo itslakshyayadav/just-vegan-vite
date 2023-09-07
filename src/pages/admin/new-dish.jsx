@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { API_BASE_PATH } from "@/helpers/constants";
+import dishService from "@/services/dishService";
+import { toast } from "react-toastify";
 
 function NewDish() {
   const [formdata, setFromdata] = useState({
@@ -21,9 +22,6 @@ function NewDish() {
 
   const handleChange = (event) => {
     const { name, value } = event.target;
-    console.log(`value`);
-    console.log(value);
-
     setFromdata({
       ...formdata,
       [name]: value,
@@ -32,24 +30,25 @@ function NewDish() {
 
   const handleChecked = (event) => {
     const { name, checked } = event.target;
-    console.log(`value`);
-    console.log(checked);
     setFromdata({
       ...formdata,
       [name]: checked,
     });
   };
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
+  const handleSubmit = async (event) => {
+    try {
+      event.preventDefault();
+      const response = await dishService.createDish(formdata)
+      if (response.status == 200) {
+        toast.success("A new dish created successfully.")
+      }
 
-    fetch(`${API_BASE_PATH}/dishes`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(formdata),
-    })
-      .then((res) => res.json())
-      .then(console.log);
+    } catch (error) {
+      if (error.response.status === 400) {
+        toast.error(error.response.data)
+      }
+    }
   };
 
   return (

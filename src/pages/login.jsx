@@ -2,7 +2,6 @@ import loginFormImgSrc from "../assets/loginform-image/go-vegan.jpg";
 import { useEffect, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import { useNavigate, Link } from "react-router-dom";
-import "react-toastify/dist/ReactToastify.css";
 // import justVeganLogo from "../assets/logo/just-vegan.png";
 import BrandLogo from "../components/base-components/BrandLogo.jsx";
 import { API_BASE_PATH } from "../helpers/constants";
@@ -129,7 +128,7 @@ export default function Login() {
                   type="submit"
                   // style={{ backgroundColor: "rgb(224,226,217)" }}
                   className="w-1/2 p-3 text-white rounded-md bg-emerald-500"
-                  // style={{ backgroundColor: "rgb(83,197,8)" }}
+                // style={{ backgroundColor: "rgb(83,197,8)" }}
                 >
                   Login
                 </button>

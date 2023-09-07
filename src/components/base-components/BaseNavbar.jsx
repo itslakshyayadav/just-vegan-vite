@@ -6,7 +6,7 @@ export default function BaseNavbar() {
   let userAuthObject = {};
   if (userAuthStore) {
     userAuthObject = JSON.parse(userAuthStore);
-    console.log(userAuthObject.name);
+    // console.log(userAuthObject.name);
   }
 
   const navLinks = [

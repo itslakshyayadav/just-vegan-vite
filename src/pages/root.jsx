@@ -3,14 +3,13 @@ import BaseNavbar from "../components/base-components/BaseNavbar";
 import { ToastContainer } from "react-toastify";
 import { useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
+import "react-toastify/dist/ReactToastify.css";
+
 export default function Home() {
   let location = useLocation();
-  console.log(`location`);
-  console.log(location);
   const [hideNavbar, setHideNavbar] = useState(false);
 
   useEffect(() => {
-    console.log("use effecrt root called");
     if (location.pathname === "/login") {
       setHideNavbar(true);
     } else if (location.pathname === "/sign-up") {
