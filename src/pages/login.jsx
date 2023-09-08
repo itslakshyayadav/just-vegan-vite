@@ -1,10 +1,10 @@
 import loginFormImgSrc from "../assets/loginform-image/go-vegan.jpg";
 import { useEffect, useState } from "react";
-import { ToastContainer, toast } from "react-toastify";
+// import { toast } from "react-toastify";
 import { useNavigate, Link } from "react-router-dom";
-// import justVeganLogo from "../assets/logo/just-vegan.png";
 import BrandLogo from "../components/base-components/BrandLogo.jsx";
 import { API_BASE_PATH } from "../helpers/constants";
+// import userService from "@/services/userService";
 
 export default function Login() {
   const [login, setLogin] = useState({
@@ -14,25 +14,6 @@ export default function Login() {
 
   const navigate = useNavigate();
 
-  //   const [userData, setUserData] = useState({});
-
-  useEffect(() => {
-    const myUser = localStorage.getItem("sessionUser");
-    console.log("myUser");
-    console.log(myUser);
-
-    // if (!myUser) {
-    //   localStorage.setItem(
-    //     "sessionUser",
-    //     JSON.stringify({
-    //       username: "visahlyadaviit@gmail.com",
-    //       accessToken: "abcd1234",
-    //     })
-    //   );
-
-    // }
-  }, []);
-
   const handleChange = (event) => {
     const { name, value } = event.target;
 
@@ -41,6 +22,12 @@ export default function Login() {
       [name]: value,
     });
   };
+
+  useEffect(() => {
+    const myUser = localStorage.getItem("sessionUser");
+    console.log("myUser");
+    console.log(myUser);
+  }, []);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -54,11 +41,22 @@ export default function Login() {
       .then((response) => {
         console.log(response.payload);
         localStorage.setItem("userAuth", JSON.stringify(response.payload));
-        toast("You are logged in successfully.");
-        // window.location = "/";
         navigate("/");
       });
   };
+  // const handleSubmit = async (event) => {
+  //   try {
+  //     event.preventDefault();
+  //     const response = await userService.loginUser(login);
+  //     if (response.status == 200) {
+  //       toast.success("You are logged in successfully.");
+  //     }
+  //   } catch (error) {
+  //     if (error.response.status === 400) {
+  //       toast.error(error.response.data);
+  //     }
+  //   }
+  // };
 
   return (
     <>
@@ -128,22 +126,10 @@ export default function Login() {
                   type="submit"
                   // style={{ backgroundColor: "rgb(224,226,217)" }}
                   className="w-1/2 p-3 text-white rounded-md bg-emerald-500"
-                // style={{ backgroundColor: "rgb(83,197,8)" }}
+                  // style={{ backgroundColor: "rgb(83,197,8)" }}
                 >
                   Login
                 </button>
-                <ToastContainer
-                  position="top-right"
-                  autoClose={5000}
-                  hideProgressBar={false}
-                  newestOnTop={false}
-                  closeOnClick
-                  rtl={false}
-                  pauseOnFocusLoss
-                  draggable
-                  pauseOnHover
-                  theme="light"
-                />
               </div>
             </div>
           </div>

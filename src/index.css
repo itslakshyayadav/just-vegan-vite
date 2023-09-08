@@ -7,6 +7,16 @@
   animation-duration: 0.75s;
 }
 
+a.list-link.active {
+  border-left: 3px solid rgb(20, 213, 33);
+}
+
+a.navbar-link.active {
+  border-bottom: 3px solid rgb(20, 213, 33);
+}
+
+
+
 @keyframes slideLeft {
   0% {
     transform: translateX(200px);

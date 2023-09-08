@@ -21,11 +21,6 @@ import MyFavourite from "./pages/my-account/my-favourite";
 import MyReviews from "./pages/my-account/my-reviews";
 import MyAccount from "./pages/my-account/my-account";
 
-
-
-
-
-
 const router = createBrowserRouter([
   {
     path: "/",
@@ -86,7 +81,7 @@ const router = createBrowserRouter([
         element: <MyAccountMain />,
         children: [
           {
-            path: "/my-account/my-account",
+            path: "/my-account",
             element: <MyAccount />,
           },
           {
@@ -105,8 +100,7 @@ const router = createBrowserRouter([
             path: "/my-account/my-reviews",
             element: <MyReviews />,
           },
-
-        ]
+        ],
       },
       {
         path: "/login",

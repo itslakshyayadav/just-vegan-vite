@@ -1,9 +1,8 @@
 import { useState, useEffect } from "react";
 import loginFormImgSrc from "../assets/loginform-image/go-vegan.jpg";
-
 import userService from "@/services/userService";
 import { toast } from "react-toastify";
-
+// import { API_BASE_PATH } from "@/helpers/constants";
 
 export default function SignUP() {
   const [signup, setSignup] = useState({
@@ -11,7 +10,7 @@ export default function SignUP() {
     emailId: "",
     password: "",
     phone: "",
-    userType: "customer"
+    userType: "customer",
   });
 
   const handleChange = (event) => {
@@ -24,9 +23,9 @@ export default function SignUP() {
   };
 
   useEffect(() => {
-    // const myUser = localStorage.getItem("sessionUser");
-    // console.log("myUser");
-    // console.log(myUser);
+    const myUser = localStorage.getItem("sessionUser");
+    console.log("myUser");
+    console.log(myUser);
   }, []);
 
   // const handleSubmit = (event) => {
@@ -47,18 +46,16 @@ export default function SignUP() {
   const handleSubmit = async (event) => {
     try {
       event.preventDefault();
-      const response = await userService.createDish(signup)
+      const response = await userService.createUser(signup);
       if (response.status == 200) {
-        toast.success("A new user created successfully.")
+        toast.success("A new user created successfully.");
       }
-
     } catch (error) {
       if (error.response.status === 400) {
-        toast.error(error.response.data)
+        toast.error(error.response.data);
       }
     }
   };
-
 
   return (
     <>

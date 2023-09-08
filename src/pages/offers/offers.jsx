@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 
 import { Link } from "react-router-dom";
 import offerService from "@/services/offerService";
-
+import { toast } from "react-toastify";
 
 function Offers() {
   const [offers, setOffers] = useState([]);
@@ -14,8 +14,14 @@ function Offers() {
 
   useEffect(() => {
     const fetchUserData = async () => {
-      const response = await offerService.getOffers();
-      setOffers(response.data.payload);
+      try {
+        const response = await offerService.getOffers();
+        setOffers(response.data.payload);
+      } catch (error) {
+        if (error.response.status === 500) {
+          toast.error(error.response.statusText);
+        }
+      }
     };
     fetchUserData();
   }, []);

@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import BrandLogo from "@/components/base-components/BrandLogo";
 
 export default function BaseNavbar() {
@@ -24,10 +24,10 @@ export default function BaseNavbar() {
     },
   ];
 
-  const handleLogout = () => {
-    localStorage.clear();
-    window.location.href = "/login";
-  };
+  // const handleLogout = () => {
+  //   localStorage.clear();
+  //   window.location.href = "/login";
+  // };
 
   return (
     <div>
@@ -40,12 +40,12 @@ export default function BaseNavbar() {
             {navLinks.map((elements, index) => {
               return (
                 <li key={"navbar" + index}>
-                  <Link
+                  <NavLink
                     to={elements.to}
-                    className=" py-3 px-5 text-white md:hover:text-green-500"
+                    className="navbar-link py-3 px-5 text-white md:hover:text-green-500"
                   >
                     {elements.name}
-                  </Link>
+                  </NavLink>
                 </li>
               );
             })}
@@ -74,17 +74,17 @@ export default function BaseNavbar() {
             <>
               <Link
                 to="/my-account"
-                className=" text-white px-6 py-3 rounded-lg border  md:hover:text-green-500 "
+                className="text-white px-6 py-3 rounded-lg border  md:hover:text-green-500 "
               >
                 {userAuthObject.name}
               </Link>
-              <Link
+              {/* <Link
                 to="/login"
                 onClick={handleLogout}
                 className=" text-white px-6 py-3 rounded-lg border  md:hover:text-green-500 "
               >
                 Logout
-              </Link>
+              </Link> */}
             </>
           ) : (
             <>

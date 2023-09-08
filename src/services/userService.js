@@ -12,28 +12,36 @@ import { API_BASE_PATH } from "@/helpers/constants";
 //                 "Content-Type": "application/json",
 //                 Authorization: `Bearer ${userAuthObject.accessToken}`
 //             },
-            
+
 //             data:{
-                
+
 //             }
 //         }
 //     )
 // }
-function createUser(signup){
-    const userAuthStore = localStorage.getItem("userAuth");
-    const userAuthObject = JSON.parse(userAuthStore);
-
-    return axios({
-        method:"POST",
-        url:`${API_BASE_PATH}/users`,
-        headers:{
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${userAuthObject.accessToken}`
-        },
-        data: signup
-    })
+function createUser(signup) {
+  return axios({
+    method: "POST",
+    url: `${API_BASE_PATH}/users`,
+    headers: {
+      "Content-Type": "application/json",
+    },
+    data: signup,
+  });
 }
 
-export default{
-    createUser,
+function loginUser(login) {
+  return axios({
+    method: "POST",
+    url: `${API_BASE_PATH}/auth/login`,
+    headers: {
+      "Content-Type": "application/json",
+    },
+    data: login,
+  });
 }
+
+export default {
+  createUser,
+  loginUser,
+};
