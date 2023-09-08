@@ -1,6 +1,9 @@
 import { useState, useEffect } from "react";
 import loginFormImgSrc from "../assets/loginform-image/go-vegan.jpg";
-import { API_BASE_PATH } from "../helpers/constants";
+
+import userService from "@/services/userService";
+import { toast } from "react-toastify";
+
 
 export default function SignUP() {
   const [signup, setSignup] = useState({
@@ -21,26 +24,41 @@ export default function SignUP() {
   };
 
   useEffect(() => {
-    const myUser = localStorage.getItem("sessionUser");
-    console.log("myUser");
-    console.log(myUser);
+    // const myUser = localStorage.getItem("sessionUser");
+    // console.log("myUser");
+    // console.log(myUser);
   }, []);
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
+  // const handleSubmit = (event) => {
+  //   event.preventDefault();
 
-    fetch(`${API_BASE_PATH}/users`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(signup),
-    })
-      .then((res) => res.json())
-      .then((response) => {
-        console.log(response.payload);
-        // localStorage.setItem("userAuth", JSON.stringify(response.payload));
-        // window.location = "/";
-      });
+  //   fetch(`${API_BASE_PATH}/users`, {
+  //     method: "POST",
+  //     headers: { "Content-Type": "application/json" },
+  //     body: JSON.stringify(signup),
+  //   })
+  //     .then((res) => res.json())
+  //     .then((response) => {
+  //       console.log(response.payload);
+  //       localStorage.setItem("userAuth", JSON.stringify(response.payload));
+  //       // window.location = "/";
+  //     });
+  // };
+  const handleSubmit = async (event) => {
+    try {
+      event.preventDefault();
+      const response = await userService.createDish(signup)
+      if (response.status == 200) {
+        toast.success("A new user created successfully.")
+      }
+
+    } catch (error) {
+      if (error.response.status === 400) {
+        toast.error(error.response.data)
+      }
+    }
   };
+
 
   return (
     <>

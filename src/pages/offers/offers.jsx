@@ -1,7 +1,9 @@
 import { useState, useEffect } from "react";
 // import CardOffers from "./cards-offer";
-import { API_BASE_PATH } from "@/helpers/constants";
+
 import { Link } from "react-router-dom";
+import offerService from "@/services/offerService";
+
 
 function Offers() {
   const [offers, setOffers] = useState([]);
@@ -12,10 +14,8 @@ function Offers() {
 
   useEffect(() => {
     const fetchUserData = async () => {
-      const response = await fetch(`${API_BASE_PATH}/offers`);
-      const data = await response.json();
-      console.log(data);
-      setOffers(data.payload);
+      const response = await offerService.getOffers();
+      setOffers(response.data.payload);
     };
     fetchUserData();
   }, []);

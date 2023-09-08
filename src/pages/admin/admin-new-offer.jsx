@@ -1,5 +1,8 @@
+import offerService from "@/services/offerService";
 import { useState } from "react";
-import { API_BASE_PATH } from "@/helpers/constants";
+import { toast } from "react-toastify";
+
+
 
 function AdminNewOffer() {
   const [offers, setOffers] = useState({
@@ -23,16 +26,19 @@ function AdminNewOffer() {
     });
   };
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
+  const handleSubmit = async (event) => {
+    try {
+      event.preventDefault();
+      const response = await offerService.createOffer(offers)
+      if (response.status == 200) {
+        toast.success("A new offer created successfully.")
+      }
 
-    fetch(`${API_BASE_PATH}/offers`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(offers),
-    })
-      .then((res) => res.json())
-      .then(console.log);
+    } catch (error) {
+      if (error.response.status === 400) {
+        toast.error(error.response.data)
+      }
+    }
   };
 
   return (
