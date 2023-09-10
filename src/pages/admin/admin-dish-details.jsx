@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { API_BASE_PATH } from "@/helpers/constants";
 import { useParams, useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
+import BaseButton from "@/components/base-components/BaseButton";
 
 function AdminDishDetails() {
   const [dishModel, setDishModel] = useState({
@@ -52,9 +53,14 @@ function AdminDishDetails() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    const userAuthStore = localStorage.getItem("userAuth");
+    const userAuthObject = JSON.parse(userAuthStore);
     fetch(`${API_BASE_PATH}/dishes/${params.dishId}`, {
       method: "PUT",
-      headers: { "Content-Type": "application/json" },
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${userAuthObject.accessToken}`,
+      },
       body: JSON.stringify(dishModel),
     })
       .then((res) => res.json())
@@ -62,17 +68,17 @@ function AdminDishDetails() {
     navigate("/admin/admin-dishes");
     toast("Dish Update.");
   };
-  const handleDelete = () => {
-    fetch(`${API_BASE_PATH}/dishes/${params.dishId}`, {
-      method: "DELETE",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(dishModel),
-    })
-      .then((res) => res.json())
-      .then(console.log);
-    navigate("/admin/admin-dishes");
-    toast("Dish Deleted.");
-  };
+  // const handleDelete = () => {
+  //   fetch(`${API_BASE_PATH}/dishes/${params.dishId}`, {
+  //     method: "DELETE",
+  //     headers: { "Content-Type": "application/json" },
+  //     body: JSON.stringify(dishModel),
+  //   })
+  //     .then((res) => res.json())
+  //     .then(console.log);
+  //   navigate("/admin/admin-dishes");
+  //   toast("Dish Deleted.");
+  // };
 
   return (
     <>
@@ -252,7 +258,10 @@ function AdminDishDetails() {
               />
             </div>
             <div className="flex gap-4">
-              <button
+              <BaseButton type="submit" variant="primary">
+                update
+              </BaseButton>
+              {/* <button
                 className="px-5 py-3 my-5 text-white  rounded-sm"
                 type="submit"
                 style={{ backgroundColor: "rgb(83,197,8)" }}
@@ -266,7 +275,7 @@ function AdminDishDetails() {
                 style={{ backgroundColor: "rgb(83,197,8)" }}
               >
                 Delete
-              </button>
+              </button> */}
               <ToastContainer
                 position="top-right"
                 autoClose={5000}

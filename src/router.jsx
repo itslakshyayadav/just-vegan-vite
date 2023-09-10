@@ -20,6 +20,7 @@ import MyOrders from "./pages/my-account/my-orders";
 import MyFavourite from "./pages/my-account/my-favourite";
 import MyReviews from "./pages/my-account/my-reviews";
 import MyAccount from "./pages/my-account/my-account";
+import CreateAddress from "./pages/my-account/create-address";
 
 const router = createBrowserRouter([
   {
@@ -87,6 +88,10 @@ const router = createBrowserRouter([
           {
             path: "/my-account/my-address",
             element: <MyAddress />,
+          },
+          {
+            path: "/my-account/my-address/create-address",
+            element: <CreateAddress />,
           },
           {
             path: "/my-account/my-orders",

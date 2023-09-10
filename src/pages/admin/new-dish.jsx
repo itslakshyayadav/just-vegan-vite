@@ -1,6 +1,8 @@
 import { useState } from "react";
 import dishService from "@/services/dishService";
 import { toast } from "react-toastify";
+import BaseButton from "@/components/base-components/BaseButton";
+import { useNavigate } from "react-router-dom";
 
 function NewDish() {
   const [formdata, setFromdata] = useState({
@@ -19,6 +21,7 @@ function NewDish() {
     description: "",
     imgUrl: "",
   });
+  const navigate = useNavigate();
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -39,14 +42,14 @@ function NewDish() {
   const handleSubmit = async (event) => {
     try {
       event.preventDefault();
-      const response = await dishService.createDish(formdata)
+      const response = await dishService.createDish(formdata);
       if (response.status == 200) {
-        toast.success("A new dish created successfully.")
+        toast.success("A new dish created successfully.");
+        navigate("/");
       }
-
     } catch (error) {
       if (error.response.status === 400) {
-        toast.error(error.response.data)
+        toast.error(error.response.data);
       }
     }
   };
@@ -232,14 +235,13 @@ function NewDish() {
                 className=" px-2 py-1 border-2 rounded-sm mb-2.5"
               />
             </div>
-            <div className="">
-              <button
-                className="px-5 py-3 my-5 text-white  rounded-sm"
-                type="submit"
-                style={{ backgroundColor: "rgb(83,197,8)" }}
-              >
+            <div className="flex gap-3">
+              <BaseButton variant="primary" type="submit">
                 Submit
-              </button>
+              </BaseButton>
+              <BaseButton type="submit" variant="neutral">
+                Cancel
+              </BaseButton>
             </div>
           </div>
         </div>

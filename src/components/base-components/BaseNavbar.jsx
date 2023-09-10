@@ -1,5 +1,7 @@
-import { Link, NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import BrandLogo from "@/components/base-components/BrandLogo";
+import BaseIcon from "./BaseIcon";
+import BaseNavLink from "./BaseNavLink";
 
 export default function BaseNavbar() {
   const userAuthStore = localStorage.getItem("userAuth");
@@ -24,10 +26,10 @@ export default function BaseNavbar() {
     },
   ];
 
-  // const handleLogout = () => {
-  //   localStorage.clear();
-  //   window.location.href = "/login";
-  // };
+  const handleLogout = () => {
+    localStorage.clear();
+    window.location.href = "/login";
+  };
 
   return (
     <div>
@@ -40,12 +42,9 @@ export default function BaseNavbar() {
             {navLinks.map((elements, index) => {
               return (
                 <li key={"navbar" + index}>
-                  <NavLink
-                    to={elements.to}
-                    className="navbar-link py-3 px-5 text-white md:hover:text-green-500"
-                  >
+                  <BaseNavLink to={elements.to} variant="headerLink">
                     {elements.name}
-                  </NavLink>
+                  </BaseNavLink>
                 </li>
               );
             })}
@@ -53,22 +52,9 @@ export default function BaseNavbar() {
         </div>
 
         <div className="flex gap-2">
-          <a href="" className=" px-6 py-3  ">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth={1.5}
-              stroke="currentColor"
-              className="w-5 h-5 text-white md:hover:text-green-500"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z"
-              />
-            </svg>
-          </a>
+          <Link to="" className="px-6 py-3">
+            <BaseIcon iconName="cart"></BaseIcon>
+          </Link>
 
           {userAuthObject && userAuthObject.accessToken ? (
             <>
@@ -78,13 +64,13 @@ export default function BaseNavbar() {
               >
                 {userAuthObject.name}
               </Link>
-              {/* <Link
+              <Link
                 to="/login"
                 onClick={handleLogout}
                 className=" text-white px-6 py-3 rounded-lg border  md:hover:text-green-500 "
               >
                 Logout
-              </Link> */}
+              </Link>
             </>
           ) : (
             <>

@@ -1,8 +1,7 @@
+import BaseButton from "@/components/base-components/BaseButton";
 import offerService from "@/services/offerService";
 import { useState } from "react";
 import { toast } from "react-toastify";
-
-
 
 function AdminNewOffer() {
   const [offers, setOffers] = useState({
@@ -29,14 +28,13 @@ function AdminNewOffer() {
   const handleSubmit = async (event) => {
     try {
       event.preventDefault();
-      const response = await offerService.createOffer(offers)
+      const response = await offerService.createOffer(offers);
       if (response.status == 200) {
-        toast.success("A new offer created successfully.")
+        toast.success("A new offer created successfully.");
       }
-
     } catch (error) {
       if (error.response.status === 400) {
-        toast.error(error.response.data)
+        toast.error(error.response.data);
       }
     }
   };
@@ -151,14 +149,13 @@ function AdminNewOffer() {
                 className=" px-2 py-1 border-2 rounded-sm mb-2.5"
               />
             </div>
-            <div className="">
-              <button
-                className="px-5 py-3 my-5 text-white  rounded-md"
-                type="submit"
-                style={{ backgroundColor: "rgb(83,197,8)" }}
-              >
+            <div className=" flex gap-3">
+              <BaseButton variant="primary" type="submit">
                 Submit
-              </button>
+              </BaseButton>
+              <BaseButton type="submit" variant="neutral">
+                Cancel
+              </BaseButton>
             </div>
           </div>
         </div>

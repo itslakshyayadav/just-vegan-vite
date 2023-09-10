@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { API_BASE_PATH } from "@/helpers/constants";
+import BaseButton from "@/components/base-components/BaseButton";
 // import { Link, Outlet } from "react-router-dom";
+
 export default function MyAccount() {
   const [userModel, setUserModel] = useState({});
 
@@ -104,14 +106,10 @@ export default function MyAccount() {
               </div>
             </div>
 
-            <div className="">
-              <button
-                className="px-5 py-3 my-5 text-white  rounded-sm"
-                type="submit"
-                style={{ backgroundColor: "rgb(83,197,8)" }}
-              >
+            <div className="mt-2">
+              <BaseButton variant="primary" type="submit">
                 Submit
-              </button>
+              </BaseButton>
             </div>
           </div>
         </div>

@@ -1,9 +1,11 @@
 import { useState, useEffect } from "react";
+
 // import CardOffers from "./cards-offer";
 
 import { Link } from "react-router-dom";
 import offerService from "@/services/offerService";
 import { toast } from "react-toastify";
+import BaseButton from "@/components/base-components/BaseButton";
 
 function Offers() {
   const [offers, setOffers] = useState([]);
@@ -69,20 +71,27 @@ function Offers() {
                       </span>
                     </div>
                   </div>
-                  <div className="w-56 m-auto flex justify-around border-dashed border border-black	">
+                  <div className="w-56 m-auto flex justify-around items-center">
                     <span
                       id="cpnCode"
-                      className="border-r	px-4 border-dashed border-black"
+                      className="px-4 border-dashed border border-black"
                     >
                       {!element.offerCode ? "LSKY50" : element.offerCode}
                     </span>
-                    <button
+                    {/* <button
                       type="button"
                       onClick={() => copyText(element.offerCode)}
                       className="w-40 bg-blue-700  hover:bg-blue-500 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-600 dark:focus:ring-blue-800"
                     >
                       Copy Code
-                    </button>
+                    </button> */}
+                    <BaseButton
+                      onClick={() => copyText(element.offerCode)}
+                      variant="neutral"
+                      type="button"
+                    >
+                      Copy Code
+                    </BaseButton>
                   </div>
                 </div>
               </div>

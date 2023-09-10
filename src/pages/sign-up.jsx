@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import loginFormImgSrc from "../assets/loginform-image/go-vegan.jpg";
 import userService from "@/services/userService";
 import { toast } from "react-toastify";
-// import { API_BASE_PATH } from "@/helpers/constants";
+import BaseButton from "@/components/base-components/BaseButton";
 
 export default function SignUP() {
   const [signup, setSignup] = useState({
@@ -28,21 +28,6 @@ export default function SignUP() {
     console.log(myUser);
   }, []);
 
-  // const handleSubmit = (event) => {
-  //   event.preventDefault();
-
-  //   fetch(`${API_BASE_PATH}/users`, {
-  //     method: "POST",
-  //     headers: { "Content-Type": "application/json" },
-  //     body: JSON.stringify(signup),
-  //   })
-  //     .then((res) => res.json())
-  //     .then((response) => {
-  //       console.log(response.payload);
-  //       localStorage.setItem("userAuth", JSON.stringify(response.payload));
-  //       // window.location = "/";
-  //     });
-  // };
   const handleSubmit = async (event) => {
     try {
       event.preventDefault();
@@ -133,14 +118,9 @@ export default function SignUP() {
               </div>
 
               <div className="text-center ">
-                <button
-                  type="submit"
-                  // style={{ backgroundColor: "rgb(224,226,217)" }}
-                  style={{ backgroundColor: "rgb(83,197,8)" }}
-                  className="w-1/2 p-3 text-white rounded-md mb-6"
-                >
+                <BaseButton type="submit" variant="signupBtn">
                   create account
-                </button>
+                </BaseButton>
               </div>
               <ul className="flex gap-4 justify-center mb-6 ">
                 <li>
