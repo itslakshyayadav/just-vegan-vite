@@ -36,7 +36,7 @@ export default function AdminMain() {
           })}
         </ul>
       </div>
-      {/* <Outlet></Outlet> */}
+      <Outlet></Outlet>
     </div>
   );
 }

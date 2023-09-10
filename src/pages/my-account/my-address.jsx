@@ -1,12 +1,14 @@
 import { useEffect, useState } from "react";
 import { API_BASE_PATH } from "@/helpers/constants";
 // import BaseButton from "@/components/base-components/BaseButton";
-import { useNavigate, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
+import userService from "@/services/userService";
+import { toast } from "react-toastify";
 
 export default function MyAddress() {
   const [myAddress, setMyAddress] = useState([]);
-
-  const navigate = useNavigate();
+  let addressDetails;
+  // const navigate = useNavigate();
 
   const fetchUser = async () => {
     const userAuthStore = localStorage.getItem("userAuth");
@@ -22,8 +24,25 @@ export default function MyAddress() {
       }
     );
     const data = await response.json();
+    addressDetails = data.payload.addresses;
+    console.log("addressDetails", addressDetails);
     console.log(data);
     setMyAddress(data.payload.addresses);
+  };
+
+  const removeAddress = async (addressId) => {
+    try {
+      const response = await userService.removeAddress(addressId);
+      if (response.status === 200) {
+        toast.success("Address removed successfully !");
+      }
+    } catch (error) {
+      console.log("error");
+    }
+  };
+
+  const onEdit = () => {
+    console.log("onEdit called");
   };
 
   useEffect(() => {
@@ -66,6 +85,20 @@ export default function MyAddress() {
                         className="px-3 py-1  text-white  rounded-sm"
                         type="submit"
                         style={{ backgroundColor: "rgb(83,197,8)" }}
+                        onClick={() => {
+                          removeAddress(element._id);
+                        }}
+                      >
+                        Delete
+                      </button>
+
+                      <button
+                        className="px-3 py-1  text-white  rounded-sm"
+                        type="submit"
+                        style={{ backgroundColor: "rgb(83,197,8)" }}
+                        onClick={() => {
+                          onEdit();
+                        }}
                       >
                         Edit
                       </button>
