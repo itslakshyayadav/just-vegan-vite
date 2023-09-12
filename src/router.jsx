@@ -21,6 +21,7 @@ import MyFavourite from "./pages/my-account/my-favourite";
 import MyReviews from "./pages/my-account/my-reviews";
 import MyAccount from "./pages/my-account/my-account";
 import CreateAddress from "./pages/my-account/create-address";
+// import AddressDetail from "user-admin/address-detail";
 
 const router = createBrowserRouter([
   {
@@ -107,6 +108,7 @@ const router = createBrowserRouter([
           },
         ],
       },
+
       {
         path: "/login",
         element: <Login />,

@@ -2,10 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-.slide-left {
-  animation-name: slideLeft;
-  animation-duration: 0.75s;
-}
 
 a.list-link.active {
   border-left: 3px solid rgb(20, 213, 33);
@@ -15,7 +11,10 @@ a.navbar-link.active {
   border-bottom: 3px solid rgb(20, 213, 33);
 }
 
-
+.slide-left {
+  animation-name: slideLeft;
+  animation-duration: 0.75s;
+}
 
 @keyframes slideLeft {
   0% {

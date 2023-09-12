@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
 import { API_BASE_PATH } from "@/helpers/constants";
+
 // import BaseButton from "@/components/base-components/BaseButton";
 import { Link } from "react-router-dom";
 import userService from "@/services/userService";
 import { toast } from "react-toastify";
+// import BaseIcon from "@/components/base-components/BaseIcon";
 
 export default function MyAddress() {
   const [myAddress, setMyAddress] = useState([]);
@@ -41,81 +43,96 @@ export default function MyAddress() {
     }
   };
 
-  const onEdit = () => {
-    console.log("onEdit called");
-  };
+  // const editAddress = async (addressId) => {
+  //   try {
+  //     const response = await userService.editAddress(addressId);
+  //     if (response.status === 200) {
+  //       toast.success("Address edit successfully !");
+  //     }
+  //   } catch (error) {
+  //     console.log("error");
+  //   }
+  // };
 
   useEffect(() => {
     fetchUser();
   }, []);
 
-  // const newAddress = () => {
-  //   console.log("newAddress called");
-  //   navigate("/my-account/my-address/create-address");
-  // };
-
   return (
-    <>
-      {
-        // <BaseButton type="submit" variant="primary" onClick={newAddress}>
-        //   New Address
-        // </BaseButton>
-        <Link
-          to="/my-account/my-address/create-address"
-          className="py-2 px-4 border rounded-md"
-        >
-          Create Address
-        </Link>
-      }
+    <div className="border-2 border-slate-100  py-5 px-5">
+      <div className=" container  flex justify-between mb-5 ">
+        <div>Saved Addresses</div>
+        <div>
+          {
+            <Link
+              to="/my-account/my-address/create-address"
+              className="py-2 px-4 border text-indigo-800 font-sans rounded-md "
+            >
+              + Create Address
+            </Link>
+          }
+        </div>
+      </div>
       {myAddress.map((element, index) => {
         return (
-          <div key={"address" + index}>
+          <div key={"address" + index} className="">
             <form className="">
-              <div className="container  border-2 m-auto mb-2 rounded-md   max-w-screen-md ">
-                <div className=" rounded-sm  ">
-                  <div
-                    className="flex  justify-between border-b-2 px-3 py-3 items-center"
-                    style={{ backgroundColor: "rgb(247,247,247)" }}
-                  >
-                    <div>
-                      <h1>{element.addressType}</h1>
-                    </div>
-                    <div>
+              <div className="  border border-slate-200 border-t-slate-100 m-auto mb-2 hover:shadow-md    ">
+                <div className=" rounded-sm px-3 py-2 ">
+                  <div className="flex justify-between items-center">
+                    <h1 className=" font-sans font-bold ">{element.name}</h1>
+                    <span className="font-sans flex items-center h-5 border uppercase bg-slate-100 font-semibold text-gray-500 rounded-xl   px-1">
+                      <small>{element.addressType}</small>
+                    </span>
+                  </div>
+
+                  <h1 className="font-sans">
+                    <small>{element.addressLine}</small>
+                  </h1>
+                  <h1 className="font-sans">
+                    <small>{element.city}</small>
+                  </h1>
+                  <h1 className="font-sans">
+                    <small>{element.pincode}</small>
+                  </h1>
+                  <h1 className="font-sans">
+                    <small>{element.state}</small>
+                  </h1>
+                  <h1 className="font-sans mt-2">
+                    <small>{element.phone1}</small>
+                  </h1>
+
+                  <div className="flex border-t border-slate-200  justify-between md:flex-none mt-2 px-3 py-3 items-center">
+                    <div className="flex justify-center w-1/2 border-r border-slate-200 ">
                       <button
-                        className="px-3 py-1  text-white  rounded-sm"
+                        className="px-32 font-sans py-2 border text-indigo-800 rounded-sm"
                         type="submit"
-                        style={{ backgroundColor: "rgb(83,197,8)" }}
                         onClick={() => {
                           removeAddress(element._id);
                         }}
                       >
                         Delete
                       </button>
-
+                    </div>
+                    <div className="flex justify-center w-1/2 ">
                       <button
-                        className="px-3 py-1  text-white  rounded-sm"
+                        // to="/userId/address/addressId"
+                        className="px-32 font-sans py-2 border text-indigo-800 rounded-sm"
                         type="submit"
-                        style={{ backgroundColor: "rgb(83,197,8)" }}
-                        onClick={() => {
-                          onEdit();
-                        }}
+                        // onClick={() => {
+                        //   editAddress(element._id);
+                        // }}
                       >
                         Edit
                       </button>
                     </div>
                   </div>
-
-                  <h1 className=" font-bold py-2 px-3">{element.name}</h1>
-
-                  <h1 className=" font-semibold  py-1 px-3">
-                    {element.addressLine}
-                  </h1>
                 </div>
               </div>
             </form>
           </div>
         );
       })}
-    </>
+    </div>
   );
 }

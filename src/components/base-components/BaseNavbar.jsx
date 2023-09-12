@@ -1,7 +1,9 @@
 import { Link } from "react-router-dom";
 import BrandLogo from "@/components/base-components/BrandLogo";
-import BaseIcon from "./BaseIcon";
+import BaseButton from "@/components/base-components/BaseButton";
+import BaseIcon from "@/components/base-components/BaseIcon";
 import BaseNavLink from "./BaseNavLink";
+import Dropdown from "../Dropdown";
 
 export default function BaseNavbar() {
   const userAuthStore = localStorage.getItem("userAuth");
@@ -10,6 +12,18 @@ export default function BaseNavbar() {
     userAuthObject = JSON.parse(userAuthStore);
     // console.log(userAuthObject.name);
   }
+  const options = [
+    {
+      name: "My account",
+      to: "my-account",
+    },
+    {
+      name: "Settings",
+      to: "setting",
+    },
+  ];
+
+  // const options = ["My account", "Setting", "logout"];
 
   const navLinks = [
     {
@@ -32,8 +46,8 @@ export default function BaseNavbar() {
   };
 
   return (
-    <div>
-      <nav className="bg-zinc-950 flex justify-between items-center p-2">
+    <div className="flex h-20 w-full z-10">
+      <nav className="bg-zinc-950 flex justify-between items-center p-2 fixed top-0 w-full">
         <div className="flex gap-8 items-center">
           <Link to="/">
             <BrandLogo />
@@ -56,38 +70,37 @@ export default function BaseNavbar() {
             <BaseIcon iconName="cart"></BaseIcon>
           </Link>
 
-          {userAuthObject && userAuthObject.accessToken ? (
-            <>
-              <Link
-                to="/my-account"
-                className="text-white px-6 py-3 rounded-lg border  md:hover:text-green-500 "
-              >
-                {userAuthObject.name}
-              </Link>
-              <Link
-                to="/login"
-                onClick={handleLogout}
-                className=" text-white px-6 py-3 rounded-lg border  md:hover:text-green-500 "
-              >
-                Logout
-              </Link>
-            </>
-          ) : (
-            <>
-              <Link
-                to="/login"
-                className=" text-white px-6 py-3 rounded-lg border  md:hover:text-green-500 "
-              >
-                Login
-              </Link>
-              <Link
-                to="/sign-up"
-                className=" text-white px-6 py-3 rounded-lg border  md:hover:text-green-500 "
-              >
-                Sign Up
-              </Link>
-            </>
-          )}
+          <div className="flex  items-center">
+            <Dropdown options={options}>
+              <div className="py-1">
+                {options.map((option, index) => {
+                  return (
+                    <Link
+                      to={option.to}
+                      key={index}
+                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 w-full text-left"
+                    >
+                      {option.name}
+                    </Link>
+                  );
+                })}
+                <BaseButton
+                  type="button"
+                  variant="neutral"
+                  onClick={handleLogout}
+                >
+                  Logout
+                </BaseButton>
+              </div>
+            </Dropdown>
+          </div>
+
+          <Link
+            to="/sign-up"
+            className=" text-white px-6 py-3 rounded-lg border  md:hover:text-green-500 "
+          >
+            Sign Up
+          </Link>
         </div>
       </nav>
     </div>

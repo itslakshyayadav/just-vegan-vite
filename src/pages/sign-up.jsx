@@ -3,6 +3,7 @@ import loginFormImgSrc from "../assets/loginform-image/go-vegan.jpg";
 import userService from "@/services/userService";
 import { toast } from "react-toastify";
 import BaseButton from "@/components/base-components/BaseButton";
+import BrandLogo from "../components/base-components/BrandLogo.jsx";
 
 export default function SignUP() {
   const [signup, setSignup] = useState({
@@ -48,6 +49,7 @@ export default function SignUP() {
         <div className="flex justify-between">
           <div className="w-4/6  p-8">
             <div className=" ">
+              <BrandLogo></BrandLogo>
               <div className="mb-20">
                 <h1 className="text-center font-bold text-5xl mb-2.5">
                   Create your account

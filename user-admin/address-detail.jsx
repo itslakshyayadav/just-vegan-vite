@@ -4,7 +4,7 @@ import { useState } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
-const CreateAddress = () => {
+const AddressDetail = () => {
   const [addressModel, setAddressModel] = useState({
     name: "",
     addressType: "home",
@@ -60,8 +60,8 @@ const CreateAddress = () => {
                 onChange={handleChange}
                 className="px-2 py-1 border-2 rounded-sm"
               >
-                <option value="home">Home</option>
-                <option value="office">Office</option>
+                <option value="lunch">Home</option>
+                <option value="dinner">Office</option>
               </select>
             </div>
             <div className="flex flex-col gap-2">
@@ -190,4 +190,4 @@ const CreateAddress = () => {
   );
 };
 
-export default CreateAddress;
+export default AddressDetail;
