@@ -20,6 +20,9 @@ export default function BaseButton(props) {
     case "signupBtn":
       btnClasses = "w-1/2 p-3 text-white rounded-md bg-emerald-500";
       break;
+    case "logoutBtn":
+      btnClasses = "rounded-md py-2 px-4  text-left hover:bg-gray-100 w-full";
+      break;
     default:
       break;
   }

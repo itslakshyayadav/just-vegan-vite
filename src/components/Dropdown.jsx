@@ -1,17 +1,9 @@
 import { useState } from "react";
 import BaseIcon from "./base-components/BaseIcon";
-import { Link } from "react-router-dom";
 
 const Dropdown = ({ options, children }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState(null);
-
-  const userAuthStore = localStorage.getItem("userAuth");
-  let userAuthObject = {};
-  if (userAuthStore) {
-    userAuthObject = JSON.parse(userAuthStore);
-    // console.log(userAuthObject.name);
-  }
 
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
@@ -30,7 +22,7 @@ const Dropdown = ({ options, children }) => {
           className="text-white  py-2 px-4  inline-flex items-center"
           onClick={toggleDropdown}
         >
-          <span>{userAuthObject.name}</span>
+          <span>{"My profile"}</span>
 
           {isOpen ? (
             <BaseIcon iconName="uparrow"></BaseIcon>

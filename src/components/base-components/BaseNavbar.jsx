@@ -71,36 +71,54 @@ export default function BaseNavbar() {
           </Link>
 
           <div className="flex  items-center">
-            <Dropdown options={options}>
-              <div className="py-1">
-                {options.map((option, index) => {
-                  return (
-                    <Link
-                      to={option.to}
-                      key={index}
-                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 w-full text-left"
-                    >
-                      {option.name}
-                    </Link>
-                  );
-                })}
-                <BaseButton
-                  type="button"
-                  variant="neutral"
-                  onClick={handleLogout}
-                >
-                  Logout
-                </BaseButton>
-              </div>
-            </Dropdown>
-          </div>
+            {userAuthObject.name ? (
+              <Dropdown options={options}>
+                <div className="py-1">
+                  <h1 className="px-4 py-1 font-medium text-left">
+                    <small>hello {userAuthObject.name}</small>
+                    <small> {userAuthObject.phone}</small>
+                  </h1>
+                  <hr />
+                  {options.map((option, index) => {
+                    return (
+                      <Link
+                        to={option.to}
+                        key={index}
+                        className="block px-4 py-1 text-sm text-gray-700 hover:bg-gray-100 w-full text-left"
+                      >
+                        {option.name}
+                      </Link>
+                    );
+                  })}
+                  <BaseButton
+                    type="button"
+                    variant="logoutBtn"
+                    onClick={handleLogout}
+                  >
+                    Logout
+                  </BaseButton>
+                </div>
+              </Dropdown>
+            ) : (
+              <>
+                <div className="flex gap-3">
+                  <Link
+                    to="/sign-up"
+                    className=" text-white px-6 py-3 rounded-lg border  md:hover:text-green-500 "
+                  >
+                    Sign Up
+                  </Link>
 
-          <Link
-            to="/sign-up"
-            className=" text-white px-6 py-3 rounded-lg border  md:hover:text-green-500 "
-          >
-            Sign Up
-          </Link>
+                  <Link
+                    to="/login"
+                    className=" text-white px-6 py-3 rounded-lg border  md:hover:text-green-500 "
+                  >
+                    Login
+                  </Link>
+                </div>
+              </>
+            )}
+          </div>
         </div>
       </nav>
     </div>

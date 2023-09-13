@@ -38,9 +38,7 @@ function Offers() {
                 <div className="mt-6 max-w-xs hover:shadow-xl  border-2 border-black-600	p-4  bg-blue-50  min-h-120 max-h-120 ">
                   <div className="text-right mb-2.5">
                     <span className="bg-red-500 text-white text-sm  mr-2 px-2.5 py-0.5 rounded ">
-                      {!element.offerName
-                        ? "API does not have offername "
-                        : element.offerName}
+                      {element.offerName}
                     </span>
                   </div>
                   <Link to={`/offers/${element._id}`}>
@@ -52,7 +50,6 @@ function Offers() {
                   </Link>
                   <div className="mb-2.5">
                     <h3 className=" font-semibold text-gray-900  ">
-                      Description :{" "}
                       {!element.offerDescription
                         ? "applicable"
                         : element.offerDescription}

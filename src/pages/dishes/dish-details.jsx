@@ -1,12 +1,24 @@
 import { useParams } from "react-router-dom";
 import { API_BASE_PATH } from "@/helpers/constants";
 import { useState, useEffect } from "react";
+import BaseIcon from "@/components/base-components/BaseIcon";
+import dishService from "@/services/dishService";
+import { toast } from "react-toastify";
+// import BaseButton from "@/components/base-components/BaseButton";
 
 export default function DishDetails() {
   let params = useParams();
+  const [dishDetails, setDisheDetails] = useState({});
+  const dishStats = [
+    { name: "energy(g)", pro: <>{dishDetails.energy}</> },
+    { name: "fat(g)", pro: <>{dishDetails.fat}</> },
+    { name: "carbs(g)", pro: <>{dishDetails.carbs}</> },
+    { name: "protein(g)", pro: <>{dishDetails.protein}</> },
+    { name: "fiber(g)", pro: <>{dishDetails.fiber}</> },
+  ];
+
   console.log(`params dish details`);
   console.log(params);
-  const [dishDetails, setDisheDetails] = useState({});
 
   useEffect(() => {
     const fetchUserData = async () => {
@@ -19,194 +31,240 @@ export default function DishDetails() {
     fetchUserData();
   }, []);
 
-  return (
-    <div className=" px-5 py-5 flex justify-center ">
-      <div className="w-3/5	 flex gap-4 ">
-        <div className="w-1/2">
-          <img
-            src={dishDetails.imgUrl}
-            className="w-full h-80 object-cover object-center rounded-lg"
-            alt=""
-          />
-        </div>
-        <div>
-          <h1 className="text-lg font-bold">{dishDetails.dishName}</h1>
-          <p className="capitalize font-semibold">{dishDetails.description}</p>
+  const addFavouriteDish = async (id) => {
+    // toast.error("Please login to add a favorite dish.");
 
-          <p className="mb-2 capitalize">{dishDetails.dishCategory}</p>
-          <hr className="mb-2 " />
-          <div className="grid grid-cols-3 gap-2 mb-2 ">
-            <div className=" flex gap-3 font-semibold px-2 justify-center rounded-md items-center border w-26 text-center">
-              <small>ENERGY (g)</small> {dishDetails.energy}
-            </div>
-            <div className=" flex gap-3 font-semibold justify-center rounded-md items-center border w-26 text-center">
-              <small>FAT (g)</small>
-              {dishDetails.fat}
-            </div>
-            <div className="flex gap-3 font-semibold justify-center rounded-md items-center border w-26 text-center">
-              <small>CARBS (g)</small>
-              {dishDetails.carbs}
-            </div>
-            <div className="flex gap-3 font-semibold justify-center rounded-md items-center border w-26 text-center">
-              <small>PROTEIN (g)</small>
-              {dishDetails.protein}
-            </div>
-            <div className="flex gap-3 font-semibold justify-center rounded-md items-center border w-26 text-center">
-              <small>FIBER (g)</small>
-              {dishDetails.fiber}
-            </div>
+    try {
+      const response = await dishService.addFavouriteDish(id);
+      if (response.status === 200) {
+        toast.success("Dish added to favourite list.");
+      }
+    } catch (error) {
+      toast.error(error.response.data.payload);
+    }
+  };
+
+  return (
+    <div className=" flex gap-5 px-10 py-5  ">
+      <div className="w-1/2">
+        <div className="grid grid-cols-2 gap-2 mb-4">
+          <div>
+            <img
+              src={dishDetails.imgUrl}
+              className="w-full h-96 object-cover object-center rounded-sm"
+              alt=""
+            />
           </div>
-          <hr className="mb-2" />
-          <div className="grid grid-cols-2 gap-2 mb-4 ">
-            <div className=" flex gap-3 font-semibold justify-center rounded-md items-center border w-26 text-center">
-              <small>Certified</small>
-              {dishDetails.isCertified ? (
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth={1.5}
-                  stroke="currentColor"
-                  className="w-6 h-6 text-emerald-700"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M9 12.75L11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 01-1.043 3.296 3.745 3.745 0 01-3.296 1.043A3.745 3.745 0 0112 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 01-3.296-1.043 3.745 3.745 0 01-1.043-3.296A3.745 3.745 0 013 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 011.043-3.296 3.746 3.746 0 013.296-1.043A3.746 3.746 0 0112 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 013.296 1.043 3.746 3.746 0 011.043 3.296A3.745 3.745 0 0121 12z"
-                  />
-                </svg>
-              ) : (
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth={1.5}
-                  stroke="currentColor"
-                  className="w-6 h-6 text-red-700"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M9.75 9.75l4.5 4.5m0-4.5l-4.5 4.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                  />
-                </svg>
-              )}
-            </div>
-            <div className=" flex gap-3 font-semibold justify-center rounded-md items-center border w-26 text-center">
-              <small>VaccumSealed</small>
-              {dishDetails.isVaccumSealed ? (
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth={1.5}
-                  stroke="currentColor"
-                  className="w-6 h-6 text-emerald-700"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M9 12.75L11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 01-1.043 3.296 3.745 3.745 0 01-3.296 1.043A3.745 3.745 0 0112 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 01-3.296-1.043 3.745 3.745 0 01-1.043-3.296A3.745 3.745 0 013 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 011.043-3.296 3.746 3.746 0 013.296-1.043A3.746 3.746 0 0112 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 013.296 1.043 3.746 3.746 0 011.043 3.296A3.745 3.745 0 0121 12z"
-                  />
-                </svg>
-              ) : (
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth={1.5}
-                  stroke="currentColor"
-                  className="w-6 h-6 text-red-700"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M9.75 9.75l4.5 4.5m0-4.5l-4.5 4.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                  />
-                </svg>
-              )}
-            </div>
-            <div className="flex gap-3 font-semibold justify-center rounded-md items-center border w-26 text-center">
-              <small>PreservativeFree</small>
-              {dishDetails.isPreservativeFree ? (
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth={1.5}
-                  stroke="currentColor"
-                  className="w-6 h-6 text-emerald-700"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M9 12.75L11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 01-1.043 3.296 3.745 3.745 0 01-3.296 1.043A3.745 3.745 0 0112 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 01-3.296-1.043 3.745 3.745 0 01-1.043-3.296A3.745 3.745 0 013 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 011.043-3.296 3.746 3.746 0 013.296-1.043A3.746 3.746 0 0112 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 013.296 1.043 3.746 3.746 0 011.043 3.296A3.745 3.745 0 0121 12z"
-                  />
-                </svg>
-              ) : (
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth={1.5}
-                  stroke="currentColor"
-                  className="w-6 h-6 text-"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M9.75 9.75l4.5 4.5m0-4.5l-4.5 4.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                  />
-                </svg>
-              )}
-            </div>
-            <div className="flex gap-3 font-semibold justify-center rounded-md items-center border w-26 text-center">
-              <small>Active</small>
-              {dishDetails.isActive ? (
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth={1.5}
-                  stroke="currentColor"
-                  className="w-6 h-6 text-emerald-700"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M9 12.75L11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 01-1.043 3.296 3.745 3.745 0 01-3.296 1.043A3.745 3.745 0 0112 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 01-3.296-1.043 3.745 3.745 0 01-1.043-3.296A3.745 3.745 0 013 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 011.043-3.296 3.746 3.746 0 013.296-1.043A3.746 3.746 0 0112 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 013.296 1.043 3.746 3.746 0 011.043 3.296A3.745 3.745 0 0121 12z"
-                  />
-                </svg>
-              ) : (
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth={1.5}
-                  stroke="currentColor"
-                  className="w-6 h-6 text-red-700"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M9.75 9.75l4.5 4.5m0-4.5l-4.5 4.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                  />
-                </svg>
-              )}
-            </div>
+          <div>
+            <img
+              src={dishDetails.imgUrl}
+              className="w-full h-96 object-cover object-center rounded-sm"
+              alt=""
+            />
           </div>
-          <div className="flex  flex-col gap-2">
-            <span className="px-5 py-1 rounded-sm text-center w-40  text-white bg-lime-500 ">
-              ₹ {dishDetails.price}
-            </span>
+          <div>
+            <img
+              src={dishDetails.imgUrl}
+              className="w-full h-96 object-cover object-center rounded-sm"
+              alt=""
+            />
+          </div>
+          <div>
+            <img
+              src={dishDetails.imgUrl}
+              className="w-full h-96 object-cover object-center rounded-sm"
+              alt=""
+            />
+          </div>
+        </div>
+      </div>
+      <div className="w-1/2">
+        <div className="flex gap-3 items-center mb-2">
+          <h1 className="text-xl font-bold">{dishDetails.dishName}</h1>
+          {dishDetails.isCertified ? (
+            <BaseIcon iconName="check"></BaseIcon>
+          ) : null}
+        </div>
+        <span className=" mb-2 font-sans inline-flex items-center h-5 border uppercase bg-slate-100 font-semibold text-gray-500 rounded-xl   px-1">
+          <small> {dishDetails.dishCategory}</small>
+        </span>
+        <p className="capitalize text-gray-500 mb-2 font-semibold">
+          {dishDetails.description}
+        </p>
+
+        <div className="grid grid-cols-2 gap-10  mt-4 w-4/5  ">
+          {dishStats.map((element, index) => {
+            return (
+              <div key={index} className="py-1 font-semibold border-b w-80">
+                <small className="text-[0.7rem] uppercase text-neutral-500">
+                  {element.name}
+                </small>
+                <h1>{element.pro}</h1>
+              </div>
+            );
+          })}
+        </div>
+        <div className="py-2 mt-2">
+          <span className="rounded-sm text-center text-2xl  font-semibold">
+            ₹ {dishDetails.price}
+          </span>
+        </div>
+        <div className="flex gap-2  ">
+          <div className="  w-1/3 ">
+            <button className="w-full flex justify-center gap-2  bg-emerald-700 hover:bg-emerald-800 border text-white rounded-md py-3 font-semibold ">
+              <BaseIcon iconName="bag"></BaseIcon> ADD TO BAG
+            </button>
+          </div>
+          <div className="w-1/3 ">
             <button
-              href="#"
-              className="  px-4 py-2 text-sm   text-white bg-emerald-700 rounded-sm hover:bg-emerald-800 focus:ring-4 focus:outline-none focus:ring-emerald-300 dark:bg-emerald-600 dark:hover:bg-emerald-700 dark:focus:ring-emerald-800"
+              type="submit"
+              onClick={() => {
+                addFavouriteDish(dishDetails._id);
+              }}
+              className="w-full flex justify-center gap-2 border rounded-md py-3 bg-neutral-100 hover:bg-neutral-200 font-semibold "
             >
-              Place Order
+              <BaseIcon iconName="heart"></BaseIcon> WISHLIST
             </button>
           </div>
         </div>
+        {/* <div className="grid grid-cols-2 gap-2 mb-4 ">
+          <div className=" flex gap-3 font-semibold justify-center rounded-md items-center border w-26 text-center">
+            <small>Certified</small>
+            {dishDetails.isCertified ? (
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth={1.5}
+                stroke="currentColor"
+                className="w-6 h-6 text-emerald-700"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M9 12.75L11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 01-1.043 3.296 3.745 3.745 0 01-3.296 1.043A3.745 3.745 0 0112 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 01-3.296-1.043 3.745 3.745 0 01-1.043-3.296A3.745 3.745 0 013 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 011.043-3.296 3.746 3.746 0 013.296-1.043A3.746 3.746 0 0112 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 013.296 1.043 3.746 3.746 0 011.043 3.296A3.745 3.745 0 0121 12z"
+                />
+              </svg>
+            ) : (
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth={1.5}
+                stroke="currentColor"
+                className="w-6 h-6 text-red-700"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M9.75 9.75l4.5 4.5m0-4.5l-4.5 4.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                />
+              </svg>
+            )}
+          </div>
+          <div className=" flex gap-3 font-semibold justify-center rounded-md items-center border w-26 text-center">
+            <small>VaccumSealed</small>
+            {dishDetails.isVaccumSealed ? (
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth={1.5}
+                stroke="currentColor"
+                className="w-6 h-6 text-emerald-700"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M9 12.75L11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 01-1.043 3.296 3.745 3.745 0 01-3.296 1.043A3.745 3.745 0 0112 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 01-3.296-1.043 3.745 3.745 0 01-1.043-3.296A3.745 3.745 0 013 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 011.043-3.296 3.746 3.746 0 013.296-1.043A3.746 3.746 0 0112 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 013.296 1.043 3.746 3.746 0 011.043 3.296A3.745 3.745 0 0121 12z"
+                />
+              </svg>
+            ) : (
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth={1.5}
+                stroke="currentColor"
+                className="w-6 h-6 text-red-700"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M9.75 9.75l4.5 4.5m0-4.5l-4.5 4.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                />
+              </svg>
+            )}
+          </div>
+          <div className="flex gap-3 font-semibold justify-center rounded-md items-center border w-26 text-center">
+            <small>PreservativeFree</small>
+            {dishDetails.isPreservativeFree ? (
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth={1.5}
+                stroke="currentColor"
+                className="w-6 h-6 text-emerald-700"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M9 12.75L11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 01-1.043 3.296 3.745 3.745 0 01-3.296 1.043A3.745 3.745 0 0112 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 01-3.296-1.043 3.745 3.745 0 01-1.043-3.296A3.745 3.745 0 013 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 011.043-3.296 3.746 3.746 0 013.296-1.043A3.746 3.746 0 0112 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 013.296 1.043 3.746 3.746 0 011.043 3.296A3.745 3.745 0 0121 12z"
+                />
+              </svg>
+            ) : (
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth={1.5}
+                stroke="currentColor"
+                className="w-6 h-6 text-"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M9.75 9.75l4.5 4.5m0-4.5l-4.5 4.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                />
+              </svg>
+            )}
+          </div>
+          <div className="flex gap-3 font-semibold justify-center rounded-md items-center border w-26 text-center">
+            <small>Active</small>
+            {dishDetails.isActive ? (
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth={1.5}
+                stroke="currentColor"
+                className="w-6 h-6 text-emerald-700"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M9 12.75L11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 01-1.043 3.296 3.745 3.745 0 01-3.296 1.043A3.745 3.745 0 0112 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 01-3.296-1.043 3.745 3.745 0 01-1.043-3.296A3.745 3.745 0 013 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 011.043-3.296 3.746 3.746 0 013.296-1.043A3.746 3.746 0 0112 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 013.296 1.043 3.746 3.746 0 011.043 3.296A3.745 3.745 0 0121 12z"
+                />
+              </svg>
+            ) : (
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth={1.5}
+                stroke="currentColor"
+                className="w-6 h-6 text-red-700"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M9.75 9.75l4.5 4.5m0-4.5l-4.5 4.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                />
+              </svg>
+            )}
+          </div>
+        </div> */}
       </div>
     </div>
   );

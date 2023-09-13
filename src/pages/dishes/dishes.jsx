@@ -67,7 +67,9 @@ const Dishes = () => {
                         </svg>
                       )}
                     </div>
-
+                    <span className="font-sans inline-flex items-center h-5 border uppercase bg-slate-100 font-semibold text-gray-500 rounded-xl   px-1">
+                      <small>{dishItem.dishCategory}</small>
+                    </span>
                     <p className="mb-3 font-bold text-neutral-700 dark:text-neutral-400">
                       ₹{dishItem.price ? dishItem.price : "110"}
                     </p>
@@ -87,7 +89,6 @@ const Dishes = () => {
                         type="submit"
                       >
                         <div className="flex gap- items-center">
-                          Facourite
                           <BaseIcon iconName="heart"></BaseIcon>
                         </div>
                       </BaseButton>

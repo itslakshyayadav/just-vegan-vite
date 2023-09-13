@@ -36,7 +36,7 @@ export default function MyAddress() {
     try {
       const response = await userService.removeAddress(addressId);
       if (response.status === 200) {
-        toast.success("Address removed successfully !");
+        toast.success("Address Deleted successfully !");
       }
     } catch (error) {
       console.log("error");
