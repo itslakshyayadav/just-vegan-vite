@@ -32,13 +32,13 @@ function AdminOffers() {
             return (
               <div key={"offer-card" + index}>
                 <div className="mt-6 max-w-xs hover:shadow-xl  border-2 border-black-600	p-4  bg-blue-50  min-h-120 max-h-120 ">
-                  <div className="text-right mb-2.5">
+                  {/* <div className="text-right mb-2.5">
                     <span className="bg-red-500 text-white text-sm  mr-2 px-2.5 py-0.5 rounded ">
                       {!element.offerName
                         ? "API does not have offername "
                         : element.offerName}
                     </span>
-                  </div>
+                  </div> */}
                   <Link to={`/admin/admin-offers/${element._id}`}>
                     <img
                       src={element.imgUrl}
@@ -47,7 +47,12 @@ function AdminOffers() {
                     />
                   </Link>
                   <div className="mb-2.5">
-                    <h3 className=" font-semibold text-gray-900  ">
+                    <div className=" ">
+                      <span className=" font-semibold text-xl rounded ">
+                        {element.offerName}
+                      </span>
+                    </div>
+                    <h3 className=" font-semibold text-gray-500 mb-2">
                       {!element.offerDescription
                         ? "applicable"
                         : element.offerDescription}

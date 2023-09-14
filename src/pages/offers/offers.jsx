@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import offerService from "@/services/offerService";
 import { toast } from "react-toastify";
 import BaseButton from "@/components/base-components/BaseButton";
+import BaseIcon from "@/components/base-components/BaseIcon";
 
 function Offers() {
   const [offers, setOffers] = useState([]);
@@ -35,12 +36,12 @@ function Offers() {
           {offers.map((element, index) => {
             return (
               <div key={element + index}>
-                <div className="mt-6 max-w-xs hover:shadow-xl  border-2 border-black-600	p-4  bg-blue-50  min-h-120 max-h-120 ">
-                  <div className="text-right mb-2.5">
+                <div className="mt-6 max-w-xs hover:shadow-xl rounded-lg border border-black-600	p-4   min-h-120 max-h-120 ">
+                  {/* <div className="text-right mb-2.5">
                     <span className="bg-red-500 text-white text-sm  mr-2 px-2.5 py-0.5 rounded ">
                       {element.offerName}
                     </span>
-                  </div>
+                  </div> */}
                   <Link to={`/offers/${element._id}`}>
                     <img
                       src={element.imgUrl}
@@ -49,7 +50,12 @@ function Offers() {
                     />
                   </Link>
                   <div className="mb-2.5">
-                    <h3 className=" font-semibold text-gray-900  ">
+                    <div className=" ">
+                      <span className=" font-semibold text-xl rounded ">
+                        {element.offerName}
+                      </span>
+                    </div>
+                    <h3 className=" font-semibold text-sm text-gray-500 mb-2 ">
                       {!element.offerDescription
                         ? "applicable"
                         : element.offerDescription}
@@ -87,6 +93,7 @@ function Offers() {
                       variant="neutral"
                       type="button"
                     >
+                      <BaseIcon iconName="copy"></BaseIcon>
                       Copy Code
                     </BaseButton>
                   </div>

@@ -14,7 +14,7 @@ export default function BaseNavbar() {
   }
   const options = [
     {
-      name: "My account",
+      name: "My Account",
       to: "my-account",
     },
     {

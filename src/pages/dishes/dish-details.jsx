@@ -80,7 +80,7 @@ export default function DishDetails() {
       </div>
       <div className="w-1/2">
         <div className="flex gap-3 items-center mb-2">
-          <h1 className="text-xl font-bold">{dishDetails.dishName}</h1>
+          <h1 className="text-2xl font-bold">{dishDetails.dishName}</h1>
           {dishDetails.isCertified ? (
             <BaseIcon iconName="check"></BaseIcon>
           ) : null}
