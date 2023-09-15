@@ -13,7 +13,8 @@ export default function BaseButton(props) {
       btnClasses = "rounded-md py-3 px-5 bg-neutral-100";
       break;
     case "neutral":
-      btnClasses = "rounded-md py-2 px-4 border hover:bg-neutral-100";
+      btnClasses =
+        "rounded-md py-2 px-4 border bg-neutral-50 hover:bg-neutral-100";
       break;
     case "loginBtn":
       btnClasses = "w-1/2 p-3 text-white rounded-md bg-emerald-500";
