@@ -6,7 +6,8 @@ export default function BaseButton(props) {
   let btnClasses = "";
   switch (variant) {
     case "primary":
-      btnClasses = "text-white rounded-md py-3 px-5 bg-emerald-500";
+      btnClasses =
+        "text-white rounded-md py-3 px-5 bg-emerald-500 hover:bg-emerald-600";
       break;
     case "secondary":
       btnClasses = "rounded-md py-3 px-5 bg-neutral-100";
@@ -22,6 +23,10 @@ export default function BaseButton(props) {
       break;
     case "logoutBtn":
       btnClasses = "rounded-md py-2 px-4  text-left hover:bg-gray-100 w-full";
+      break;
+    case "danger":
+      btnClasses =
+        "text-white rounded-md py-3 px-5 bg-red-600 hover:bg-red-700";
       break;
     default:
       break;

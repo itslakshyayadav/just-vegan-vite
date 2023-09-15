@@ -52,14 +52,14 @@ const Dishes = () => {
         </Link>
         <div className="flex items-center border px-3 hover:shadow-lg ">
           <label
-            htmlFor="alldishes"
+            htmlFor="dishes"
             className="font-semibold px-3 py-2 text-gray-600"
           >
             All Dishes
           </label>
           <input
-            id="alldishes"
-            value="All Dishes"
+            id="dishes"
+            value="all-dishes"
             checked={filter === "All Dishes"}
             onChange={handleFilterChange}
             type="checkbox"

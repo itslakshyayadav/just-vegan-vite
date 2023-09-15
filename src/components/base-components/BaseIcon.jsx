@@ -7,7 +7,6 @@ export default function BaseIcon(props) {
         viewBox="0 0 24 24"
         strokeWidth={1.5}
         stroke="currentColor"
-        className="w-6 h-6"
       >
         <path
           strokeLinecap="round"
@@ -23,7 +22,6 @@ export default function BaseIcon(props) {
         viewBox="0 0 24 24"
         strokeWidth={1.5}
         stroke="currentColor"
-        className="w-6 h-6"
       >
         <path
           strokeLinecap="round"
@@ -44,7 +42,6 @@ export default function BaseIcon(props) {
         viewBox="0 0 24 24"
         strokeWidth={1.5}
         stroke="currentColor"
-        className="w-6 h-6"
       >
         <path
           strokeLinecap="round"
@@ -60,7 +57,6 @@ export default function BaseIcon(props) {
         viewBox="0 0 24 24"
         strokeWidth="1.5"
         stroke="currentColor"
-        className="w-6 h-6 hover:fill-red-400"
       >
         <path
           strokeLinecap="round"
@@ -76,7 +72,6 @@ export default function BaseIcon(props) {
         viewBox="0 0 24 24"
         strokeWidth={1.5}
         stroke="currentColor"
-        className="w-6 h-6"
       >
         <path
           strokeLinecap="round"
@@ -92,7 +87,6 @@ export default function BaseIcon(props) {
         viewBox="0 0 24 24"
         strokeWidth={1.5}
         stroke="currentColor"
-        className="w-5 h-5 text-white md:hover:text-green-500"
       >
         <path
           strokeLinecap="round"
@@ -109,7 +103,6 @@ export default function BaseIcon(props) {
         viewBox="0 0 24 24"
         strokeWidth={1.5}
         stroke="currentColor"
-        className="w-5 h-5"
       >
         <path
           strokeLinecap="round"
@@ -125,7 +118,6 @@ export default function BaseIcon(props) {
         viewBox="0 0 24 24"
         strokeWidth="1.5"
         stroke="currentColor"
-        className="w-6 h-6"
       >
         <path
           strokeLinecap="round"
@@ -136,7 +128,6 @@ export default function BaseIcon(props) {
     ),
     downarrow: (
       <svg
-        className="w-4 h-4 ml-2"
         fill="none"
         stroke="currentColor"
         viewBox="0 0 24 24"
@@ -158,7 +149,6 @@ export default function BaseIcon(props) {
         viewBox="0 0 24 24"
         strokeWidth={1.5}
         stroke="currentColor"
-        className="w-4 h-4 ml-2"
       >
         <path
           strokeLinecap="round"
@@ -175,7 +165,6 @@ export default function BaseIcon(props) {
         viewBox="0 0 24 24"
         strokeWidth={1.5}
         stroke="currentColor"
-        className="w-6 h-6 text-emerald-700"
       >
         <path
           strokeLinecap="round"
@@ -194,7 +183,40 @@ export default function BaseIcon(props) {
         <path d="M360-240q-33 0-56.5-23.5T280-320v-480q0-33 23.5-56.5T360-880h360q33 0 56.5 23.5T800-800v480q0 33-23.5 56.5T720-240H360Zm0-80h360v-480H360v480ZM200-80q-33 0-56.5-23.5T120-160v-560h80v560h440v80H200Zm160-240v-480 480Z" />
       </svg>
     ),
+
+    delete: (
+      <svg
+        fill="none"
+        viewBox="0 0 24 24"
+        strokeWidth="1.5"
+        stroke="currentColor"
+        aria-hidden="true"
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z"
+        />
+      </svg>
+    ),
+    "exclamation-circle": (
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        strokeWidth={1.5}
+        stroke="currentColor"
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z"
+        />
+      </svg>
+    ),
   };
 
-  return <>{icons[props.iconName]}</>;
+  return (
+    <i className={props.className || "h-6 w-6"}>{icons[props.iconName]}</i>
+  );
 }
