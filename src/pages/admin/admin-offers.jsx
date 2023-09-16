@@ -3,6 +3,7 @@ import { API_BASE_PATH } from "@/helpers/constants";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import BaseButton from "@/components/base-components/BaseButton";
+import BaseIcon from "@/components/base-components/BaseIcon";
 
 function AdminOffers() {
   let params = useParams();
@@ -89,8 +90,11 @@ function AdminOffers() {
                       onClick={() => copyText(element.offerCode)}
                       variant="neutral"
                       type="button"
-                      btnText="Copy Code"
-                    ></BaseButton>
+                      className="flex gap-1"
+                    >
+                      <BaseIcon iconName="copy" className="h-6 w-6"></BaseIcon>
+                      Copy Code
+                    </BaseButton>
                   </div>
                 </div>
               </div>

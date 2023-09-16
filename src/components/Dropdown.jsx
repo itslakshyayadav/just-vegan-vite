@@ -13,7 +13,6 @@ const Dropdown = ({ options, children }) => {
     setSelectedOption(option);
     setIsOpen(false);
   };
-  console.log(options);
   return (
     <div className="relative inline-block text-left">
       <div>
