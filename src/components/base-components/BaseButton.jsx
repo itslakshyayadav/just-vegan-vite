@@ -1,6 +1,3 @@
-import BaseIcon from "./BaseIcon";
-
-BaseIcon;
 export default function BaseButton(props) {
   const { type, variant, children } = props;
   let btnClasses = "";
@@ -24,6 +21,9 @@ export default function BaseButton(props) {
       break;
     case "logoutBtn":
       btnClasses = "rounded-md py-2 px-4  text-left hover:bg-gray-100 w-full";
+      break;
+    case "transparent":
+      btnClasses = "rounded-md py-2 px-4 w-full";
       break;
     case "danger":
       btnClasses =

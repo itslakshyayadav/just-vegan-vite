@@ -1,16 +1,6 @@
 // import { useState } from "react";
 export default function BaseSlider(props) {
   const { children } = props;
-  //   const [isClose, setIsClose] = useState(false);
-
-  //   const openModal = () => {
-  //     isClose(false);
-  //   };
-
-  //   const closeModal = () => {
-  //     setIsClose(false);
-  //   };
-
   return (
     <>
       <div
@@ -25,7 +15,7 @@ export default function BaseSlider(props) {
           <div className="absolute inset-0 overflow-hidden">
             <div className="pointer-events-none fixed inset-y-0 left-0 flex max-w-full ">
               <div className="pointer-events-auto relative w-screen max-w-md">
-                <div className="flex h-full flex-col overflow-y-auto bg-white py-6 shadow-xl">
+                <div className="flex h-full flex-col overflow-y-auto bg-white  shadow-xl">
                   {children}
                 </div>
               </div>

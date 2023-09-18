@@ -1,16 +1,19 @@
+// import { useState } from "react";
 import { Link } from "react-router-dom";
+
 import BrandLogo from "@/components/base-components/BrandLogo";
 import BaseButton from "@/components/base-components/BaseButton";
 import BaseIcon from "@/components/base-components/BaseIcon";
 import BaseNavLink from "./BaseNavLink";
 import Dropdown from "../Dropdown";
+// import BaseSlider from "@/components/base-components/BaseSlider";
+import DefaultAddressSlider from "../page-components/DefaultAddressSlider";
 
 export default function BaseNavbar() {
   const userAuthStore = localStorage.getItem("userAuth");
   let userAuthObject = {};
   if (userAuthStore) {
     userAuthObject = JSON.parse(userAuthStore);
-    // console.log(userAuthObject.name);
   }
   const options = [
     {
@@ -22,8 +25,6 @@ export default function BaseNavbar() {
       to: "setting",
     },
   ];
-
-  // const options = ["My account", "Setting", "logout"];
 
   const navLinks = [
     {
@@ -46,13 +47,25 @@ export default function BaseNavbar() {
   };
 
   return (
-    <div className="flex h-20 w-full z-10">
+    <div className="flex  h-20 w-full z-10">
       <nav className="bg-zinc-950 flex justify-between items-center p-2 fixed top-0 w-full">
         <div className="flex gap-8 items-center">
           <Link to="/">
             <BrandLogo />
           </Link>
           <ul className="flex gap-3">
+            <DefaultAddressSlider>
+              <li className=" ">
+                <BaseButton
+                  variant="transparent"
+                  className="text-white  flex items-center gap-1"
+                >
+                  Delivery Address
+                  <BaseIcon iconName="downarrow" className="w-6"></BaseIcon>
+                </BaseButton>
+              </li>
+            </DefaultAddressSlider>
+
             {navLinks.map((elements, index) => {
               return (
                 <li key={"navbar" + index}>

@@ -214,9 +214,25 @@ export default function BaseIcon(props) {
         />
       </svg>
     ),
+    crossIcon: (
+      <svg
+        fill="none"
+        viewBox="0 0 24 24"
+        strokeWidth="1.5"
+        stroke="currentColor"
+        aria-hidden="true"
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          d="M6 18L18 6M6 6l12 12"
+        />
+      </svg>
+    ),
   };
 
   return (
-    <i className={props.className || "h-6 w-6"}>{icons[props.iconName]}</i>
+    <i className={`${props.className || "h-6 w-6"}`}>{icons[props.iconName]}</i>
+    // <i>{icons[props.iconName]}</i>
   );
 }

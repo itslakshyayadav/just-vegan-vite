@@ -45,9 +45,9 @@ export default function MyAddress() {
           {
             <Link
               to="/my-account/my-address/create-address"
-              className="py-2 px-4 border text-indigo-800 font-sans rounded-md "
+              className="py-2 px-4 border font-bold text-xs text-indigo-800 font-sans rounded-md "
             >
-              + Create Address
+              + CREATE NEW ADDRESS
             </Link>
           }
         </div>

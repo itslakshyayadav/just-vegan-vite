@@ -1,24 +1,18 @@
 import axios from "axios";
 import { API_BASE_PATH } from "@/helpers/constants";
 
-// function fetchUser() {
-//     const userAuthStore = localStorage.getItem("userAuth");
-//     const userAuthObject = JSON.parse(userAuthStore);
-//     return axios(
-//         {
-//             method:"GET",
-//             url:`${API_BASE_PATH}/users/${userAuthObject.userId}`,
-//             headers:{
-//                 "Content-Type": "application/json",
-//                 Authorization: `Bearer ${userAuthObject.accessToken}`
-//             },
-
-//             data:{
-
-//             }
-//         }
-//     )
-// }
+function fetchUser() {
+  const userAuthStore = localStorage.getItem("userAuth");
+  const userAuthObject = JSON.parse(userAuthStore);
+  return axios({
+    method: "GET",
+    url: `${API_BASE_PATH}/users/${userAuthObject.userId}`,
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${userAuthObject.accessToken}`,
+    },
+  });
+}
 function createUser(signup) {
   return axios({
     method: "POST",
@@ -54,6 +48,23 @@ function createAddress(addressModel) {
   });
 }
 
+function defaultAddress(addresses) {
+  const userAuthStore = localStorage.getItem("userAuth");
+  const userAuthObject = JSON.parse(userAuthStore);
+  const userPayload = localStorage.getItem("userPayload");
+  const userAuthPayload = JSON.parse(userPayload);
+  console.log(userAuthPayload);
+  return axios({
+    method: "POST",
+    url: `${API_BASE_PATH}/users/${userAuthObject.userId}/default-address`,
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${userAuthObject.accessToken}`,
+    },
+    data: { addressId: addresses },
+  });
+}
+
 function removeAddress(addressId) {
   const userAuthStore = localStorage.getItem("userAuth");
   const userAuthObject = JSON.parse(userAuthStore);
@@ -69,26 +80,28 @@ function removeAddress(addressId) {
     },
   });
 }
-function editAddress(addressId) {
-  const userAuthStore = localStorage.getItem("userAuth");
-  const userAuthObject = JSON.parse(userAuthStore);
-  return axios({
-    method: "PUT",
-    url: `${API_BASE_PATH}/users/${userAuthObject.userId}/address/${addressId}`,
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${userAuthObject.accessToken}`,
-    },
-    data: {
-      addressId,
-    },
-  });
-}
+// function editAddress(addressId) {
+//   const userAuthStore = localStorage.getItem("userAuth");
+//   const userAuthObject = JSON.parse(userAuthStore);
+//   return axios({
+//     method: "PUT",
+//     url: `${API_BASE_PATH}/users/${userAuthObject.userId}/address/${addressId}`,
+//     headers: {
+//       "Content-Type": "application/json",
+//       Authorization: `Bearer ${userAuthObject.accessToken}`,
+//     },
+//     data: {
+//       addressId,
+//     },
+//   });
+// }
 
 export default {
+  fetchUser,
   createUser,
   loginUser,
   createAddress,
   removeAddress,
-  editAddress,
+  defaultAddress,
+  // editAddress,
 };

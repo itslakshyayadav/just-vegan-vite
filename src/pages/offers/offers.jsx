@@ -88,14 +88,20 @@ function Offers() {
                     >
                       Copy Code
                     </button> */}
-                    <BaseButton
-                      onClick={() => copyText(element.offerCode)}
-                      variant="neutral"
-                      type="button"
-                    >
-                      <BaseIcon iconName="copy"></BaseIcon>
-                      Copy Code
-                    </BaseButton>
+                    <div className=" ">
+                      <BaseButton
+                        onClick={() => copyText(element.offerCode)}
+                        variant="neutral"
+                        type="button"
+                        className="flex gap-1"
+                      >
+                        <BaseIcon
+                          iconName="copy"
+                          className="h-6 w-6"
+                        ></BaseIcon>
+                        Copy Code
+                      </BaseButton>
+                    </div>
                   </div>
                 </div>
               </div>

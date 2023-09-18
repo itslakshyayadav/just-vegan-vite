@@ -22,7 +22,7 @@ export default function AddressTile(props) {
       <div className=" rounded-sm px-3 py-2 ">
         <div className="flex justify-between items-center">
           <h1 className=" font-sans font-bold ">{addressRecord.name}</h1>
-          <span className="font-sans flex items-center h-5 border uppercase bg-slate-100 font-semibold text-gray-500 rounded-xl   px-1">
+          <span className="font-sans flex items-center h-5 border uppercase bg-slate-100 font-semibold text-gray-500 rounded-xl   px-3">
             <small>{addressRecord.addressType}</small>
           </span>
         </div>
@@ -65,17 +65,17 @@ export default function AddressTile(props) {
           )} */}
 
         <div className="flex border-t border-slate-200  justify-between md:flex-none mt-2 px-3 py-3 items-center">
-          <div className="flex justify-center w-1/2 border-r border-slate-200 ">
+          <div className="flex justify-center w-1/2  border-slate-200 ">
             <ConfirmationModal
               onProceed={() => {
                 removeAddress(addressRecord._id);
               }}
             >
               <button
-                className="px-32 font-sans py-2 border text-indigo-800 rounded-sm"
+                className="px-32 font-sans py-2  text-xs font-bold border text-red-600 rounded-sm"
                 type="button"
               >
-                Delete
+                DELETE
               </button>
             </ConfirmationModal>
           </div>
@@ -83,13 +83,13 @@ export default function AddressTile(props) {
             <button
               // to="/userId/address/addressId"
               icon={<BaseIcon iconName=""></BaseIcon>}
-              className="px-32 font-sans py-2 border text-indigo-800 rounded-sm"
+              className="px-32 font-sans text-xs font-bold py-2 border text-indigo-800 rounded-sm"
               type="submit"
               // onClick={() => {
               //   editAddress(addressRecord._id);
               // }}
             >
-              Edit
+              EDIT
             </button>
           </div>
         </div>

@@ -1,18 +1,19 @@
 import BaseIcon from "@/components/base-components/BaseIcon";
 import BaseNavLink from "@/components/base-components/BaseNavLink";
 import { Outlet } from "react-router-dom";
+import { ICONS } from "@/helpers/constants";
 
 export default function MyAccountMain() {
   const accountPage = [
     {
       name: "My Account",
       to: "/my-account",
-      iconName: "user",
+      iconName: ICONS.User,
     },
     {
       name: "My Address",
       to: "/my-account/my-address",
-      iconName: "map-pin",
+      iconName: ICONS.MapPin,
     },
     {
       name: "My Orders",
@@ -21,13 +22,13 @@ export default function MyAccountMain() {
     },
     {
       name: "MyFavourite",
-      iconName: "heart",
+      iconName: ICONS.Heart,
       to: "/my-account/my-favourite",
     },
     {
       name: "My Reviews",
       to: "/my-account/my-reviews",
-      iconName: "star",
+      iconName: ICONS.Star,
     },
   ];
   return (

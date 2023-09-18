@@ -21,7 +21,7 @@ const Dropdown = ({ options, children }) => {
           className="text-white  py-2 px-4  inline-flex items-center"
           onClick={toggleDropdown}
         >
-          <span>{"My profile"}</span>
+          <span>{"My Profile"}</span>
 
           {isOpen ? (
             <BaseIcon iconName="uparrow"></BaseIcon>

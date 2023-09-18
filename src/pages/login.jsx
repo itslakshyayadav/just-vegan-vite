@@ -1,11 +1,11 @@
 import loginFormImgSrc from "../assets/loginform-image/go-vegan.jpg";
 import { useEffect, useState } from "react";
-// import { toast } from "react-toastify";
-import { useNavigate, Link } from "react-router-dom";
+import { toast } from "react-toastify";
+import { Link, useNavigate } from "react-router-dom";
 import BrandLogo from "../components/base-components/BrandLogo.jsx";
-import { API_BASE_PATH } from "../helpers/constants";
+// import { API_BASE_PATH } from "../helpers/constants";
 import BaseButton from "@/components/base-components/BaseButton";
-// import userService from "@/services/userService";
+import userService from "@/services/userService";
 
 export default function Login() {
   const [login, setLogin] = useState({
@@ -26,38 +26,47 @@ export default function Login() {
 
   useEffect(() => {
     const myUser = localStorage.getItem("sessionUser");
-    console.log("myUser");
+
     console.log(myUser);
   }, []);
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
+  // const fetchUsers = (event) => {
+  //   event.preventDefault();
 
-    fetch(`${API_BASE_PATH}/auth/login`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(login),
-    })
-      .then((res) => res.json())
-      .then((response) => {
-        console.log(response.payload);
-        localStorage.setItem("userAuth", JSON.stringify(response.payload));
-        navigate("/");
-      });
-  };
-  // const handleSubmit = async (event) => {
-  //   try {
-  //     event.preventDefault();
-  //     const response = await userService.loginUser(login);
-  //     if (response.status == 200) {
-  //       toast.success("You are logged in successfully.");
-  //     }
-  //   } catch (error) {
-  //     if (error.response.status === 400) {
-  //       toast.error(error.response.data);
-  //     }
-  //   }
+  //   fetch(`${API_BASE_PATH}/auth/login`, {
+  //     method: "POST",
+  //     headers: { "Content-Type": "application/json" },
+  //     body: JSON.stringify(login),
+  //   })
+  //     .then((res) => res.json())
+  //     .then((response) => {
+  //       console.log(response.payload);
+  //       localStorage.setItem("userPayload", JSON.stringify(response.payload));
+  //     });
   // };
+  const handleSubmit = async (event) => {
+    console.log("handleSubmit called");
+    try {
+      event.preventDefault();
+      const response = await userService.loginUser(login);
+      localStorage.setItem("userAuth", JSON.stringify(response.data.payload));
+      console.log("response.data.payload", response.data.payload);
+      if (response.status == 200) {
+        const userPayload = await userService.fetchUser();
+        console.log("userPayload", userPayload.data.payload);
+        localStorage.setItem(
+          "userPayload",
+          JSON.stringify(userPayload.data.payload)
+        );
+        toast.success("You are logged in successfully.");
+        navigate("/");
+      }
+    } catch (error) {
+      if (error.response.status === 400) {
+        toast.error(error.response.data);
+      }
+    }
+  };
 
   return (
     <>
