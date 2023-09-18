@@ -4,6 +4,7 @@ import dishService from "@/services/dishService";
 import { toast } from "react-toastify";
 import BaseButton from "@/components/base-components/BaseButton";
 import BaseIcon from "@/components/base-components/BaseIcon";
+import ConfirmationModal from "@/components/page-components/ConfirmationModal";
 
 export default function MyFavourite() {
   const [myFavourite, setMyFavourite] = useState([]);
@@ -89,17 +90,18 @@ export default function MyFavourite() {
                         >
                           Add to cart
                         </button>
-
-                        <BaseButton
-                          onClick={() => {
+                        <ConfirmationModal
+                          modalText="Are you sure, you want to remove your favourite dish?"
+                          onProceed={() => {
                             removeFavouriteDish(dishItem._id);
                           }}
-                          type="submit"
                         >
-                          <div className="flex gap- items-center">
-                            <BaseIcon iconName="minus"></BaseIcon>
-                          </div>
-                        </BaseButton>
+                          <BaseButton type="button">
+                            <div className="flex gap- items-center">
+                              <BaseIcon iconName="minus"></BaseIcon>
+                            </div>
+                          </BaseButton>
+                        </ConfirmationModal>
                       </div>
                     </div>
                   </div>

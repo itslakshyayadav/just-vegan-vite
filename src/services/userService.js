@@ -48,7 +48,7 @@ function createAddress(addressModel) {
   });
 }
 
-function defaultAddress(addresses) {
+function setDefaultAddress(addresses) {
   const userAuthStore = localStorage.getItem("userAuth");
   const userAuthObject = JSON.parse(userAuthStore);
   const userPayload = localStorage.getItem("userPayload");
@@ -102,6 +102,6 @@ export default {
   loginUser,
   createAddress,
   removeAddress,
-  defaultAddress,
+  setDefaultAddress,
   // editAddress,
 };

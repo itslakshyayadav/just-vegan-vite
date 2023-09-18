@@ -14,10 +14,12 @@ export default function BaseButton(props) {
         "rounded-md py-2 px-4 border bg-neutral-50 hover:bg-neutral-100";
       break;
     case "loginBtn":
-      btnClasses = "w-1/2 p-3 text-white rounded-md bg-emerald-500";
+      btnClasses =
+        "w-1/2 p-3 text-white rounded-md bg-emerald-500 uppercase font-semibold";
       break;
     case "signupBtn":
-      btnClasses = "w-1/2 p-3 text-white rounded-md bg-emerald-500";
+      btnClasses =
+        "w-1/2 p-3 text-white rounded-md bg-emerald-500 uppercase font-semibold";
       break;
     case "logoutBtn":
       btnClasses = "rounded-md py-2 px-4  text-left hover:bg-gray-100 w-full";

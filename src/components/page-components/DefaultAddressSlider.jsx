@@ -8,6 +8,8 @@ import DefaultAddressTile from "./DefaultAddressTile";
 
 export default function DefaultAddressSlider({ children }) {
   const [isOpen, setIsOpen] = useState(false);
+  const [addresses, setAddresses] = useState([]);
+  const [defaultAddress, setDefaultAddress] = useState([]);
 
   const openModal = () => {
     setIsOpen(true);
@@ -17,14 +19,19 @@ export default function DefaultAddressSlider({ children }) {
     setIsOpen(false);
   };
 
-  const [addresses, setAddresses] = useState([]);
-
-  useEffect(() => {
+  const updateDefaultAddress = () => {
     const userPayloadJSON = localStorage.getItem("userPayload");
     if (userPayloadJSON) {
       const userPayload = JSON.parse(userPayloadJSON);
-      setAddresses(userPayload.addresses);
+      if (userPayload && userPayload.addresses) {
+        setAddresses(userPayload.addresses);
+        setDefaultAddress(userPayload.defaultAddress);
+      }
     }
+  };
+
+  useEffect(() => {
+    updateDefaultAddress();
   }, []);
 
   return (
@@ -32,7 +39,7 @@ export default function DefaultAddressSlider({ children }) {
       <div onClick={openModal}>{children}</div>
       {isOpen && (
         <BaseSlider>
-          <div className="absolute -right-16 top-0 -ml-8 flex pr-2  sm:-ml-10 sm:pr-4">
+          <div className="absolute right-0 top-5 -ml-8 flex pr-2  sm:-ml-10 sm:pr-4">
             <button
               type="button"
               onClick={closeModal}
@@ -45,22 +52,35 @@ export default function DefaultAddressSlider({ children }) {
           <div className="">
             <div className="bg-neutral-100">
               <div className="px-5 py-3">
-                <h1 className="py-4">change Location</h1>
+                <h1 className="py-4">Change Location</h1>
 
-                <BaseButton type="button" variant="primary">
-                  Detect my location
+                <BaseButton type="button" variant="neutral">
+                  <div className="flex items-center gap-3">
+                    <BaseIcon
+                      iconName="my_location"
+                      className="fill-emerald-500"
+                    ></BaseIcon>
+                    Detect my location
+                  </div>
                 </BaseButton>
               </div>
             </div>
 
-            <h1 className="px-5 py-5 text-xl font-semibold">saved Addresses</h1>
-            {addresses.map((address, index) => {
-              return (
-                <li key={index}>
-                  <DefaultAddressTile address={address}></DefaultAddressTile>
-                </li>
-              );
-            })}
+            <h1 className="px-5 py-5 text-xl font-semibold text-neutral-600">
+              Saved Addresses
+            </h1>
+            <ul className="flex flex-col divide-y gap-3">
+              {addresses.map((address, index) => {
+                return (
+                  <DefaultAddressTile
+                    key={"deafult-address-tile" + index}
+                    defaultAddress={defaultAddress}
+                    address={address}
+                    resetDefaultAddress={updateDefaultAddress}
+                  ></DefaultAddressTile>
+                );
+              })}
+            </ul>
           </div>
         </BaseSlider>
       )}

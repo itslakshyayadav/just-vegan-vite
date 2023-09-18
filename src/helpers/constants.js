@@ -9,4 +9,5 @@ export const ICONS = {
   Bag: "bag",
   Star: "star",
   DownArrow: "downarrow",
+  SolidHeart: "solid-heart",
 };

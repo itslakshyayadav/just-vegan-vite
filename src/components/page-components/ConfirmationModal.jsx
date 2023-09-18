@@ -4,7 +4,7 @@ import BaseIcon from "@/components/base-components/BaseIcon";
 
 import { useState } from "react";
 
-export default function ConfirmationModal({ children, onProceed }) {
+export default function ConfirmationModal({ children, modalText, onProceed }) {
   const [isOpen, setIsOpen] = useState(false);
 
   const openModal = () => {
@@ -30,9 +30,7 @@ export default function ConfirmationModal({ children, onProceed }) {
             </div>
             <div className="mt-3 text-center sm:ml-4 sm:mt-0 sm:text-left">
               <div className="mt-2">
-                <p className="text-sm text-gray-500">
-                  Are you sure, you want to proceed?
-                </p>
+                <p className="text-sm text-gray-500">{modalText}</p>
               </div>
             </div>
           </div>

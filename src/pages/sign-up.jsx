@@ -67,7 +67,7 @@ export default function SignUP() {
                   value={signup.name}
                   onChange={handleChange}
                   className="w-2/3  px-2 py-2  rounded-md"
-                  placeholder="name"
+                  placeholder="Name"
                   required
                 />
               </div>
@@ -103,7 +103,7 @@ export default function SignUP() {
                   value={signup.password}
                   onChange={handleChange}
                   className="w-2/3  px-2 py-2  rounded-md"
-                  placeholder="password"
+                  placeholder="Password"
                   required
                 />
               </div>
@@ -121,7 +121,7 @@ export default function SignUP() {
 
               <div className="text-center ">
                 <BaseButton type="submit" variant="signupBtn">
-                  create account
+                  Create Account
                 </BaseButton>
               </div>
               <ul className="flex gap-4 justify-center mb-6 ">

@@ -86,7 +86,7 @@ export default function BaseNavbar() {
           <div className="flex  items-center">
             {userAuthObject.name ? (
               <Dropdown options={options}>
-                <div className="py-1">
+                <div className="flex flex-col gap-1 py-1">
                   <h1 className="px-4 py-1 font-medium text-left">
                     <small>hello {userAuthObject.name}</small>
                     <small> {userAuthObject.phone}</small>
@@ -97,7 +97,7 @@ export default function BaseNavbar() {
                       <Link
                         to={option.to}
                         key={index}
-                        className="block px-4 py-1 text-sm text-gray-700 hover:bg-gray-100 w-full text-left"
+                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 w-full text-left"
                       >
                         {option.name}
                       </Link>
@@ -105,6 +105,7 @@ export default function BaseNavbar() {
                   })}
                   <BaseButton
                     type="button"
+                    className="px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 w-full text-left"
                     variant="logoutBtn"
                     onClick={handleLogout}
                   >

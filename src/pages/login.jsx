@@ -105,7 +105,7 @@ export default function Login() {
                 value={login.password}
                 onChange={handleChange}
                 className="w-3/4  px-2 py-2  rounded-md"
-                placeholder="password"
+                placeholder="Password"
               />
             </div>
 
