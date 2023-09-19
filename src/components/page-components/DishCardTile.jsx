@@ -4,9 +4,13 @@ import BaseIcon from "../base-components/BaseIcon";
 import BaseButton from "../base-components/BaseButton";
 import { Link } from "react-router-dom";
 import { ICONS } from "@/helpers/constants";
+import { useState } from "react";
+
 export default function DishCardTile(props) {
+  const [isFavorite, setIsFavorite] = useState(false);
   const { dishItem } = props;
   const addFavouriteDish = async (id) => {
+    setIsFavorite(!isFavorite);
     try {
       const response = await dishService.addFavouriteDish(id);
       if (response.status === 200) {
@@ -70,11 +74,14 @@ export default function DishCardTile(props) {
               type="submit"
             >
               <div className="flex gap-2 items-center">
-                {/* <BaseIcon iconName="heart"></BaseIcon> */}
-                <BaseIcon
-                  className="text-red-500"
-                  iconName={ICONS.SolidHeart}
-                ></BaseIcon>
+                {isFavorite ? (
+                  <BaseIcon
+                    className="text-red-500"
+                    iconName={ICONS.SolidHeart}
+                  ></BaseIcon>
+                ) : (
+                  <BaseIcon iconName="heart"></BaseIcon>
+                )}
               </div>
             </BaseButton>
           </div>

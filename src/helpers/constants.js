@@ -11,4 +11,6 @@ export const ICONS = {
   DownArrow: "downarrow",
   SolidHeart: "solid-heart",
   Cart: "cart",
+  Home: "home",
+  Office: "office",
 };

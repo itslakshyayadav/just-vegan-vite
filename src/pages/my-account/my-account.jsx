@@ -76,7 +76,7 @@ export default function MyAccount() {
             </div>
             <h1>Gender</h1>
             <div className="flex gap-3 items-center">
-              <div>
+              <div className="flex items-center gap-1">
                 <input
                   type="radio"
                   id="male"
@@ -84,15 +84,15 @@ export default function MyAccount() {
                   value="Netflix"
                   checked
                 />
-                <label htmlFor="male">male</label>
+                <label htmlFor="male">Male</label>
               </div>
 
-              <div>
+              <div className="flex items-center gap-1">
                 <input type="radio" id="female" name="gender" value="Audi" />
                 <label htmlFor="female">Female</label>
               </div>
 
-              <div>
+              <div className="flex items-center gap-1">
                 <input
                   type="radio"
                   id="others"

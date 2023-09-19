@@ -36,7 +36,7 @@ export default function ConfirmationModal({ children, modalText, onProceed }) {
               </div>
             </div>
           </div>
-          <div className="flex justify-end gap-3 bg-gray-50 px-4 py-3 sm:flex sm:flex-row sm:px-6">
+          <div className="flex justify-end gap-3 px-4 py-3 sm:flex sm:flex-row sm:px-6">
             <BaseButton type="button" onClick={closeModal} variant="neutral">
               Cancel
             </BaseButton>

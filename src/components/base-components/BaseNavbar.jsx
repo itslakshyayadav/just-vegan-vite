@@ -19,6 +19,13 @@ export default function BaseNavbar() {
     userAuthObject = JSON.parse(userAuthStore);
   }
 
+  const userResponse = localStorage.getItem("userPayload");
+  let userResponseAuth = {};
+  if (userResponse) {
+    userResponseAuth = JSON.parse(userResponse);
+  }
+  if (!userResponseAuth) return null;
+
   const options = [
     {
       name: "My Account",
@@ -64,7 +71,9 @@ export default function BaseNavbar() {
                   variant="transparent"
                   className="text-white  flex items-center gap-1"
                 >
-                  Delivery Address
+                  {userResponseAuth &&
+                    userResponseAuth.defaultAddress &&
+                    userResponseAuth.defaultAddress.addressLine}
                   <BaseIcon iconName="downarrow" className="w-4"></BaseIcon>
                 </BaseButton>
               </li>
@@ -89,7 +98,10 @@ export default function BaseNavbar() {
                 variant="transparent"
                 className="text-white  flex items-center gap-1"
               >
-                <BaseIcon iconName={ICONS.Cart} className="w-6"></BaseIcon>
+                <BaseIcon
+                  iconName={ICONS.Cart}
+                  className="w-6 fill-none"
+                ></BaseIcon>
               </BaseButton>
             </DefaultCartSlider>
           </Link>

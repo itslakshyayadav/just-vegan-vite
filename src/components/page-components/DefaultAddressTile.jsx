@@ -2,6 +2,7 @@ import userService from "@/services/userService";
 import BaseIcon from "../base-components/BaseIcon";
 // import { useState } from "react";
 import { toast } from "react-toastify";
+import { ICONS } from "@/helpers/constants";
 export default function DefaultAddressTile(props) {
   const { address, defaultAddress, resetDefaultAddress } = props;
 
@@ -26,10 +27,15 @@ export default function DefaultAddressTile(props) {
       toast.error("Error occurred, while setting default address.");
     }
   };
+
   return (
     <li className="flex gap-8 items-center px-5 py-3">
-      {/* <BaseIcon className="flex h-8 w-8" iconName="heart"></BaseIcon> */}
-      <div className="flex justify-between w-80	 ">
+      {address.addressType === "home" ? (
+        <BaseIcon iconName={ICONS.Home} className="w-6" />
+      ) : (
+        <BaseIcon iconName={ICONS.Office} className="w-6" />
+      )}
+      <div className="flex justify-between w-80">
         <div>
           <h1 className="text-xs uppercase">{address.addressType}</h1>
 
