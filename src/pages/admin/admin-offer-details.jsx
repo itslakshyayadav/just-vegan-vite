@@ -13,8 +13,6 @@ function AdminOfferDetails() {
       const response = await fetch(
         `${API_BASE_PATH}/offers/${params.offerId}`
       ).then((response) => response.json());
-
-      console.log(response);
       setOfferModel(response.payload);
     };
     fetchOfferDetails();

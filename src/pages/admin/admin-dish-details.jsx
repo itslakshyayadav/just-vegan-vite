@@ -22,19 +22,13 @@ function AdminDishDetails() {
       ).then((response) => response.json());
       // const data = await response.json();
       console.log(`data`);
-      console.log(response);
-
       setDishModel(response.payload);
     };
-
     fetchDishDetails();
   }, []);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
-    console.log(`value`);
-    console.log(value);
-
     setDishModel({
       ...dishModel,
       [name]: value,
@@ -43,8 +37,6 @@ function AdminDishDetails() {
 
   const handleChecked = (event) => {
     const { name, checked } = event.target;
-    console.log(`value`);
-    console.log(checked);
     setDishModel({
       ...dishModel,
       [name]: checked,

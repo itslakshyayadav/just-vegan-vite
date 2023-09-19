@@ -5,7 +5,6 @@ import { Link } from "react-router-dom";
 
 export default function AdminDishes() {
   let params = useParams();
-  console.log(`params dish details`);
   console.log(params);
 
   const [dishes, setDishes] = useState([]);

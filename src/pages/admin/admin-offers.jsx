@@ -7,7 +7,6 @@ import BaseIcon from "@/components/base-components/BaseIcon";
 
 function AdminOffers() {
   let params = useParams();
-  console.log(`params dish details`);
   console.log(params);
 
   const copyText = (offValue) => {
@@ -18,7 +17,6 @@ function AdminOffers() {
     const fetchUserData = async () => {
       const response = await fetch(`${API_BASE_PATH}/offers`);
       const data = await response.json();
-      console.log(data);
       setOffers(data.payload);
     };
     fetchUserData();

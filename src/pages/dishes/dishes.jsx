@@ -18,7 +18,6 @@ const Dishes = () => {
   const [filter, setFilter] = useState("all-dishes");
   const handleFilterChange = (e) => {
     setFilter(e.target.value);
-    console.log(setFilter);
   };
 
   const filteredDishes =

@@ -25,7 +25,6 @@ export default function SignUP() {
 
   useEffect(() => {
     const myUser = localStorage.getItem("sessionUser");
-    console.log("myUser");
     console.log(myUser);
   }, []);
 

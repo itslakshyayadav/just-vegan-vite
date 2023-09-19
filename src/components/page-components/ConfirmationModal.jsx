@@ -30,7 +30,9 @@ export default function ConfirmationModal({ children, modalText, onProceed }) {
             </div>
             <div className="mt-3 text-center sm:ml-4 sm:mt-0 sm:text-left">
               <div className="mt-2">
-                <p className="text-sm text-gray-500">{modalText}</p>
+                <p className="text-sm text-gray-500">
+                  {modalText ? modalText : "Are you sure to proceed"}
+                </p>
               </div>
             </div>
           </div>

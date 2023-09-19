@@ -9,12 +9,16 @@ import Dropdown from "../Dropdown";
 // import BaseSlider from "@/components/base-components/BaseSlider";
 import DefaultAddressSlider from "../page-components/DefaultAddressSlider";
 
+import { ICONS } from "@/helpers/constants";
+import DefaultCartSlider from "../page-components/DefaultCartSlider";
+
 export default function BaseNavbar() {
   const userAuthStore = localStorage.getItem("userAuth");
   let userAuthObject = {};
   if (userAuthStore) {
     userAuthObject = JSON.parse(userAuthStore);
   }
+
   const options = [
     {
       name: "My Account",
@@ -61,7 +65,7 @@ export default function BaseNavbar() {
                   className="text-white  flex items-center gap-1"
                 >
                   Delivery Address
-                  <BaseIcon iconName="downarrow" className="w-6"></BaseIcon>
+                  <BaseIcon iconName="downarrow" className="w-4"></BaseIcon>
                 </BaseButton>
               </li>
             </DefaultAddressSlider>
@@ -78,9 +82,16 @@ export default function BaseNavbar() {
           </ul>
         </div>
 
-        <div className="flex gap-2">
-          <Link to="" className="px-6 py-3">
-            <BaseIcon iconName="cart"></BaseIcon>
+        <div className="flex items-center gap-8">
+          <Link to="/">
+            <DefaultCartSlider>
+              <BaseButton
+                variant="transparent"
+                className="text-white  flex items-center gap-1"
+              >
+                <BaseIcon iconName={ICONS.Cart} className="w-6"></BaseIcon>
+              </BaseButton>
+            </DefaultCartSlider>
           </Link>
 
           <div className="flex  items-center">
@@ -89,7 +100,6 @@ export default function BaseNavbar() {
                 <div className="flex flex-col gap-1 py-1">
                   <h1 className="px-4 py-1 font-medium text-left">
                     <small>hello {userAuthObject.name}</small>
-                    <small> {userAuthObject.phone}</small>
                   </h1>
                   <hr />
                   {options.map((option, index) => {

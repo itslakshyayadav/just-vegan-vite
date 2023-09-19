@@ -10,7 +10,7 @@ export default function BaseNavLink(props) {
       btnClasses = "navbar-link py-3 px-5 text-white md:hover:text-green-500";
       break;
     case "accountLink":
-      btnClasses = "list-link px-5 py-3 border hover:bg-neutral-100";
+      btnClasses = "list-link px-5 py-3 divide-y hover:bg-neutral-100";
       break;
 
     default:

@@ -17,17 +17,14 @@ export default function DishDetails() {
     { name: "fiber(g)", pro: <>{dishDetails.fiber}</> },
   ];
 
-  console.log(`params dish details`);
   console.log(params);
 
   useEffect(() => {
     const fetchUserData = async () => {
       const response = await fetch(`${API_BASE_PATH}/dishes/${params.dishId}`);
       const data = await response.json();
-      console.log(data);
       setDisheDetails(data.payload);
     };
-
     fetchUserData();
   }, []);
 

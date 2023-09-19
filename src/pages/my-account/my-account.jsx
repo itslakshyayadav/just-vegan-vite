@@ -9,8 +9,6 @@ export default function MyAccount() {
   const fetchUser = async () => {
     const userAuthStore = localStorage.getItem("userAuth");
     const userAuthObject = JSON.parse(userAuthStore);
-    // console.log(`userAuthStore`);
-    // console.log(userAuthObject);
     const response = await fetch(
       `${API_BASE_PATH}/users/${userAuthObject.userId}`,
       {

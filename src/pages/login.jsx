@@ -45,7 +45,6 @@ export default function Login() {
   //     });
   // };
   const handleSubmit = async (event) => {
-    console.log("handleSubmit called");
     try {
       event.preventDefault();
       const response = await userService.loginUser(login);
@@ -53,7 +52,6 @@ export default function Login() {
       console.log("response.data.payload", response.data.payload);
       if (response.status == 200) {
         const userPayload = await userService.fetchUser();
-        console.log("userPayload", userPayload.data.payload);
         localStorage.setItem(
           "userPayload",
           JSON.stringify(userPayload.data.payload)

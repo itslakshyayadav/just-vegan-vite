@@ -24,9 +24,9 @@ const Dropdown = ({ options, children }) => {
           <span>{"My Profile"}</span>
 
           {isOpen ? (
-            <BaseIcon iconName="uparrow"></BaseIcon>
+            <BaseIcon iconName="uparrow" className="w-4"></BaseIcon>
           ) : (
-            <BaseIcon iconName="downarrow"></BaseIcon>
+            <BaseIcon iconName="downarrow" className="w-4"></BaseIcon>
           )}
         </button>
       </div>
