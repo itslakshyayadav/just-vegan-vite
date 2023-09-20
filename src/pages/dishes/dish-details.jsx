@@ -92,7 +92,7 @@ export default function DishDetails() {
         <div className="grid grid-cols-2 gap-10  mt-4 w-4/5  ">
           {dishStats.map((element, index) => {
             return (
-              <div key={index} className="py-1 font-semibold border-b w-80">
+              <div key={index} className="py-1 font-semibold border-b w-64">
                 <small className="text-[0.7rem] uppercase text-neutral-500">
                   {element.name}
                 </small>
