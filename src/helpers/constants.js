@@ -13,4 +13,7 @@ export const ICONS = {
   Cart: "cart",
   Home: "home",
   Office: "office",
+  Plus: "plus",
+  Minus: "minus",
+  MinusCircle: "minus-circle",
 };
