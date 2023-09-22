@@ -11,20 +11,16 @@ import DefaultAddressSlider from "../page-components/DefaultAddressSlider";
 
 import { ICONS } from "@/helpers/constants";
 import DefaultCartSlider from "../page-components/DefaultCartSlider";
+import UserContext from "@/contexts/UserContext";
+import { useContext } from "react";
 
 export default function BaseNavbar() {
+  const { user } = useContext(UserContext);
   const userAuthStore = localStorage.getItem("userAuth");
   let userAuthObject = {};
   if (userAuthStore) {
     userAuthObject = JSON.parse(userAuthStore);
   }
-
-  const userResponse = localStorage.getItem("userPayload");
-  let userResponseAuth = {};
-  if (userResponse) {
-    userResponseAuth = JSON.parse(userResponse);
-  }
-  if (!userResponseAuth) return null;
 
   const options = [
     {
@@ -71,9 +67,9 @@ export default function BaseNavbar() {
                   variant="transparent"
                   className="text-white  flex items-center gap-1"
                 >
-                  {userResponseAuth &&
-                    userResponseAuth.defaultAddress &&
-                    userResponseAuth.defaultAddress.addressLine}
+                  {user &&
+                    user.defaultAddress &&
+                    user.defaultAddress.addressLine}
                   <BaseIcon iconName="downarrow" className="w-4"></BaseIcon>
                 </BaseButton>
               </li>

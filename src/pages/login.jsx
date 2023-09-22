@@ -1,11 +1,12 @@
 import loginFormImgSrc from "../assets/loginform-image/go-vegan.jpg";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import { Link, useNavigate } from "react-router-dom";
 import BrandLogo from "../components/base-components/BrandLogo.jsx";
 // import { API_BASE_PATH } from "../helpers/constants";
 import BaseButton from "@/components/base-components/BaseButton";
 import userService from "@/services/userService";
+import UserContext from "@/contexts/UserContext";
 
 export default function Login() {
   const [login, setLogin] = useState({
@@ -14,6 +15,7 @@ export default function Login() {
   });
 
   const navigate = useNavigate();
+  const userContext = useContext(UserContext);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -48,14 +50,9 @@ export default function Login() {
     try {
       event.preventDefault();
       const response = await userService.loginUser(login);
-      localStorage.setItem("userAuth", JSON.stringify(response.data.payload));
-      console.log("response.data.payload", response.data.payload);
       if (response.status == 200) {
-        const userPayload = await userService.fetchUser();
-        localStorage.setItem(
-          "userPayload",
-          JSON.stringify(userPayload.data.payload)
-        );
+        localStorage.setItem("userAuth", JSON.stringify(response.data.payload));
+        await userContext.reFetchUser();
         toast.success("You are logged in successfully.");
         navigate("/");
       }

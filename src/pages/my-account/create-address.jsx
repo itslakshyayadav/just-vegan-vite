@@ -1,10 +1,12 @@
 import BaseButton from "@/components/base-components/BaseButton";
 import userService from "@/services/userService";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import UserContext from "@/contexts/UserContext";
 
 const CreateAddress = () => {
+  const userContext = useContext(UserContext);
   const [addressModel, setAddressModel] = useState({
     name: "",
     addressType: "home",
@@ -33,6 +35,7 @@ const CreateAddress = () => {
       const response = await userService.createAddress(addressModel);
       if (response.status == 200) {
         toast.success("A new Address created successfully.");
+        await userContext.reFetchUser();
         navigate("/my-account/my-address");
       }
     } catch (error) {

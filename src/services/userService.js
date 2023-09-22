@@ -13,6 +13,20 @@ function fetchUser() {
     },
   });
 }
+
+// function orderCart() {
+//   const userAuthStore = localStorage.getItem("userAuth");
+//   const userAuthObject = JSON.parse(userAuthStore);
+//   return axios({
+//     method: "GET",
+//     url: `${API_BASE_PATH}/orders`,
+//     headers: {
+//       "Content-Type": "application/json",
+//       Authorization: `Bearer ${userAuthObject.accessToken}`,
+//     },
+//   });
+// }
+
 function createUser(signup) {
   return axios({
     method: "POST",
@@ -104,4 +118,5 @@ export default {
   removeAddress,
   setDefaultAddress,
   // editAddress,
+  // orderCart,
 };

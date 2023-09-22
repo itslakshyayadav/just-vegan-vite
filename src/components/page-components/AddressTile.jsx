@@ -2,9 +2,12 @@ import { toast } from "react-toastify";
 import userService from "@/services/userService";
 import BaseIcon from "@/components/base-components/BaseIcon";
 import ConfirmationModal from "@/components/page-components/ConfirmationModal";
+import { useContext } from "react";
+import UserContext from "@/contexts/UserContext";
 
 export default function AddressTile(props) {
   const { addressRecord } = props;
+  const userContext = useContext(UserContext);
 
   const removeAddress = async (addressId) => {
     try {
@@ -12,6 +15,7 @@ export default function AddressTile(props) {
       const response = await userService.removeAddress(addressId);
       if (response.status === 200) {
         toast.success("Address Deleted successfully !");
+        userContext.reFetchUser();
       }
     } catch (error) {
       console.log("error");

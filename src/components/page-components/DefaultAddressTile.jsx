@@ -1,26 +1,19 @@
+import { useContext } from "react";
 import userService from "@/services/userService";
 import BaseIcon from "../base-components/BaseIcon";
-// import { useState } from "react";
 import { toast } from "react-toastify";
 import { ICONS } from "@/helpers/constants";
+import UserContext from "@/contexts/UserContext";
+
 export default function DefaultAddressTile(props) {
-  const { address, defaultAddress, resetDefaultAddress } = props;
+  const { user, reFetchUser } = useContext(UserContext);
+  const { address } = props;
 
   const handleSetDefaultAddress = async (id) => {
     try {
       const defaultAddressResponse = await userService.setDefaultAddress(id);
-      if (defaultAddressResponse.status == 200) {
-        const userResponse = await userService.fetchUser();
-        if (userResponse.status === 200) {
-          localStorage.setItem(
-            "userPayload",
-            JSON.stringify(userResponse.data.payload)
-          );
-          resetDefaultAddress();
-        }
-      }
-
       if (defaultAddressResponse.status === 200) {
+        await reFetchUser();
         toast.success("Default Address is set successfully.");
       }
     } catch (error) {
@@ -40,7 +33,8 @@ export default function DefaultAddressTile(props) {
           <h1 className="text-xs uppercase">{address.addressType}</h1>
 
           <p className="text-neutral-800 font-medium">{address.addressLine}</p>
-          {defaultAddress._id === address._id ? null : (
+          {user.defaultAddress &&
+          user.defaultAddress._id === address._id ? null : (
             <button
               type="button"
               onClick={() => {
@@ -55,7 +49,9 @@ export default function DefaultAddressTile(props) {
         <div>
           <span className="font-sans flex items-center h-5 uppercase font-semibold text-gray-500 rounded-xl px-3 mb-2">
             <small>
-              {defaultAddress._id === address._id ? "Default" : null}
+              {user.defaultAddress && user.defaultAddress._id === address._id
+                ? "Default"
+                : null}
             </small>
           </span>
         </div>

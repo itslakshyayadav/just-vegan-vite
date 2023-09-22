@@ -1,15 +1,13 @@
-import { useState, useEffect } from "react";
+import { useState, useContext } from "react";
 import BaseSlider from "@/components/base-components/BaseSlider";
 import BaseIcon from "../base-components/BaseIcon";
 import BaseButton from "../base-components/BaseButton";
-// import userService from "@/services/userService";
-// import { toast } from "react-toastify";
 import DefaultAddressTile from "./DefaultAddressTile";
+import UserContext from "@/contexts/UserContext";
 
 export default function DefaultAddressSlider({ children }) {
+  const { user } = useContext(UserContext);
   const [isOpen, setIsOpen] = useState(false);
-  const [addresses, setAddresses] = useState([]);
-  const [defaultAddress, setDefaultAddress] = useState([]);
 
   const openModal = () => {
     setIsOpen(true);
@@ -18,21 +16,6 @@ export default function DefaultAddressSlider({ children }) {
   const closeModal = () => {
     setIsOpen(false);
   };
-
-  const updateDefaultAddress = () => {
-    const userPayloadJSON = localStorage.getItem("userPayload");
-    if (userPayloadJSON) {
-      const userPayload = JSON.parse(userPayloadJSON);
-      if (userPayload && userPayload.addresses) {
-        setAddresses(userPayload.addresses);
-        setDefaultAddress(userPayload.defaultAddress);
-      }
-    }
-  };
-
-  useEffect(() => {
-    updateDefaultAddress();
-  }, []);
 
   return (
     <>
@@ -70,16 +53,15 @@ export default function DefaultAddressSlider({ children }) {
               Saved Addresses
             </h1>
             <ul className="flex flex-col divide-y gap-3">
-              {addresses.map((address, index) => {
-                return (
-                  <DefaultAddressTile
-                    key={"deafult-address-tile" + index}
-                    defaultAddress={defaultAddress}
-                    address={address}
-                    resetDefaultAddress={updateDefaultAddress}
-                  ></DefaultAddressTile>
-                );
-              })}
+              {user.addresses &&
+                user.addresses.map((address, index) => {
+                  return (
+                    <DefaultAddressTile
+                      key={"deafult-address-tile" + index}
+                      address={address}
+                    ></DefaultAddressTile>
+                  );
+                })}
             </ul>
           </div>
         </BaseSlider>
