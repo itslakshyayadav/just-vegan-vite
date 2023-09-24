@@ -9,10 +9,10 @@ import CartContext from "@/contexts/CartContext";
 // import userService from "@/services/userService";
 
 export default function DishCardTile(props) {
-  const { addToCart } = useContext(CartContext);
+  const { addToCart, cart } = useContext(CartContext);
 
   const [isFavorite, setIsFavorite] = useState(false);
-  // const [orderQuantity, setOrderQuantity] = useState(0);
+
   const { dishItem } = props;
   const addFavouriteDish = async (id) => {
     setIsFavorite(!isFavorite);
@@ -26,17 +26,10 @@ export default function DishCardTile(props) {
     }
   };
 
-  // const initialData = JSON.parse(localStorage.getItem("cartData")) || [];
-  // const handleAddToCart = async () => {
-  //   const newItem = {
-  //     dish: dishItem,
-  //     quantity: "1",
-  //     price: dishItem.price,
-  //   };
-  //   const currentData = initialData;
-  //   currentData.push(newItem);
-  //   localStorage.setItem("cartData", JSON.stringify(currentData));
-  // };
+  const cartArray = cart;
+  const found = cartArray.find((data) => {
+    return data.dish._id === dishItem._id;
+  });
 
   return (
     <>
@@ -78,31 +71,38 @@ export default function DishCardTile(props) {
           </p>
 
           <div className="flex justify-between items-center">
-            <button
-              className="inline-flex items-center px-4 py-2 text-sm text-center text-white bg-emerald-700 rounded-md hover:bg-emerald-800 focus:ring-4 focus:outline-none focus:ring-emerald-300 dark:bg-emerald-600 dark:hover:bg-emerald-700 dark:focus:ring-emerald-800"
-              onClick={() => {
-                addToCart(dishItem);
-              }}
-              // onClick={handleAddToCart}
-            >
-              Add to cart
-            </button>
-
-            <div className="flex items-center gap-1 bg-neutral-200 border rounded-md">
-              <button className="bg-neutral-100 p-1">
-                <BaseIcon
-                  className="h-5 w-5 flex"
-                  iconName={ICONS.Minus}
-                ></BaseIcon>
+            {found && found.quantity ? (
+              <div className="flex items-center gap-1  border rounded-md">
+                <button className="bg-neutral-100 p-1">
+                  <BaseIcon
+                    className="h-5 w-5 flex"
+                    iconName={ICONS.Minus}
+                  ></BaseIcon>
+                </button>
+                <span className="p-1">{found && found.quantity}</span>
+                <button
+                  className="bg-neutral-100 p-1"
+                  onClick={() => {
+                    addToCart(dishItem);
+                  }}
+                >
+                  <BaseIcon
+                    className="h-5 w-5 flex"
+                    iconName={ICONS.Plus}
+                  ></BaseIcon>
+                </button>
+              </div>
+            ) : (
+              <button
+                className="inline-flex items-center px-4 py-2 text-sm text-center text-white bg-emerald-700 rounded-md hover:bg-emerald-800 focus:ring-4 focus:outline-none focus:ring-emerald-300 dark:bg-emerald-600 dark:hover:bg-emerald-700 dark:focus:ring-emerald-800"
+                onClick={() => {
+                  addToCart(dishItem);
+                }}
+                // onClick={handleAddToCart}
+              >
+                Add to cart
               </button>
-              {/* <span className="p-1">{orderQuantity}</span> */}
-              <button className="bg-neutral-100 p-1">
-                <BaseIcon
-                  className="h-5 w-5 flex"
-                  iconName={ICONS.Plus}
-                ></BaseIcon>
-              </button>
-            </div>
+            )}
 
             <BaseButton
               onClick={() => {

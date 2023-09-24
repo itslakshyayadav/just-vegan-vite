@@ -16,6 +16,7 @@ import { useContext } from "react";
 
 export default function BaseNavbar() {
   const { user } = useContext(UserContext);
+
   const userAuthStore = localStorage.getItem("userAuth");
   let userAuthObject = {};
   if (userAuthStore) {

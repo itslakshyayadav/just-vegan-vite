@@ -1,8 +1,9 @@
-import { useState, useEffect, useContext } from "react";
-// import BaseSlider from "@/components/base-components/BaseSlider";
+import { useState, useContext } from "react";
 import BaseIcon from "../base-components/BaseIcon";
 import BaseButton from "../base-components/BaseButton";
 import CartContext from "@/contexts/CartContext";
+import { ICONS } from "@/helpers/constants";
+import ConfirmationModal from "./ConfirmationModal";
 
 export default function DefaultCartSlider({ children }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -15,8 +16,8 @@ export default function DefaultCartSlider({ children }) {
     setIsOpen(false);
   };
 
-  const { cart } = useContext(CartContext);
-  console.log(cart);
+  const { cart, removeFromCart, orderKnow } = useContext(CartContext);
+  const totalPrice = cart.reduce((total, item) => total + item.price + 39, 0);
 
   return (
     <>
@@ -47,9 +48,8 @@ export default function DefaultCartSlider({ children }) {
                     Free delivery on all orders above ₹499{" "}
                   </h1>
                 </div>
-                <div className="flex flex-col divide-y  m-auto ">
+                <div className="flex flex-col divide-y mb-4 m-auto ">
                   {cart.map((dishData, index) => {
-                    console.log(dishData);
                     if (!dishData) return null;
                     return (
                       <div
@@ -76,10 +76,27 @@ export default function DefaultCartSlider({ children }) {
                                 ₹ {dishData.price}
                               </p>
                             </div>
+                            <div className="flex items-center gap-1 h-8  border rounded-md">
+                              <button className="bg-neutral-100 p-1">
+                                <BaseIcon
+                                  className="h-5 w-5 flex"
+                                  iconName={ICONS.Minus}
+                                ></BaseIcon>
+                              </button>
+                              <span className="p-1">{dishData.quantity}</span>
+                              <button className="bg-neutral-100 p-1">
+                                <BaseIcon
+                                  className="h-5 w-5 flex"
+                                  iconName={ICONS.Plus}
+                                ></BaseIcon>
+                              </button>
+                            </div>
                             <div>
                               <BaseButton
                                 type="button"
-                                // onClick={}
+                                onClick={() => {
+                                  removeFromCart(dishData.dish._id);
+                                }}
                                 className="text-black"
                               >
                                 <svg
@@ -104,8 +121,43 @@ export default function DefaultCartSlider({ children }) {
                     );
                   })}
                 </div>
+                <div>
+                  <div className="border-2 py-2 px-2 mb-4 w-96 m-auto border-dashed">
+                    <h1 className="font-semibold">Bill Details</h1>
+                    <div className="flex justify-between">
+                      <p className="text-xs">Subtotal</p>
+                      <p className="text-xs"> {totalPrice}</p>
+                    </div>
+                    <div className="flex justify-between">
+                      <p className="text-xs">Delivery Charge</p>
+                      <p className="text-xs"> 39</p>
+                    </div>
+                    <p>
+                      <small>
+                        {" "}
+                        Your cart value is less than ₹499 & delivery charge
+                        applies
+                      </small>
+                    </p>
+                    <hr className="mb-1 mt-1" />
+                    <div className="flex justify-between">
+                      <p className="text-sm font-semibold">Total</p>
+                      <p className="text-sm font-semibold"> ₹ {totalPrice}</p>
+                    </div>
+                  </div>
+                </div>
+
+                <ConfirmationModal
+                  onProceed={orderKnow}
+                  modalText="Are you sure, you want to order your dish?"
+                >
+                  <div className="flex justify-center">
+                    <BaseButton type="button" variant="loginBtn">
+                      Place Order
+                    </BaseButton>
+                  </div>
+                </ConfirmationModal>
               </div>
-              {/* </BaseSlider> */}
             </div>
           </div>
         </div>

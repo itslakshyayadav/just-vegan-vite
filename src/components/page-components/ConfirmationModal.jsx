@@ -7,6 +7,8 @@ import { useState } from "react";
 export default function ConfirmationModal({ children, modalText, onProceed }) {
   const [isOpen, setIsOpen] = useState(false);
 
+  // variant danger, info
+
   const openModal = () => {
     setIsOpen(true);
   };
@@ -42,8 +44,8 @@ export default function ConfirmationModal({ children, modalText, onProceed }) {
             </BaseButton>
             <BaseButton
               type="button"
-              onClick={() => {
-                onProceed();
+              onClick={(event) => {
+                onProceed(event);
                 closeModal();
               }}
               variant="danger"

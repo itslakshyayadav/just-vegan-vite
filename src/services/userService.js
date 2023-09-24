@@ -14,18 +14,32 @@ function fetchUser() {
   });
 }
 
-// function orderCart() {
-//   const userAuthStore = localStorage.getItem("userAuth");
-//   const userAuthObject = JSON.parse(userAuthStore);
-//   return axios({
-//     method: "GET",
-//     url: `${API_BASE_PATH}/orders`,
-//     headers: {
-//       "Content-Type": "application/json",
-//       Authorization: `Bearer ${userAuthObject.accessToken}`,
-//     },
-//   });
-// }
+function getUserOrders() {
+  const userAuthStore = localStorage.getItem("userAuth");
+  const userAuthObject = JSON.parse(userAuthStore);
+  return axios({
+    method: "GET",
+    url: `${API_BASE_PATH}/${userAuthObject.userId}/orders`,
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${userAuthObject.accessToken}`,
+    },
+  });
+}
+
+function order(order) {
+  const userAuthStore = localStorage.getItem("userAuth");
+  const userAuthObject = JSON.parse(userAuthStore);
+  return axios({
+    method: "POST",
+    url: `${API_BASE_PATH}/orders`,
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${userAuthObject.accessToken}`,
+    },
+    data: order,
+  });
+}
 
 function createUser(signup) {
   return axios({
@@ -117,6 +131,7 @@ export default {
   createAddress,
   removeAddress,
   setDefaultAddress,
+  order,
   // editAddress,
-  // orderCart,
+  getUserOrders,
 };
