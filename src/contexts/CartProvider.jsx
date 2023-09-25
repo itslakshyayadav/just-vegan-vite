@@ -50,6 +50,7 @@ export default function CartProvider({ children }) {
       };
       const response = await userService.order(order);
       if (response.status == 200) {
+        setCart([]);
         toast.success("Your Order placed successfully.");
       }
     } catch (error) {

@@ -4,6 +4,7 @@ import BaseButton from "../base-components/BaseButton";
 import CartContext from "@/contexts/CartContext";
 import { ICONS } from "@/helpers/constants";
 import ConfirmationModal from "./ConfirmationModal";
+import { Link } from "react-router-dom";
 
 export default function DefaultCartSlider({ children }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -58,14 +59,24 @@ export default function DefaultCartSlider({ children }) {
                       >
                         <div className="flex gap-2">
                           <div className="w-20">
-                            <img
+                            <Link to={`/dishes/${dishData.dish._id}`}>
+                              <img
+                                src={
+                                  dishData &&
+                                  dishData.dish &&
+                                  dishData.dish.imgUrl
+                                }
+                                alt=""
+                              />
+                            </Link>
+                            {/* <img
                               src={
                                 dishData &&
                                 dishData.dish &&
                                 dishData.dish.imgUrl
                               }
                               alt="image"
-                            />
+                            /> */}
                           </div>
                           <div className="flex justify-between w-full">
                             <div>

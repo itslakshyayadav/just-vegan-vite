@@ -108,7 +108,7 @@ export default function BaseNavbar() {
               <Dropdown options={options}>
                 <div className="flex flex-col gap-1 py-1">
                   <h1 className="px-4 py-1 font-medium text-left">
-                    <small>hello {userAuthObject.name}</small>
+                    <small>Hello {userAuthObject.name}</small>
                   </h1>
                   <hr />
                   {options.map((option, index) => {

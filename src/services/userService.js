@@ -19,7 +19,7 @@ function getUserOrders() {
   const userAuthObject = JSON.parse(userAuthStore);
   return axios({
     method: "GET",
-    url: `${API_BASE_PATH}/${userAuthObject.userId}/orders`,
+    url: `${API_BASE_PATH}/users/${userAuthObject.userId}/orders`,
     headers: {
       "Content-Type": "application/json",
       Authorization: `Bearer ${userAuthObject.accessToken}`,
