@@ -4,7 +4,6 @@ import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 export default function OfferDetails() {
   let params = useParams();
-  console.log(params);
   const [offerDetails, setOfferDetails] = useState({});
   useEffect(() => {
     const fetchUserData = async () => {

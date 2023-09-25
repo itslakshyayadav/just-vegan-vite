@@ -16,8 +16,8 @@ export default function DefaultCartSlider({ children }) {
     setIsOpen(false);
   };
 
-  const { cart, removeFromCart, orderKnow } = useContext(CartContext);
-  const totalPrice = cart.reduce((total, item) => total + item.price + 39, 0);
+  const { cart, removeFromCart, orderKnow, totalPrice } =
+    useContext(CartContext);
 
   return (
     <>
