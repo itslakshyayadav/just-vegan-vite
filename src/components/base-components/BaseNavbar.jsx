@@ -14,7 +14,8 @@ import DefaultCartSlider from "../page-components/DefaultCartSlider";
 import UserContext from "@/contexts/UserContext";
 import { useContext } from "react";
 
-export default function BaseNavbar() {
+export default function BaseNavbar(props) {
+  const { selectOption } = props;
   const { user } = useContext(UserContext);
 
   const userAuthStore = localStorage.getItem("userAuth");
@@ -115,6 +116,7 @@ export default function BaseNavbar() {
                     return (
                       <Link
                         to={option.to}
+                        onClick={selectOption}
                         key={index}
                         className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 w-full text-left"
                       >
