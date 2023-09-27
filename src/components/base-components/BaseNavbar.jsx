@@ -56,7 +56,7 @@ export default function BaseNavbar(props) {
       <nav className="bg-zinc-950 flex justify-between items-center p-2 fixed top-0 w-full">
         <div className="flex gap-8 items-center">
           <Link to="/">
-            <BrandLogo />
+            <BrandLogo className="!w-14"/>
           </Link>
           <ul className="flex gap-3">
             {user && user.defaultAddress && user.defaultAddress.addressLine ? (
