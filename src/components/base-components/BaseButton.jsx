@@ -1,5 +1,5 @@
 export default function BaseButton(props) {
-  const { type, variant, children } = props;
+  const { type, variant, children, ...rest } = props;
   let btnClasses = "";
   switch (variant) {
     case "primary":
@@ -15,7 +15,7 @@ export default function BaseButton(props) {
       break;
     case "loginBtn":
       btnClasses =
-        "w-1/2 p-3 text-white rounded-md bg-emerald-500 uppercase font-semibold";
+        "w-full p-3 text-white rounded-md bg-emerald-500 uppercase font-semibold";
       break;
     case "signupBtn":
       btnClasses =
@@ -37,7 +37,7 @@ export default function BaseButton(props) {
 
   return (
     <>
-      <button type={type} className={btnClasses} {...props}>
+      <button type={type} className={btnClasses} {...rest}>
         {children}
       </button>
     </>

@@ -1,14 +1,10 @@
-// import { useState } from "react";
 import { Link } from "react-router-dom";
-
 import BrandLogo from "@/components/base-components/BrandLogo";
 import BaseButton from "@/components/base-components/BaseButton";
 import BaseIcon from "@/components/base-components/BaseIcon";
 import BaseNavLink from "./BaseNavLink";
 import Dropdown from "../Dropdown";
-// import BaseSlider from "@/components/base-components/BaseSlider";
-import DefaultAddressSlider from "../page-components/DefaultAddressSlider";
-
+import DefaultAddressSlider from "@/components/page-components/DefaultAddressSlider";
 import { ICONS } from "@/helpers/constants";
 import DefaultCartSlider from "../page-components/DefaultCartSlider";
 import UserContext from "@/contexts/UserContext";
@@ -63,19 +59,23 @@ export default function BaseNavbar(props) {
             <BrandLogo />
           </Link>
           <ul className="flex gap-3">
-            <DefaultAddressSlider>
-              <li className=" ">
-                <BaseButton
-                  variant="transparent"
-                  className="text-white  flex items-center gap-1"
-                >
-                  {user &&
-                    user.defaultAddress &&
-                    user.defaultAddress.addressLine}
-                  <BaseIcon iconName="downarrow" className="w-4"></BaseIcon>
-                </BaseButton>
-              </li>
-            </DefaultAddressSlider>
+            {user && user.defaultAddress && user.defaultAddress.addressLine ? (
+              <>
+                <DefaultAddressSlider>
+                  <li className=" ">
+                    <BaseButton
+                      variant="transparent"
+                      className="text-white  flex items-center gap-1"
+                    >
+                      {user &&
+                        user.defaultAddress &&
+                        user.defaultAddress.addressLine}
+                      <BaseIcon iconName="downarrow" className="w-4"></BaseIcon>
+                    </BaseButton>
+                  </li>
+                </DefaultAddressSlider>
+              </>
+            ) : null}
 
             {navLinks.map((elements, index) => {
               return (
@@ -138,17 +138,17 @@ export default function BaseNavbar(props) {
               <>
                 <div className="flex gap-3">
                   <Link
-                    to="/sign-up"
-                    className=" text-white px-6 py-3 rounded-lg border  md:hover:text-green-500 "
+                    to="/login"
+                    className=" text-white px-6 py-3   md:hover:text-green-500 "
                   >
-                    Sign Up
+                    Login
                   </Link>
 
                   <Link
-                    to="/login"
-                    className=" text-white px-6 py-3 rounded-lg border  md:hover:text-green-500 "
+                    to="/sign-up"
+                    className="text-white rounded-md py-3 px-5 bg-emerald-500 hover:bg-emerald-600"
                   >
-                    Login
+                    Sign Up
                   </Link>
                 </div>
               </>

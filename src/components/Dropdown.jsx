@@ -1,20 +1,34 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import BaseIcon from "./base-components/BaseIcon";
 
 const Dropdown = ({ options, children }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedOption, setSelectedOption] = useState(null);
+  const dropdownRef = useRef(null);
+  // const [selectedOption, setSelectedOption] = useState(null);
 
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
   };
 
-  const selectOption = (option) => {
-    setSelectedOption(option);
-    setIsOpen(false);
+  // const selectOption = (option) => {
+  //   setSelectedOption(option);
+  //   setIsOpen(false);
+  // };
+  const handleClickOutside = (event) => {
+    if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+      setIsOpen(false);
+    }
   };
+
+  useEffect(() => {
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
   return (
-    <div className="relative inline-block text-left">
+    <div className="relative inline-block text-left" ref={dropdownRef}>
       <div>
         <button
           type="button"

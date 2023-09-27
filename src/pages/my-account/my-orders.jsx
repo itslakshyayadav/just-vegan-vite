@@ -19,7 +19,7 @@ export default function MyOrders() {
 
         {order.map((orderItem, index) => {
           return (
-            <div key={index} className="border-2 rounded-sm mb-8">
+            <div key={index} className="border rounded-sm mb-8 hover:shadow-xl">
               <div className="flex justify-between bg-[#FAFAFA] py-2 px-3">
                 <div className="flex gap-20">
                   <div className="flex flex-col gap-1">
@@ -51,7 +51,10 @@ export default function MyOrders() {
 
               {orderItem.cart.map((cartItem, index) => {
                 return (
-                  <div key={index} className="flex py-2 divide-y px-3 gap-5">
+                  <div
+                    key={index}
+                    className="flex py-2 divide-y px-3 gap-5 hover:shadow-xl"
+                  >
                     <div className="w-40">
                       <img
                         src={cartItem.dish.imgUrl}
