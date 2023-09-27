@@ -32,6 +32,18 @@ export default function CartProvider({ children }) {
     }
   };
 
+  const decrementQuantity = (dishItem) => {
+    const cartItem = cart.findIndex((item) => item.dish._id === dishItem._id);
+    if (cartItem !== 1) {
+      const updatedCart = [...cart];
+      updatedCart[cartItem].quantity -= 1;
+      updatedCart[cartItem].price =
+        updatedCart[cartItem].quantity * dishItem.price;
+      setCart(updatedCart);
+      localStorage.setItem("cartData", JSON.stringify(updatedCart));
+    }
+  };
+
   const removeFromCart = (itemId) => {
     const updatedCart = cart.filter((item) => item.dish._id !== itemId);
     setCart(updatedCart);
@@ -67,6 +79,7 @@ export default function CartProvider({ children }) {
         removeFromCart,
         orderKnow,
         totalPrice,
+        decrementQuantity,
       }}
     >
       {children}

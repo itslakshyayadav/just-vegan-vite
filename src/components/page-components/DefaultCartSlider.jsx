@@ -17,8 +17,14 @@ export default function DefaultCartSlider({ children }) {
     setIsOpen(false);
   };
 
-  const { cart, removeFromCart, orderKnow, totalPrice } =
-    useContext(CartContext);
+  const {
+    cart,
+    removeFromCart,
+    orderKnow,
+    totalPrice,
+    addToCart,
+    decrementQuantity,
+  } = useContext(CartContext);
 
   return (
     <>
@@ -59,7 +65,7 @@ export default function DefaultCartSlider({ children }) {
                       >
                         <div className="flex gap-2">
                           <div className="w-20">
-                            <Link to={`/dishes/${dishData.dish._id}`}>
+                            {/* <Link to={`/dishes/${dishData.dish._id}`}>
                               <img
                                 src={
                                   dishData &&
@@ -68,15 +74,15 @@ export default function DefaultCartSlider({ children }) {
                                 }
                                 alt=""
                               />
-                            </Link>
-                            {/* <img
+                            </Link> */}
+                            <img
                               src={
                                 dishData &&
                                 dishData.dish &&
                                 dishData.dish.imgUrl
                               }
                               alt="image"
-                            /> */}
+                            />
                           </div>
                           <div className="flex justify-between w-full">
                             <div>
@@ -88,14 +94,24 @@ export default function DefaultCartSlider({ children }) {
                               </p>
                             </div>
                             <div className="flex items-center gap-1 h-8  border rounded-md">
-                              <button className="bg-neutral-100 p-1">
+                              <button
+                                className="bg-neutral-100 p-1"
+                                onClick={() => {
+                                  decrementQuantity(dishData.dish);
+                                }}
+                              >
                                 <BaseIcon
                                   className="h-5 w-5 flex"
                                   iconName={ICONS.Minus}
                                 ></BaseIcon>
                               </button>
                               <span className="p-1">{dishData.quantity}</span>
-                              <button className="bg-neutral-100 p-1">
+                              <button
+                                className="bg-neutral-100 p-1"
+                                onClick={() => {
+                                  addToCart(dishData.dish);
+                                }}
+                              >
                                 <BaseIcon
                                   className="h-5 w-5 flex"
                                   iconName={ICONS.Plus}

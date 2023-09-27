@@ -9,7 +9,7 @@ import CartContext from "@/contexts/CartContext";
 // import userService from "@/services/userService";
 
 export default function DishCardTile(props) {
-  const { addToCart, cart } = useContext(CartContext);
+  const { addToCart, cart, decrementQuantity } = useContext(CartContext);
 
   const [isFavorite, setIsFavorite] = useState(false);
 
@@ -73,7 +73,12 @@ export default function DishCardTile(props) {
           <div className="flex justify-between items-center">
             {found && found.quantity ? (
               <div className="flex items-center gap-1  border rounded-md">
-                <button className="bg-neutral-100 p-1">
+                <button
+                  className="bg-neutral-100 p-1"
+                  onClick={() => {
+                    decrementQuantity(dishItem);
+                  }}
+                >
                   <BaseIcon
                     className="h-5 w-5 flex"
                     iconName={ICONS.Minus}
