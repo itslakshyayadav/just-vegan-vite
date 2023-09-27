@@ -25,7 +25,7 @@ export default function Home() {
 
       <ToastContainer
         position="bottom-right"
-        autoClose={3000}
+        autoClose={2000}
         hideProgressBar={false}
         newestOnTop={false}
         closeOnClick
@@ -35,6 +35,7 @@ export default function Home() {
         pauseOnHover
         theme="light"
       />
+
       <Outlet></Outlet>
     </>
   );

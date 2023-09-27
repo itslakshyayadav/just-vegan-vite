@@ -58,7 +58,7 @@ export default function Login() {
       }
     } catch (error) {
       if (error.response.status === 400) {
-        toast.error(error.response.data);
+        toast.error("invalid password");
       }
     }
   };

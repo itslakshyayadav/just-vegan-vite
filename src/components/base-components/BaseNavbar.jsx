@@ -52,30 +52,26 @@ export default function BaseNavbar(props) {
   };
 
   return (
-    <div className="flex  h-20 w-full z-10">
+    <div className="flex  h-16 w-full z-10">
       <nav className="bg-zinc-950 flex justify-between items-center p-2 fixed top-0 w-full">
         <div className="flex gap-8 items-center">
           <Link to="/">
-            <BrandLogo className="!w-14"/>
+            <BrandLogo className="w-14" />
           </Link>
           <ul className="flex gap-3">
-            {user && user.defaultAddress && user.defaultAddress.addressLine ? (
-              <>
-                <DefaultAddressSlider>
-                  <li className=" ">
-                    <BaseButton
-                      variant="transparent"
-                      className="text-white  flex items-center gap-1"
-                    >
-                      {user &&
-                        user.defaultAddress &&
-                        user.defaultAddress.addressLine}
-                      <BaseIcon iconName="downarrow" className="w-4"></BaseIcon>
-                    </BaseButton>
-                  </li>
-                </DefaultAddressSlider>
-              </>
-            ) : null}
+            <DefaultAddressSlider>
+              <li className=" ">
+                <BaseButton
+                  variant="transparent"
+                  className="text-white  flex items-center gap-1"
+                >
+                  {user &&
+                    user.defaultAddress &&
+                    user.defaultAddress.addressLine}
+                  <BaseIcon iconName="downarrow" className="w-4"></BaseIcon>
+                </BaseButton>
+              </li>
+            </DefaultAddressSlider>
 
             {navLinks.map((elements, index) => {
               return (
