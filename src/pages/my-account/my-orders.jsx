@@ -1,5 +1,6 @@
 import userService from "@/services/userService";
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 export default function MyOrders() {
   const [order, setOrder] = useState([]);
@@ -48,39 +49,40 @@ export default function MyOrders() {
                   </p>
                 </div>
               </div>
-
               {orderItem.cart.map((cartItem, index) => {
                 return (
-                  <div
-                    key={index}
-                    className="flex py-2 divide-y px-3 gap-5 hover:shadow-xl"
-                  >
-                    <div className="w-40">
-                      <img
-                        src={cartItem.dish.imgUrl}
-                        alt="image"
-                        className="rounded-lg"
-                      />
-                    </div>
-                    <div className="flex justify-between w-full">
-                      <div>
-                        <h1 className="text-lg font-semibold text-neutral-800">
-                          {cartItem.dish.dishName}
-                        </h1>
-                        <h1 className="text-xs text-gray-500">
-                          {cartItem.dish.dishCategory}
-                        </h1>
-                        <h1 className="text-xs text-gray-500">
-                          ₹ {cartItem.price}
-                        </h1>
+                  <div key={index}>
+                    <Link
+                      to={`/dishes/${cartItem.dish._id}`}
+                      className="flex py-2 divide-y px-3 gap-5 hover:shadow-xl"
+                    >
+                      <div className="w-40">
+                        <img
+                          src={cartItem.dish.imgUrl}
+                          alt="image"
+                          className="rounded-lg"
+                        />
                       </div>
-                      <div className="py-3 text-xs">
-                        Qty.
-                        <span className="border px-3 py-1">
-                          {cartItem.quantity}
-                        </span>
+                      <div className="flex justify-between w-full">
+                        <div>
+                          <h1 className="text-lg font-semibold text-neutral-800">
+                            {cartItem.dish.dishName}
+                          </h1>
+                          <h1 className="text-xs text-gray-500">
+                            {cartItem.dish.dishCategory}
+                          </h1>
+                          <h1 className="text-xs text-gray-500">
+                            ₹ {cartItem.price}
+                          </h1>
+                        </div>
+                        <div className="py-3 text-xs">
+                          Qty.
+                          <span className="border px-3 py-1">
+                            {cartItem.quantity}
+                          </span>
+                        </div>
                       </div>
-                    </div>
+                    </Link>
                   </div>
                 );
               })}

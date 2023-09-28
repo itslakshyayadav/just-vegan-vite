@@ -5,6 +5,7 @@ import CartContext from "@/contexts/CartContext";
 import { ICONS } from "@/helpers/constants";
 import ConfirmationModal from "./ConfirmationModal";
 import { Link } from "react-router-dom";
+// import BaseSlider from "../base-components/BaseSlider";
 
 export default function DefaultCartSlider({ children }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -178,13 +179,14 @@ export default function DefaultCartSlider({ children }) {
                   onProceed={orderKnow}
                   modalText="Are you sure, you want to order your dish?"
                 >
-                  <div className="flex justify-center">
+                  <div className="flex justify-center px-5">
                     <BaseButton type="button" variant="loginBtn">
                       Place Order
                     </BaseButton>
                   </div>
                 </ConfirmationModal>
               </div>
+              {/* </BaseSlider> */}
             </div>
           </div>
         </div>

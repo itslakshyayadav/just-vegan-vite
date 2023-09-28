@@ -1,14 +1,23 @@
 import { useParams } from "react-router-dom";
-import { API_BASE_PATH } from "@/helpers/constants";
-import { useState, useEffect } from "react";
+import { API_BASE_PATH, ICONS } from "@/helpers/constants";
+import { useState, useEffect, useContext } from "react";
 import BaseIcon from "@/components/base-components/BaseIcon";
 import dishService from "@/services/dishService";
 import { toast } from "react-toastify";
+import CartContext from "@/contexts/CartContext";
+
 // import BaseButton from "@/components/base-components/BaseButton";
 
 export default function DishDetails() {
-  let params = useParams();
   const [dishDetails, setDisheDetails] = useState({});
+
+  const { addToCart, cart, decrementQuantity } = useContext(CartContext);
+  const cartArray = cart;
+  const found = cartArray.find((data) => {
+    return data.dish._id === dishDetails._id;
+  });
+
+  let params = useParams();
   const dishStats = [
     { name: "energy(g)", pro: <>{dishDetails.energy}</> },
     { name: "fat(g)", pro: <>{dishDetails.fat}</> },
@@ -107,10 +116,44 @@ export default function DishDetails() {
           </span>
         </div>
         <div className="flex gap-2  ">
-          <div className="  w-1/3 ">
-            <button className="w-full flex justify-center gap-2  bg-emerald-700 hover:bg-emerald-800 border text-white rounded-md py-3 font-semibold ">
-              <BaseIcon iconName="bag"></BaseIcon> ADD TO BAG
-            </button>
+          <div className="w-1/3 ">
+            {found && found.quantity ? (
+              <div className="flex items-center gap-1 border justify-center py-2 w-full rounded-md">
+                <button
+                  className="bg-neutral-100 p-1"
+                  onClick={() => {
+                    decrementQuantity(dishDetails);
+                  }}
+                >
+                  <BaseIcon
+                    className="h-5 w-5  flex"
+                    iconName={ICONS.Minus}
+                  ></BaseIcon>
+                </button>
+                <span className="p-1">{found && found.quantity}</span>
+                <button
+                  className="bg-neutral-100 p-1"
+                  onClick={() => {
+                    addToCart(dishDetails);
+                  }}
+                >
+                  <BaseIcon
+                    className="h-5 w-5 flex"
+                    iconName={ICONS.Plus}
+                  ></BaseIcon>
+                </button>
+              </div>
+            ) : (
+              <button
+                className="w-full flex justify-center gap-2 border rounded-md py-3 bg-teal-500 hover:bg-teal-700 text-white font-semibold"
+                onClick={() => {
+                  addToCart(dishDetails);
+                }}
+                // onClick={handleAddToCart}
+              >
+                Add to cart
+              </button>
+            )}
           </div>
           <div className="w-1/3 ">
             <button
