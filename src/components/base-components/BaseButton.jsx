@@ -4,7 +4,7 @@ export default function BaseButton(props) {
   switch (variant) {
     case "primary":
       btnClasses =
-        "text-white rounded-md py-3 px-5 bg-emerald-500 hover:bg-emerald-600";
+        "text-white rounded-md py-2 px-4 bg-teal-700 hover:bg-teal-800";
       break;
     case "secondary":
       btnClasses = "rounded-md py-3 px-5 bg-neutral-100";
@@ -15,17 +15,17 @@ export default function BaseButton(props) {
       break;
     case "loginBtn":
       btnClasses =
-        "w-full p-3 text-white rounded-md bg-emerald-500 uppercase font-semibold";
+        "w-full p-3 text-white rounded-md bg-teal-500 uppercase font-semibold";
       break;
     case "signupBtn":
       btnClasses =
-        "w-full p-3 text-white rounded-md bg-emerald-500 uppercase font-semibold";
+        "w-full p-3 text-white rounded-md bg-teal-500 uppercase font-semibold";
       break;
     case "logoutBtn":
       btnClasses = "rounded-md py-2 px-4  text-left hover:bg-gray-100 w-full";
       break;
     case "transparent":
-      btnClasses = "rounded-md py-2 px-4 w-full";
+      btnClasses = "rounded-md py-2 px-5 w-full";
       break;
     case "danger":
       btnClasses =

@@ -21,7 +21,11 @@ export default function DefaultAddressSlider({ children }) {
     <>
       <div onClick={openModal}>{children}</div>
       {isOpen && (
-        <BaseSlider>
+        <BaseSlider
+          onCloseSlider={() => {
+            closeModal();
+          }}
+        >
           <div className="absolute right-0 top-5 -ml-8 flex pr-2  sm:-ml-10 sm:pr-4">
             <button
               type="button"

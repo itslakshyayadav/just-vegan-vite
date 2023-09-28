@@ -20,6 +20,9 @@ function NewDish() {
     protein: "",
     description: "",
     imgUrl: "",
+    imgUrl1: "",
+    imgUrl2: "",
+    imgUrl3: "",
   });
   const navigate = useNavigate();
 
@@ -231,6 +234,42 @@ function NewDish() {
                 name="imgUrl"
                 required
                 value={formdata.imgUrl}
+                onChange={handleChange}
+                className=" px-2 py-1 border-2 rounded-sm mb-2.5"
+              />
+            </div>
+            <div className="flex flex-col gap-2">
+              <label htmlFor="imgUrl1">Image Url 1</label>
+              <input
+                type="text"
+                placeholder="image url 1"
+                name="imgUrl1"
+                required
+                value={formdata.imgUrl1}
+                onChange={handleChange}
+                className=" px-2 py-1 border-2 rounded-sm mb-2.5"
+              />
+            </div>
+            <div className="flex flex-col gap-2">
+              <label htmlFor="imgUrl2">Image Url 2</label>
+              <input
+                type="text"
+                placeholder="image url 2"
+                name="imgUrl2"
+                required
+                value={formdata.imgUrl2}
+                onChange={handleChange}
+                className=" px-2 py-1 border-2 rounded-sm mb-2.5"
+              />
+            </div>
+            <div className="flex flex-col gap-2">
+              <label htmlFor="imgUrl3">Image Url 3</label>
+              <input
+                type="text"
+                placeholder="image url 3"
+                name="imgUrl3"
+                required
+                value={formdata.imgUrl3}
                 onChange={handleChange}
                 className=" px-2 py-1 border-2 rounded-sm mb-2.5"
               />

@@ -28,10 +28,12 @@ export default function MyAccount() {
   return (
     <>
       <form>
-        <div className="container border-2 m-auto py-4 p-2">
-          <div className=" rounded-sm px-5 py-3 ">
+        <div className="container border-2 rounded-md py-4 p-2">
+          <div className="flex flex-col gap-2 px-5 py-3">
             <div className="flex flex-col gap-2">
-              <label htmlFor="name">Name </label>
+              <label className="text-neutral-500 text-sm" htmlFor="name">
+                Name*
+              </label>
               <input
                 name="name"
                 value={userModel.name}

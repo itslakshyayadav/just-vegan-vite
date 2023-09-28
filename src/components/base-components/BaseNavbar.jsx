@@ -52,9 +52,9 @@ export default function BaseNavbar(props) {
   };
 
   return (
-    <div className="flex  h-16 w-full z-10">
-      <nav className="bg-zinc-950 flex justify-between items-center p-2 fixed top-0 w-full">
-        <div className="flex gap-8 items-center">
+    <div className="flex h-16 w-full z-10">
+      <nav className="bg-teal-950 flex justify-between items-center p-2 fixed top-0 w-full px-5">
+        <div className="flex gap-10 items-center">
           <Link to="/">
             <BrandLogo className="w-14" />
           </Link>
@@ -63,7 +63,7 @@ export default function BaseNavbar(props) {
               <li className=" ">
                 <BaseButton
                   variant="transparent"
-                  className="text-white  flex items-center gap-1"
+                  className="flex items-center gap-1 text-white"
                 >
                   {user &&
                     user.defaultAddress &&
@@ -72,35 +72,36 @@ export default function BaseNavbar(props) {
                 </BaseButton>
               </li>
             </DefaultAddressSlider>
-
-            {navLinks.map((elements, index) => {
-              return (
-                <li key={"navbar" + index}>
-                  <BaseNavLink to={elements.to} variant="headerLink">
-                    {elements.name}
-                  </BaseNavLink>
-                </li>
-              );
-            })}
           </ul>
         </div>
 
-        <div className="flex items-center gap-8">
-          <Link to="/">
-            <DefaultCartSlider>
-              <BaseButton
-                variant="transparent"
-                className="text-white  flex items-center gap-1"
-              >
-                <BaseIcon
-                  iconName={ICONS.Cart}
-                  className="w-6 fill-none"
-                ></BaseIcon>
-              </BaseButton>
-            </DefaultCartSlider>
-          </Link>
+        <ul className="flex gap-5 items-center">
+          {navLinks.map((elements, index) => {
+            return (
+              <li className="flex" key={"navbar" + index}>
+                <BaseNavLink to={elements.to} variant="headerLink">
+                  {elements.name}
+                </BaseNavLink>
+              </li>
+            );
+          })}
+          <li className="flex">
+            <Link to="/">
+              <DefaultCartSlider>
+                <BaseButton
+                  variant="transparent"
+                  className="text-white p-2 flex items-center gap-1"
+                >
+                  <BaseIcon
+                    iconName={ICONS.Cart}
+                    className="w-6 fill-none"
+                  ></BaseIcon>
+                </BaseButton>
+              </DefaultCartSlider>
+            </Link>
+          </li>
 
-          <div className="flex  items-center">
+          <div className="flex items-center gap-5">
             {userAuthObject.name ? (
               <Dropdown options={options}>
                 <div className="flex flex-col gap-1 py-1">
@@ -132,25 +133,23 @@ export default function BaseNavbar(props) {
               </Dropdown>
             ) : (
               <>
-                <div className="flex gap-3">
-                  <Link
-                    to="/login"
-                    className=" text-white px-6 py-3   md:hover:text-green-500 "
-                  >
-                    Login
-                  </Link>
+                <Link
+                  to="/login"
+                  className=" text-white px-6 py-3   md:hover:text-green-500 "
+                >
+                  Login
+                </Link>
 
-                  <Link
-                    to="/sign-up"
-                    className="text-white rounded-md py-3 px-5 bg-emerald-500 hover:bg-emerald-600"
-                  >
-                    Sign Up
-                  </Link>
-                </div>
+                <Link
+                  to="/sign-up"
+                  className="flex items-center rounded-md py-2 px-4 bg-white hover:bg-teal-600"
+                >
+                  <span>Sign Up</span>
+                </Link>
               </>
             )}
           </div>
-        </div>
+        </ul>
       </nav>
     </div>
   );

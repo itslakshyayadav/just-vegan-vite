@@ -4,11 +4,11 @@
 
 
 a.list-link.active {
-  border-left: 3px solid rgb(20, 213, 33);
+  border-left: 3px solid #2DD4BF;
 }
 
 a.navbar-link.active {
-  border-bottom: 3px solid rgb(20, 213, 33);
+  border-bottom: 3px solid white;
 }
 
 .slide-left {

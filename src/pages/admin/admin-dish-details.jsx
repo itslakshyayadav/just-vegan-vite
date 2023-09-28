@@ -11,6 +11,10 @@ function AdminDishDetails() {
     isActive: false,
     isPreservativeFree: false,
     isCertified: false,
+    imgUrl: "",
+    imgUrl1: "",
+    imgUrl2: "",
+    imgUrl3: "",
   });
   const params = useParams();
   const navigate = useNavigate();
@@ -249,6 +253,43 @@ function AdminDishDetails() {
                 className=" px-2 py-1 border-2 rounded-sm mb-2.5"
               />
             </div>
+            <div className="flex flex-col gap-2">
+              <label htmlFor="imgUrl1">Image Url 1</label>
+              <input
+                type="text"
+                placeholder="image url 1 "
+                name="imgUrl1"
+                required
+                value={dishModel.imgUrl1}
+                onChange={handleChange}
+                className=" px-2 py-1 border-2 rounded-sm mb-2.5"
+              />
+            </div>
+            <div className="flex flex-col gap-2">
+              <label htmlFor="imgUrl2">Image Url 2</label>
+              <input
+                type="text"
+                placeholder="image url 2"
+                name="imgUrl2"
+                required
+                value={dishModel.imgUrl2}
+                onChange={handleChange}
+                className=" px-2 py-1 border-2 rounded-sm mb-2.5"
+              />
+            </div>
+            <div className="flex flex-col gap-2">
+              <label htmlFor="imgUrl3">Image Url</label>
+              <input
+                type="text"
+                placeholder="image url 3"
+                name="imgUrl3"
+                required
+                value={dishModel.imgUrl3}
+                onChange={handleChange}
+                className=" px-2 py-1 border-2 rounded-sm mb-2.5"
+              />
+            </div>
+
             <div className="flex gap-4">
               <BaseButton type="submit" variant="primary">
                 update

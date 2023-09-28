@@ -7,7 +7,7 @@ export default function BaseNavLink(props) {
   let btnClasses = "";
   switch (variant) {
     case "headerLink":
-      btnClasses = "navbar-link py-3 px-5 text-white md:hover:text-green-500";
+      btnClasses = "navbar-link py-3 px-2 text-white md:hover:text-teal-100";
       break;
     case "accountLink":
       btnClasses = "list-link px-5 py-3 divide-y hover:bg-neutral-100";
