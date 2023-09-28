@@ -69,7 +69,7 @@ export default function Login() {
         {/* <div className=" "> */}
         <div className="flex justify-center">
           <Link to="/" className="px-3 py-3">
-            <BrandLogo />
+            <BrandLogo  className="w-36" />
           </Link>
         </div>
 

@@ -56,7 +56,7 @@ export default function BaseNavbar(props) {
       <nav className="bg-teal-950 flex justify-between items-center p-2 fixed top-0 w-full px-5">
         <div className="flex gap-10 items-center">
           <Link to="/">
-            <BrandLogo className="w-14" />
+            <BrandLogo className="w-28" />
           </Link>
           <ul className="flex gap-3">
             <DefaultAddressSlider>
