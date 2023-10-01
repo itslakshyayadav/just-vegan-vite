@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import BaseIcon from "./base-components/BaseIcon";
 
-const Dropdown = ({ options, children }) => {
+const Dropdown = ({ children, dropdownElement }) => {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef(null);
   // const [selectedOption, setSelectedOption] = useState(null);
@@ -35,7 +35,7 @@ const Dropdown = ({ options, children }) => {
           className="text-white gap-2 py-2 px-4  inline-flex items-center"
           onClick={toggleDropdown}
         >
-          <span>{"My Profile"}</span>
+          <span>{dropdownElement || "More"}</span>
 
           {isOpen ? (
             <BaseIcon iconName="uparrow" className="w-4"></BaseIcon>

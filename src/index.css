@@ -3,9 +3,9 @@
 @tailwind utilities;
 
 
-/* html {
-  font-family: 'Google Sans', 'Inter', 'Roboto', 'Helvetica', 'Arial', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', sans-serif;
-} */
+html {
+  font-family: "Gill Sans", 'Inter', 'Roboto', 'Helvetica', 'Arial', 'Segoe UI', 'Helvetica Neue', system-ui, sans-serif;
+}
 
 a.list-link.active {
   border-left: 3px solid #2DD4BF;
