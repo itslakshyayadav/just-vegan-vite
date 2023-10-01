@@ -21,7 +21,7 @@ export default function MyAccountMain() {
       iconName: "bag",
     },
     {
-      name: "MyFavourite",
+      name: "My Favourite",
       iconName: ICONS.Heart,
       to: "/my-account/my-favourite",
     },

@@ -32,7 +32,7 @@ const Dropdown = ({ options, children }) => {
       <div>
         <button
           type="button"
-          className="text-white  py-2 px-4  inline-flex items-center"
+          className="text-white gap-2 py-2 px-4  inline-flex items-center"
           onClick={toggleDropdown}
         >
           <span>{"My Profile"}</span>

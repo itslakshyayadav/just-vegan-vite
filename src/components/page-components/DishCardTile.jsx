@@ -44,7 +44,7 @@ export default function DishCardTile(props) {
         <div className="p-3 flex flex-col gap-2">
           <div className="flex gap-2 items-center justify-between">
             <div className="flex flex-col grow ">
-              <div className="flex items-center gap-3">
+              <div className="flex items-center gap-2">
                 <h2 className=" text-lg capitalize font-semibold tracking-tight text-neutral-800 dark:text-white">
                   {dishItem.dishName}
                 </h2>

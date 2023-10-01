@@ -1,6 +1,19 @@
+import UserContext from "@/contexts/UserContext";
+import { useContext } from "react";
+
 export default function BaseButton(props) {
-  const { type, variant, children, ...rest } = props;
+  const { user } = useContext(UserContext);
+  const { type, variant, children, onClick, ...rest } = props;
   let btnClasses = "";
+
+  const btnOnClick = () => {
+    if (user && user._id) {
+      onClick && onClick();
+    } else {
+      alert("please login");
+    }
+  };
+
   switch (variant) {
     case "primary":
       btnClasses =
@@ -37,7 +50,7 @@ export default function BaseButton(props) {
 
   return (
     <>
-      <button type={type} className={btnClasses} {...rest}>
+      <button type={type} onClick={btnOnClick} className={btnClasses} {...rest}>
         {children}
       </button>
     </>

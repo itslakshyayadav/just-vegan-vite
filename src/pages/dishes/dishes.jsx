@@ -100,7 +100,7 @@ const Dishes = () => {
         </div>
       </div>
       <hr className="mt-4" />
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-2 lg:gap-3">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4 lg:gap-3">
         {filteredDishes.map((dishItem, index) => {
           return (
             dishItem.isActive && (

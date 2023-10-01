@@ -17,7 +17,7 @@ export default function BaseSlider(props) {
         aria-modal="true"
       >
         <div
-          className="fixed inset-0 bg-neutral-50 bg-opacity-75 transition-opacity"
+          className="fixed inset-0 bg-black bg-opacity-20 backdrop-blur-sm transition-opacity"
           onClick={closeSlider}
         ></div>
 

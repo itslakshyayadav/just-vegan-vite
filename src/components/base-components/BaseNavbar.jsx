@@ -29,6 +29,10 @@ export default function BaseNavbar(props) {
       name: "Settings",
       to: "setting",
     },
+    // {
+    //   name: "Admin",
+    //   to: "admin",
+    // },
   ];
 
   const navLinks = [
@@ -39,10 +43,6 @@ export default function BaseNavbar(props) {
     {
       name: "Offers",
       to: "offers",
-    },
-    {
-      name: "Admin",
-      to: "admin",
     },
   ];
 
@@ -63,11 +63,22 @@ export default function BaseNavbar(props) {
               <li className=" ">
                 <BaseButton
                   variant="transparent"
-                  className="flex items-center gap-1 text-white"
+                  className="flex items-center gap-2 rounded-md py-2 px-5 text-white"
                 >
                   {user &&
-                    user.defaultAddress &&
-                    user.defaultAddress.addressLine}
+                  user.defaultAddress &&
+                  user.defaultAddress.addressLine ? (
+                    <>
+                      {" "}
+                      <BaseIcon
+                        iconName="my_location"
+                        className="fill-white"
+                      ></BaseIcon>{" "}
+                      {user.defaultAddress.addressLine}
+                    </>
+                  ) : (
+                    "Choose location"
+                  )}
                   <BaseIcon iconName="downarrow" className="w-4"></BaseIcon>
                 </BaseButton>
               </li>
@@ -103,34 +114,44 @@ export default function BaseNavbar(props) {
 
           <div className="flex items-center gap-5">
             {userAuthObject.name ? (
-              <Dropdown options={options}>
-                <div className="flex flex-col gap-1 py-1">
-                  <h1 className="px-4 py-1 font-medium text-left">
-                    <small>Hello {userAuthObject.name}</small>
-                  </h1>
-                  <hr />
-                  {options.map((option, index) => {
-                    return (
+              <>
+                <Dropdown options={options}>
+                  <div className="flex flex-col gap-1 py-1">
+                    <h1 className="px-4 py-1 font-medium text-left">
+                      <small>Hello {userAuthObject.name}</small>
+                    </h1>
+                    <hr />
+                    {options.map((option, index) => {
+                      return (
+                        <Link
+                          to={option.to}
+                          onClick={selectOption}
+                          key={index}
+                          className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 w-full text-left"
+                        >
+                          {option.name}
+                        </Link>
+                      );
+                    })}
+                    {user && user.userType === "admin" ? (
                       <Link
-                        to={option.to}
-                        onClick={selectOption}
-                        key={index}
+                        to="/admin"
                         className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 w-full text-left"
                       >
-                        {option.name}
+                        Admin
                       </Link>
-                    );
-                  })}
-                  <BaseButton
-                    type="button"
-                    className="px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 w-full text-left"
-                    variant="logoutBtn"
-                    onClick={handleLogout}
-                  >
-                    Logout
-                  </BaseButton>
-                </div>
-              </Dropdown>
+                    ) : null}
+                    <BaseButton
+                      type="button"
+                      className="px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 w-full text-left"
+                      variant="logoutBtn"
+                      onClick={handleLogout}
+                    >
+                      Logout
+                    </BaseButton>
+                  </div>
+                </Dropdown>
+              </>
             ) : (
               <>
                 <Link

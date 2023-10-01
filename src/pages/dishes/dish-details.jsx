@@ -5,6 +5,7 @@ import BaseIcon from "@/components/base-components/BaseIcon";
 import dishService from "@/services/dishService";
 import { toast } from "react-toastify";
 import CartContext from "@/contexts/CartContext";
+import BaseButton from "@/components/base-components/BaseButton";
 
 // import BaseButton from "@/components/base-components/BaseButton";
 
@@ -119,7 +120,7 @@ export default function DishDetails() {
           <div className="w-1/3 ">
             {found && found.quantity ? (
               <div className="flex items-center gap-1 border justify-center py-2 w-full rounded-md">
-                <button
+                <BaseButton
                   className="bg-neutral-100 p-1"
                   onClick={() => {
                     decrementQuantity(dishDetails);
@@ -129,9 +130,10 @@ export default function DishDetails() {
                     className="h-5 w-5  flex"
                     iconName={ICONS.Minus}
                   ></BaseIcon>
-                </button>
+                </BaseButton>
+
                 <span className="p-1">{found && found.quantity}</span>
-                <button
+                <BaseButton
                   className="bg-neutral-100 p-1"
                   onClick={() => {
                     addToCart(dishDetails);
@@ -141,30 +143,30 @@ export default function DishDetails() {
                     className="h-5 w-5 flex"
                     iconName={ICONS.Plus}
                   ></BaseIcon>
-                </button>
+                </BaseButton>
               </div>
             ) : (
-              <button
+              <BaseButton
                 className="w-full flex justify-center gap-2 border rounded-md py-3 bg-teal-500 hover:bg-teal-700 text-white font-semibold"
+                type="button"
                 onClick={() => {
                   addToCart(dishDetails);
                 }}
-                // onClick={handleAddToCart}
               >
                 Add to cart
-              </button>
+              </BaseButton>
             )}
           </div>
           <div className="w-1/3 ">
-            <button
-              type="submit"
-              onClick={() => {
+            <BaseButton
+              type="button"
+              Onclick={() => {
                 addFavouriteDish(dishDetails._id);
               }}
               className="w-full flex justify-center gap-2 border rounded-md py-3 bg-neutral-100 hover:bg-neutral-200 font-semibold "
             >
               <BaseIcon iconName="heart"></BaseIcon> WISHLIST
-            </button>
+            </BaseButton>
           </div>
         </div>
         {/* <div className="grid grid-cols-2 gap-2 mb-4 ">
