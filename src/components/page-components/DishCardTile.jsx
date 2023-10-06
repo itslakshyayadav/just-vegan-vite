@@ -45,7 +45,7 @@ export default function DishCardTile(props) {
           <div className="flex gap-2 justify-between">
             <div className="flex flex-col grow ">
               <div className="flex items-center gap-2">
-                <h2 className=" text-lg capitalize font-semibold tracking-tight text-black dark:text-black">
+                <h2 className=" text-lg capitalize font-semibold tracking-tight text-black">
                   {dishItem.dishName}
                 </h2>
                 {dishItem.isCertified && (
@@ -99,7 +99,7 @@ export default function DishCardTile(props) {
 
             <div className="flex justify-between items-center">
               {found && found.quantity ? (
-                <div className="flex items-center gap-1  border rounded-md">
+                <div className="flex items-center gap-1 border rounded-md">
                   <button
                     className="bg-neutral-100 p-1"
                     onClick={() => {
