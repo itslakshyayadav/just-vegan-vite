@@ -87,7 +87,9 @@ export default function DishDetails() {
       </div>
       <div className="w-1/2">
         <div className="flex gap-3 items-center mb-2">
-          <h1 className="text-2xl font-bold">{dishDetails.dishName}</h1>
+          <h1 className="text-2xl font-bold text-red-600">
+            {dishDetails.dishName}
+          </h1>
           {dishDetails.isCertified ? (
             <BaseIcon iconName="check"></BaseIcon>
           ) : null}
@@ -165,7 +167,7 @@ export default function DishDetails() {
               }}
               className="w-full flex justify-center gap-2 border rounded-md py-3 bg-neutral-100 hover:bg-neutral-200 font-semibold "
             >
-              <BaseIcon iconName="heart"></BaseIcon> WISHLIST
+              <BaseIcon iconName="heart"> woahs ta lisbtd</BaseIcon> WISHLIST
             </BaseButton>
           </div>
         </div>
