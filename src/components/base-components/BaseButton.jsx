@@ -28,11 +28,11 @@ export default function BaseButton(props) {
       break;
     case "loginBtn":
       btnClasses =
-        "w-full p-3 text-white rounded-md bg-teal-500 uppercase font-semibold";
+        "w-full p-3 text-white rounded-md bg-teal-500 uppercase hover:bg-teal-800 font-semibold";
       break;
     case "signupBtn":
       btnClasses =
-        "w-full p-3 text-white rounded-md bg-teal-500 uppercase font-semibold";
+        "w-full p-3 text-white rounded-md bg-teal-500 uppercase hover:bg-teal-800 font-semibold";
       break;
     case "logoutBtn":
       btnClasses = "rounded-md py-2 px-4  text-left hover:bg-gray-100 w-full";

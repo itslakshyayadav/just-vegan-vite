@@ -40,7 +40,7 @@ export default function DefaultAddressTile(props) {
               onClick={() => {
                 handleSetDefaultAddress(address._id);
               }}
-              className="border rounded-md hover:bg-slate-100 w-24 py-1 px-2 mt-2"
+              className="border rounded-md hover:bg-slate-100 w-28 py-1 px-2 mt-2"
             >
               Set Default
             </button>

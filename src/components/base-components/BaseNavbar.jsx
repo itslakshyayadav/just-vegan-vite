@@ -9,10 +9,12 @@ import { ICONS } from "@/helpers/constants";
 import DefaultCartSlider from "../page-components/DefaultCartSlider";
 import UserContext from "@/contexts/UserContext";
 import { useContext } from "react";
+import CartContext from "@/contexts/CartContext";
 
 export default function BaseNavbar(props) {
   const { selectOption } = props;
   const { user } = useContext(UserContext);
+  const { cart } = useContext(CartContext);
 
   const userAuthStore = localStorage.getItem("userAuth");
   let userAuthObject = {};
@@ -51,6 +53,8 @@ export default function BaseNavbar(props) {
     window.location.href = "/login";
   };
 
+  const totalQuantity = cart.reduce((total, item) => total + item.quantity, 0);
+
   return (
     <div className="flex h-16 w-full z-10">
       <nav className="bg-teal-950 flex justify-between items-center p-2 fixed top-0 w-full px-5">
@@ -63,7 +67,7 @@ export default function BaseNavbar(props) {
               <li className=" ">
                 <BaseButton
                   variant="transparent"
-                  className="flex items-center gap-2 rounded-md py-2 px-5 text-white"
+                  className="flex items-center gap-2 rounded-md py-2 px-5 text-white text-sm"
                 >
                   {user &&
                   user.defaultAddress &&
@@ -72,7 +76,7 @@ export default function BaseNavbar(props) {
                       {" "}
                       <BaseIcon
                         iconName="my_location"
-                        className="fill-white"
+                        className="fill-white w-5 flex"
                       ></BaseIcon>{" "}
                       {user.defaultAddress.addressLine}
                     </>
@@ -97,12 +101,18 @@ export default function BaseNavbar(props) {
             );
           })}
           <li className="flex">
-            <Link to="/">
+            <Link>
               <DefaultCartSlider>
                 <BaseButton
                   variant="transparent"
-                  className="text-white p-2 flex items-center gap-1"
+                  className="text-white p-2 relative flex items-center gap-1"
                 >
+                  {totalQuantity ? (
+                    <span className="tetx-white absolute top-0 right-0 bg-red-700 rounded-full px-1 text-sm">
+                      {totalQuantity}
+                    </span>
+                  ) : null}
+
                   <BaseIcon
                     iconName={ICONS.Cart}
                     className="w-6 fill-none"

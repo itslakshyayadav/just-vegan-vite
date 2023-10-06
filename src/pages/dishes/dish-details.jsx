@@ -59,28 +59,28 @@ export default function DishDetails() {
             <img
               src={dishDetails.imgUrl}
               className="w-full h-80 object-cover object-center rounded-sm"
-              alt=""
+              alt="food image"
             />
           </div>
           <div>
             <img
               src={dishDetails.imgUrl1}
               className="w-full h-80 object-cover object-center rounded-sm"
-              alt=""
+              alt="food image"
             />
           </div>
           <div>
             <img
               src={dishDetails.imgUrl2}
               className="w-full h-80 object-cover object-center rounded-sm"
-              alt=""
+              alt="food image"
             />
           </div>
           <div>
             <img
               src={dishDetails.imgUrl3}
               className="w-full h-80 object-cover object-center rounded-sm"
-              alt=""
+              alt="food image"
             />
           </div>
         </div>

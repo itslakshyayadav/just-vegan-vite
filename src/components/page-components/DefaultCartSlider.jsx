@@ -26,6 +26,7 @@ export default function DefaultCartSlider({ children }) {
     addToCart,
     decrementQuantity,
   } = useContext(CartContext);
+  console.log(cart);
 
   return (
     <>
@@ -156,10 +157,10 @@ export default function DefaultCartSlider({ children }) {
                       <p className="text-xs">Subtotal</p>
                       <p className="text-xs"> {totalPrice}</p>
                     </div>
-                    <div className="flex justify-between">
+                    {/* <div className="flex justify-between">
                       <p className="text-xs">Delivery Charge</p>
                       <p className="text-xs"> 39</p>
-                    </div>
+                    </div> */}
                     <p>
                       <small>
                         {" "}

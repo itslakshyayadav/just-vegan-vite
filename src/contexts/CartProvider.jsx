@@ -9,7 +9,7 @@ export default function CartProvider({ children }) {
   const { user } = useContext(UserContext);
   const currentData = JSON.parse(localStorage.getItem("cartData") || "[]");
   const [cart, setCart] = useState(currentData);
-  const totalPrice = cart.reduce((total, item) => total + item.price + 39, 0);
+  const totalPrice = cart.reduce((total, item) => total + item.price, 0);
 
   const addToCart = async (dishItem) => {
     const cartItem = cart.findIndex((item) => item.dish._id === dishItem._id);
