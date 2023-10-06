@@ -45,7 +45,7 @@ export default function DishCardTile(props) {
           <div className="flex gap-2 justify-between">
             <div className="flex flex-col grow ">
               <div className="flex items-center gap-2">
-                <h2 className=" text-lg capitalize font-semibold tracking-tight text-green-600 dark:text-white">
+                <h2 className=" text-lg capitalize font-semibold tracking-tight text-blue-600 dark:text-white">
                   {dishItem.dishName}
                 </h2>
                 {dishItem.isCertified && (
