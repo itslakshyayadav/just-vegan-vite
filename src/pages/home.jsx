@@ -25,10 +25,10 @@ export default function Home() {
 
   return (
     <div className="flex flex-col">
-      <div className="h-[512px] overflow-hidden">
+      <div className="h-[20rem] md:h-[28rem] overflow-hidden">
         <img
           key={carouselImages[currentImgIndex]}
-          className="w-full object-cover "
+          className="w-full h-full object-cover"
           src={carouselImages[currentImgIndex]}
           alt=""
         />

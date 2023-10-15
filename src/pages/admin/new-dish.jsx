@@ -1,4 +1,4 @@
-import { useState } from "react";
+// import { useState } from "react";
 import dishService from "@/services/dishService";
 import { toast } from "react-toastify";
 import BaseButton from "@/components/base-components/BaseButton";
@@ -76,7 +76,7 @@ function NewDish() {
               </h1>
             </div>
             <div className="flex flex-col gap-2">
-              <label htmlFor="dishName">Dish Name *</label>
+              <label htmlFor="dishName">Dish Name*</label>
               <Controller
                 name="dishName"
                 control={control}
