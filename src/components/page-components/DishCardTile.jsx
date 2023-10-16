@@ -73,6 +73,7 @@ export default function DishCardTile(props) {
             </div>
             <div>
               <BaseButton
+                userAuthneed={true}
                 onClick={() => {
                   addFavouriteDish(dishItem._id);
                 }}

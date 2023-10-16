@@ -23,8 +23,8 @@ export default function AdminMain() {
 
   return (
     <div className="container mx-auto max-w-4xl lg:max-w-6xl my-6 px-4 md:px-6">
-      <div className="flex gap-8 items-center">
-        <ul className="flex gap-3">
+      <div className="flex  gap-8 items-center">
+        <ul className="flex flex-wrap gap-3">
           {navLinks.map((link, index) => {
             return (
               <li key={"navbar" + index}>

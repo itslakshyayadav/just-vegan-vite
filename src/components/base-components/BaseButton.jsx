@@ -1,16 +1,21 @@
 import UserContext from "@/contexts/UserContext";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 
 export default function BaseButton(props) {
   const { user } = useContext(UserContext);
-  const { type, variant, children, onClick, ...rest } = props;
+  const { type, variant, children, userAuthneed, onClick, ...rest } = props;
   let btnClasses = "";
+  // const [userAuthneed, setUserAuthNeed] = useState(false);
 
   const btnOnClick = () => {
-    if (user && user._id) {
-      onClick && onClick();
+    if (userAuthneed === true) {
+      if (user && user._id) {
+        onClick && onClick();
+      } else {
+        alert("please login");
+      }
     } else {
-      alert("please login");
+      onClick && onClick();
     }
   };
 
