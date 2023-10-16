@@ -56,7 +56,7 @@ export default function MyFavourite() {
 
                     <div className="p-3">
                       <div className="flex gap-2 items-center mb-1">
-                        <h2 className="mb-2 text-lg font-semibold tracking-tight text-neutral-800 dark:text-white">
+                        <h2 className="mb-2 text-lg font-semibold tracking-tight text-neutral-800 ">
                           {dishItem.dishName}
                         </h2>
                         {dishItem.isCertified && (
@@ -77,7 +77,7 @@ export default function MyFavourite() {
                         )}
                       </div>
 
-                      <p className="mb-3 font-bold text-neutral-700 dark:text-neutral-400">
+                      <p className="mb-3 font-bold text-neutral-950">
                         ₹{dishItem.price ? dishItem.price : "110"}
                       </p>
                       <div className="flex justify-between items-center">

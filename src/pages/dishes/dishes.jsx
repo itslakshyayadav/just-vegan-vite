@@ -29,11 +29,7 @@ const Dishes = () => {
   // );
   return (
     <div className="container mx-auto max-w-4xl lg:max-w-6xl my-6 px-4 md:px-6">
-      <hr className="mb-4" />
-      <div className="flex items-center gap-5">
-        <Link to="/" className="text-3xl text-gray-800 font-sans font-semibold">
-          Filters
-        </Link>
+      <div className="flex flex-wrap items-center gap-x-5 gap-y-2 sm:flex-0">
         <div className="flex items-center border px-3 hover:shadow-lg ">
           <label
             htmlFor="dishes"
@@ -99,7 +95,6 @@ const Dishes = () => {
           />
         </div>
       </div>
-      <hr className="mt-4" />
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4 lg:gap-3">
         {filteredDishes.map((dishItem, index) => {
           return (

@@ -1,9 +1,12 @@
 import { Outlet } from "react-router-dom";
-import BaseNavbar from "../components/base-components/BaseNavbar";
+// import BaseNavbar from "../components/base-components/BottomBaseNavbar";
+
 import { ToastContainer } from "react-toastify";
 import { useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import "react-toastify/dist/ReactToastify.css";
+import BaseNavbarCopy from "@/components/base-components/BaseNavbarCopy";
+// import BottomBaseNavbar from "@/components/base-components/BottomBaseNavbar";
 
 export default function Home() {
   let location = useLocation();
@@ -21,7 +24,7 @@ export default function Home() {
 
   return (
     <>
-      {!hideNavbar && <BaseNavbar></BaseNavbar>}
+      {!hideNavbar && <BaseNavbarCopy></BaseNavbarCopy>}
 
       <ToastContainer
         position="bottom-right"

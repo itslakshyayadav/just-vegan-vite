@@ -10,6 +10,7 @@ export default function CartProvider({ children }) {
   const currentData = JSON.parse(localStorage.getItem("cartData") || "[]");
   const [cart, setCart] = useState(currentData);
   const totalPrice = cart.reduce((total, item) => total + item.price, 0);
+  const totalQuantity = cart.reduce((total, item) => total + item.quantity, 0);
 
   const addToCart = async (dishItem) => {
     const cartItem = cart.findIndex((item) => item.dish._id === dishItem._id);
@@ -80,6 +81,7 @@ export default function CartProvider({ children }) {
         orderKnow,
         totalPrice,
         decrementQuantity,
+        totalQuantity,
       }}
     >
       {children}

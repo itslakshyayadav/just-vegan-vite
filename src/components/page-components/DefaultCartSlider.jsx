@@ -161,6 +161,7 @@ export default function DefaultCartSlider({ children }) {
                       <p className="text-xs">Delivery Charge</p>
                       <p className="text-xs"> 39</p>
                     </div> */}
+
                     <p>
                       <small>
                         {" "}

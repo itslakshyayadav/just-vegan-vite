@@ -87,14 +87,14 @@ export default function DishDetails() {
       </div>
       <div className="w-1/2">
         <div className="flex gap-3 items-center mb-2">
-          <h1 className="text-2xl font-bold text-red-600">
+          <h1 className="text-2xl font-bold text-neutal-950">
             {dishDetails.dishName}
           </h1>
           {dishDetails.isCertified ? (
             <BaseIcon iconName="check"></BaseIcon>
           ) : null}
         </div>
-        <span className=" mb-2 font-sans inline-flex items-center h-5 border uppercase bg-slate-100 font-semibold text-gray-500 rounded-xl   px-1">
+        <span className=" mb-2 font-sans inline-flex items-center h-5 border uppercase bg-slate-100 font-semibold text-gray-500 rounded-xl px-1">
           <small> {dishDetails.dishCategory}</small>
         </span>
         <p className="capitalize text-gray-500 mb-2 font-semibold">
@@ -114,7 +114,7 @@ export default function DishDetails() {
           })}
         </div>
         <div className="py-2 mt-2">
-          <span className="rounded-sm text-center text-2xl  font-semibold">
+          <span className="rounded-sm text-center text-2xl font-semibold">
             ₹ {dishDetails.price}
           </span>
         </div>
