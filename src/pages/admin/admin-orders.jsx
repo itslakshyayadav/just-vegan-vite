@@ -1,11 +1,12 @@
-import BaseIcon from "@/components/base-components/BaseIcon";
-import { ICONS } from "@/helpers/constants";
+import BaseBreadCrumb from "@/components/base-components/BaseBreadCrumb";
+// import BaseIcon from "@/components/base-components/BaseIcon";
+// import { ICONS } from "@/helpers/constants";
 import orderService from "@/services/orderService";
 import { useState, useEffect } from "react";
 import { Link, useSearchParams } from "react-router-dom";
 import { toast } from "react-toastify";
 
-function AdminOrdersDetails() {
+function AdminOrders() {
   const [searchParams, setSearchParams] = useSearchParams();
   const [userOrders, setUserOrders] = useState([]);
 
@@ -53,7 +54,8 @@ function AdminOrdersDetails() {
   return (
     <>
       <div className="container mx-auto max-w-4xl lg:max-w-6xl my-6 px-4 md:px-6">
-        <ul className="flex gap-2">
+        <BaseBreadCrumb breadcrumb={ordersBreadcrumb}></BaseBreadCrumb>
+        {/* <ul className="flex gap-2">
           {ordersBreadcrumb.map((crumb, index) => {
             return (
               <li className="flex items-center" key={"order-crump" + index}>
@@ -67,7 +69,7 @@ function AdminOrdersDetails() {
               </li>
             );
           })}
-        </ul>
+        </ul> */}
 
         <ul className="flex gap-2">
           {deliveryStatusTabs.map((tab, index) => {
@@ -137,4 +139,4 @@ function AdminOrdersDetails() {
     </>
   );
 }
-export default AdminOrdersDetails;
+export default AdminOrders;

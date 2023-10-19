@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { API_BASE_PATH } from "@/helpers/constants";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
+import BaseBreadCrumb from "@/components/base-components/BaseBreadCrumb";
 
 export default function AdminDishes() {
   let params = useParams();
@@ -19,8 +20,14 @@ export default function AdminDishes() {
     fetchUserData();
   }, []);
 
+  const dishesBreadcrumb = [
+    { name: "Admin", to: "/admin" },
+    { name: "Dishes", to: "/admin/dishes" },
+  ];
+
   return (
     <div className="container mx-auto max-w-4xl lg:max-w-6xl my-6 px-4 md:px-6">
+      <BaseBreadCrumb breadcrumb={dishesBreadcrumb} />
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-2 lg:gap-3">
         {dishes.map((dishItem, index) => {
           return (

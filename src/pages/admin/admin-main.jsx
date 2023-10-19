@@ -21,7 +21,7 @@ export default function AdminMain() {
     },
     {
       name: "Orders",
-      to: "/admin/admin-orders-details",
+      to: "/admin/admin-orders",
     },
   ];
 

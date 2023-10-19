@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import BaseButton from "@/components/base-components/BaseButton";
 import BaseIcon from "@/components/base-components/BaseIcon";
+import BaseBreadCrumb from "@/components/base-components/BaseBreadCrumb";
 
 function AdminOffers() {
   let params = useParams();
@@ -22,9 +23,15 @@ function AdminOffers() {
     fetchUserData();
   }, []);
 
+  const offerBreadcrumb = [
+    { name: "Admin", to: "/admin" },
+    { name: "Offers", to: "/admin/admin-offers" },
+  ];
+
   return (
     <>
       <div className="container mx-auto max-w-4xl lg:max-w-6xl my-6 px-4 md:px-6">
+        <BaseBreadCrumb breadcrumb={offerBreadcrumb}></BaseBreadCrumb>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-2 lg:gap-3">
           {" "}
           {offers.map((element, index) => {
