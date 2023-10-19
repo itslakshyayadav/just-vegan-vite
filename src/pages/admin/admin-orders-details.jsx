@@ -1,27 +1,43 @@
+import BaseIcon from "@/components/base-components/BaseIcon";
+import { ICONS } from "@/helpers/constants";
 import orderService from "@/services/orderService";
 import { useState, useEffect } from "react";
+import { Link, useSearchParams } from "react-router-dom";
 import { toast } from "react-toastify";
 
 function AdminOrdersDetails() {
+  const [searchParams, setSearchParams] = useSearchParams();
   const [userOrders, setUserOrders] = useState([]);
-  useEffect(() => {
-    const fetchUserOrders = async () => {
-      try {
-        const response = await orderService.getAllOrders();
-        console.log(`response`);
-        console.log(response);
 
-        setUserOrders(response.data.payload);
-      } catch (error) {
-        if (error.response === 500) {
-          toast.error(error.response.statusText);
-        }
+  const fetchOrders = async (query) => {
+    try {
+      const response = await orderService.getAllOrders(query);
+      setUserOrders(response.data.payload);
+    } catch (error) {
+      if (error.response === 500) {
+        toast.error(error.response.statusText);
       }
-    };
-    fetchUserOrders();
+    }
+  };
+
+  useEffect(() => {
+    const queryParams = searchParams.get("deliveryStatus");
+    fetchOrders(`?deliveryStatus=${queryParams}`);
   }, []);
-  console.log(`userOrders`);
-  console.log(userOrders);
+
+  const ordersBreadcrumb = [
+    { name: "Admin", to: "/admin" },
+    { name: "Orders", to: "/admin/orders" },
+  ];
+
+  const deliveryStatusTabs = [
+    { name: "All", to: "" },
+    { name: "Received", to: "?deliveryStatus=received" },
+    { name: "Accepted", to: "?deliveryStatus=accepted" },
+    { name: "Declined", to: "?deliveryStatus=declined" },
+    { name: "Out for delivery", to: "?deliveryStatus=out-for-delivery" },
+    { name: "Delivered", to: "?deliveryStatus=delivered" },
+  ];
 
   const Data = [
     { name: "OrderId" },
@@ -36,7 +52,41 @@ function AdminOrdersDetails() {
 
   return (
     <>
-      <div className=" m-auto py-8">
+      <div className="container mx-auto max-w-4xl lg:max-w-6xl my-6 px-4 md:px-6">
+        <ul className="flex gap-2">
+          {ordersBreadcrumb.map((crumb, index) => {
+            return (
+              <li className="flex items-center" key={"order-crump" + index}>
+                <Link className="text-neutral-500 text-sm p-2" to={crumb.to}>
+                  {crumb.name}
+                </Link>
+                <BaseIcon
+                  className="h-3 w-3"
+                  iconName={ICONS.ChevronRight}
+                ></BaseIcon>
+              </li>
+            );
+          })}
+        </ul>
+
+        <ul className="flex gap-2">
+          {deliveryStatusTabs.map((tab, index) => {
+            return (
+              <li className="flex items-center" key={"order-crump" + index}>
+                <Link
+                  className="text-neutral-500 text-sm p-2"
+                  to={tab.to}
+                  onClick={() => {
+                    fetchOrders(tab.to);
+                  }}
+                >
+                  {tab.name}
+                </Link>
+              </li>
+            );
+          })}
+        </ul>
+
         <table className="border">
           <thead>
             <tr>

@@ -45,36 +45,34 @@ const router = createBrowserRouter([
       {
         path: "/admin",
         element: <AdminMain />,
-        children: [
-          {
-            path: "/admin/new-dish",
-            element: <NewDish />,
-          },
-          {
-            path: "/admin/admin-dishes",
-            element: <AdminDishes />,
-          },
-          {
-            path: "/admin/admin-dishes/:dishId",
-            element: <AdminDishDetails />,
-          },
-          {
-            path: "/admin/new-offer",
-            element: <AdminNewOffer />,
-          },
-          {
-            path: "/admin/admin-offers",
-            element: <AdminOffers />,
-          },
-          {
-            path: "/admin/admin-offers/:offerId",
-            element: <AdminOfferDetails />,
-          },
-          {
-            path: "/admin/admin-orders-details",
-            element: <AdminOrdersDetails />,
-          },
-        ],
+      },
+      {
+        path: "/admin/new-dish",
+        element: <NewDish />,
+      },
+      {
+        path: "/admin/admin-dishes",
+        element: <AdminDishes />,
+      },
+      {
+        path: "/admin/admin-dishes/:dishId",
+        element: <AdminDishDetails />,
+      },
+      {
+        path: "/admin/new-offer",
+        element: <AdminNewOffer />,
+      },
+      {
+        path: "/admin/admin-offers",
+        element: <AdminOffers />,
+      },
+      {
+        path: "/admin/admin-offers/:offerId",
+        element: <AdminOfferDetails />,
+      },
+      {
+        path: "/admin/admin-orders-details",
+        element: <AdminOrdersDetails />,
       },
       {
         path: "/offers",
