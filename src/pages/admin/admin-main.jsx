@@ -19,6 +19,10 @@ export default function AdminMain() {
       name: "Admin Offers",
       to: "/admin/admin-offers",
     },
+    {
+      name: "Users Orders",
+      to: "/admin/admin-orders-details",
+    },
   ];
 
   return (

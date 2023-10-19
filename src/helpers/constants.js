@@ -1,6 +1,5 @@
 export const API_BASE_PATH = "http://api.justvegan.fit";
 // export const API_BASE_PATH = "http://localhost:3001";
-// export const API_BASE_PATH = "http://api.justvegan.fit/";
 
 export const ICONS = {
   Heart: "heart",

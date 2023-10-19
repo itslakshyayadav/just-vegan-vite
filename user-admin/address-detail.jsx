@@ -60,8 +60,8 @@ const AddressDetail = () => {
                 onChange={handleChange}
                 className="px-2 py-1 border-2 rounded-sm"
               >
-                <option value="lunch">Home</option>
-                <option value="dinner">Office</option>
+                <option value="home">Home</option>
+                <option value="office">Office</option>
               </select>
             </div>
             <div className="flex flex-col gap-2">

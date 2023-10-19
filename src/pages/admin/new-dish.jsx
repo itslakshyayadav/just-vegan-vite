@@ -3,7 +3,10 @@ import dishService from "@/services/dishService";
 import { toast } from "react-toastify";
 import BaseButton from "@/components/base-components/BaseButton";
 import { useNavigate } from "react-router-dom";
-import { useForm, Controller } from "react-hook-form";
+import { useForm } from "react-hook-form";
+import BaseInput from "@/components/base-components/BaseInput";
+import BaseSelect from "../../components/base-components/BaseSelect";
+import BaseCheckbox from "@/components/base-components/BaseCheckbox";
 
 function NewDish() {
   const {
@@ -75,158 +78,73 @@ function NewDish() {
                 NewDish Page
               </h1>
             </div>
-            <div className="flex flex-col gap-2">
-              <label htmlFor="dishName">Dish Name*</label>
-              <Controller
-                name="dishName"
-                control={control}
-                rules={{ required: true, maxLength: 100 }}
-                render={({ field }) => {
-                  return (
-                    <input
-                      type="text"
-                      id="dishName"
-                      className="px-2 py-1 border-2 rounded-sm"
-                      {...field}
-                    />
-                  );
-                }}
-              ></Controller>
+            <BaseInput
+              name="dishName"
+              label="Dish Name"
+              control={control}
+              errors={errors}
+              rules={{ required: true, maxLength: 100 }}
+            ></BaseInput>
 
-              {errors.dishName?.type === "required" && (
-                <p role="alert" className="text-red-500">
-                  Dish name is required
-                </p>
-              )}
-            </div>
             <div className="flex flex-col gap-2">
-              <label htmlFor="dishCategory">Dish Category*</label>
-
-              <Controller
+              <BaseSelect
                 name="dishCategory"
+                label="Dish Category"
                 control={control}
+                errors={errors}
                 rules={{ required: true }}
-                render={({ field }) => {
-                  return (
-                    <select
-                      className="px-2 py-1 border-2 rounded-sm"
-                      {...field}
-                    >
-                      <option value="lunch">Lunch</option>
-                      <option value="dinner">Dinner</option>
-                      <option value="breakfast">Breakfast</option>
-                    </select>
-                  );
-                }}
-              ></Controller>
+              >
+                <option value="lunch">Lunch</option>
+                <option value="dinner">Dinner</option>
+                <option value="breakfast">Breakfast</option>
+              </BaseSelect>
             </div>
-            <div className="flex flex-col gap-2">
-              <label htmlFor="price">Price*</label>
-              <Controller
-                name="price"
-                control={control}
-                rules={{ required: true, max: 3000, min: 100 }}
-                render={({ field }) => {
-                  return (
-                    <input
-                      type="number"
-                      className="px-2 py-1 border-2 rounded-sm"
-                      {...field}
-                    />
-                  );
-                }}
-              ></Controller>
-              {errors.price?.type === "required" && (
-                <p role="alert" className="text-red-500">
-                  Dish price is required
-                </p>
-              )}
-              {errors.price?.type === "min" && (
-                <p role="alert" className="text-red-500">
-                  Dish price min limit is reached.
-                </p>
-              )}
-              {errors.price?.type === "max" && (
-                <p role="alert" className="text-red-500">
-                  Dish price max limit is reached.
-                </p>
-              )}
-            </div>
+            <BaseInput
+              name="price"
+              label="Price"
+              control={control}
+              errors={errors}
+              type="number"
+              rules={{ required: true, max: 3000, min: 100 }}
+            ></BaseInput>
+
             <div className="py-4">
               <h2 className="text-xl font-semibold mb-1">Quality Checks</h2>
-              <div className="flex  gap-5">
-                <label htmlFor="isVaccumSealed">
-                  <Controller
-                    name="isVaccumSealed"
-                    control={control}
-                    rules={{ required: true }}
-                    render={({ field }) => {
-                      return (
-                        <input
-                          type="checkbox"
-                          id="isVaccumSealed"
-                          value={true}
-                          {...field}
-                        />
-                      );
-                    }}
-                  ></Controller>
-                  isVaccumSealed
-                  {errors.isVaccumSealed?.type === "required" && (
-                    <p role="alert" className="text-red-500">
-                      Is isVaccumSealed is required
-                    </p>
-                  )}
-                </label>
+              <div className="flex gap-5">
+                <BaseCheckbox
+                  name="isVaccumSealed"
+                  label="isVaccumSealed"
+                  control={control}
+                  rules={{ required: true }}
+                  errors={errors}
+                ></BaseCheckbox>
 
-                <label htmlFor="isActive">
-                  <Controller
-                    name="isActive"
-                    control={control}
-                    rules={{ required: true }}
-                    render={({ field }) => {
-                      return <input type="checkbox" value={true} {...field} />;
-                    }}
-                  ></Controller>
-                  isActive
-                  {errors.isActive?.type === "required" && (
-                    <p role="alert" className="text-red-500">
-                      Is active is required
-                    </p>
-                  )}
-                </label>
-                <label htmlFor="isCertified">
-                  <Controller
-                    name="isCertified"
-                    control={control}
-                    rules={{ required: true }}
-                    render={({ field }) => {
-                      return <input type="checkbox" value={true} {...field} />;
-                    }}
-                  ></Controller>
-                  certified
-                  {errors.isCertified?.type === "required" && (
-                    <p role="alert" className="text-red-500">
-                      Is isCertified is required
-                    </p>
-                  )}
-                </label>
-                <label htmlFor="isPreservativeFree">
-                  <Controller
-                    name="isPreservativeFree"
-                    control={control}
-                    rules={{ required: true }}
-                    render={({ field }) => {
-                      return <input type="checkbox" value={true} {...field} />;
-                    }}
-                  ></Controller>
-                  isPreservativeFree
-                  {errors.isPreservativeFree?.type === "required" && (
-                    <p role="alert" className="text-red-500">
-                      Is isPreservativeFree is required
-                    </p>
-                  )}
-                </label>
+                <BaseCheckbox
+                  name="isActive"
+                  label="isActive"
+                  type="checkbox"
+                  control={control}
+                  rules={{ required: true }}
+                  errors={errors}
+                ></BaseCheckbox>
+
+                <BaseCheckbox
+                  name="isCertified"
+                  label="isCertified"
+                  type="checkbox"
+                  control={control}
+                  rules={{ required: true }}
+                  errors={errors}
+                ></BaseCheckbox>
+
+                <BaseCheckbox
+                  name="isPreservativeFree"
+                  label="isPreservativeFree"
+                  type="checkbox"
+                  control={control}
+                  rules={{ required: true }}
+                  errors={errors}
+                ></BaseCheckbox>
               </div>
             </div>
 
@@ -289,58 +207,29 @@ function NewDish() {
               />
             </div>
             <div className="flex flex-col gap-2">
-              <label htmlFor="imgUrl">Image Url</label>
-              <Controller
+              <BaseInput
                 name="imgUrl"
+                label="ImgUrl"
+                type="url"
                 control={control}
                 rules={{ required: true }}
-                render={({ field }) => {
-                  return (
-                    <input
-                      type="url"
-                      className="px-2 py-1 border-2 rounded-sm"
-                      placeholder="image url"
-                      value={true}
-                      {...field}
-                    />
-                  );
-                }}
-              ></Controller>
-              {errors.imgUrl?.type === "required" && (
-                <p role="alert" className="text-red-500">
-                  url is required
-                </p>
-              )}
+                errors={errors}
+              ></BaseInput>
             </div>
             <div className="flex flex-col gap-2">
-              <label htmlFor="imgUrl1"> Image Url 1</label>
-              <Controller
+              <BaseInput
                 name="imgUrl1"
+                label="ImgUrl 1"
+                type="url"
                 control={control}
                 rules={{ required: true }}
-                render={({ field }) => {
-                  return (
-                    <input
-                      type="url"
-                      className="px-2 py-1 border-2 rounded-sm"
-                      placeholder="image url 1"
-                      value={true}
-                      {...field}
-                    />
-                  );
-                }}
-              ></Controller>
-              {errors.imgUrl1?.type === "required" && (
-                <p role="alert" className="text-red-500">
-                  url is required
-                </p>
-              )}
+                errors={errors}
+              ></BaseInput>
             </div>
             <div className="flex flex-col gap-2">
               <label htmlFor="imgUrl2">Image Url 2</label>
               <input
                 type="url"
-                placeholder="image url 2"
                 className="px-2 py-1 border-2 rounded-sm mb-2.5"
                 {...register("imgUrl2", {})}
               />
@@ -349,7 +238,6 @@ function NewDish() {
               <label htmlFor="imgUrl3">Image Url 3</label>
               <input
                 type="text"
-                placeholder="image url 3"
                 className=" px-2 py-1 border-2 rounded-sm mb-2.5"
                 {...register("imgUrl3", {})}
               />

@@ -31,10 +31,10 @@ function AdminNewOffer() {
   //   });
   // };
 
-  const onFormSubmit = async (event) => {
+  const onFormSubmit = async (formData) => {
     try {
-      event.preventDefault();
-      const response = await offerService.createOffer(event);
+      // event.preventDefault();
+      const response = await offerService.createOffer(formData);
       if (response.status == 200) {
         toast.success("A new offer created successfully.");
       }

@@ -21,6 +21,8 @@ import MyFavourite from "./pages/my-account/my-favourite";
 import MyReviews from "./pages/my-account/my-reviews";
 import MyAccount from "./pages/my-account/my-account";
 import CreateAddress from "./pages/my-account/create-address";
+import AdminOrdersDetails from "./pages/admin/admin-orders-details";
+
 // import AddressDetail from "user-admin/address-detail";
 
 const router = createBrowserRouter([
@@ -67,6 +69,10 @@ const router = createBrowserRouter([
           {
             path: "/admin/admin-offers/:offerId",
             element: <AdminOfferDetails />,
+          },
+          {
+            path: "/admin/admin-orders-details",
+            element: <AdminOrdersDetails />,
           },
         ],
       },

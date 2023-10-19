@@ -69,7 +69,7 @@ export default function Login() {
         {/* <div className=" "> */}
         <div className="flex justify-center">
           <Link to="/" className="px-3 py-3">
-            <BrandLogo  className="w-36" />
+            <BrandLogo className="w-36" />
           </Link>
         </div>
 
@@ -90,7 +90,7 @@ export default function Login() {
               value={login.emailId}
               onChange={handleChange}
               className="px-2 py-2 rounded-md w-full"
-              placeholder="Username"
+              placeholder="abcd@gmail.com"
             />
           </div>
           <div className="flex grow text-center">
@@ -117,19 +117,26 @@ export default function Login() {
                 forgot Username?
               </a>
             </li>
-            <li>
+            {/* <li>
               <a
                 href="sign-up"
                 className="text-cyan-950 underline decoration-1"
               >
                 Sign-up
               </a>
-            </li>
+            </li> */}
           </ul>
           <div className="flex">
             <BaseButton btnType="submit" variant="loginBtn">
               Login
             </BaseButton>
+          </div>
+          <div className="">
+            <Link to="/sign-up">
+              <BaseButton btnType="submit" variant="transparent">
+                Sign-up
+              </BaseButton>
+            </Link>
           </div>
         </form>
 

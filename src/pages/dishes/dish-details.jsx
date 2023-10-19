@@ -27,7 +27,7 @@ export default function DishDetails() {
     { name: "fiber(g)", pro: <>{dishDetails.fiber}</> },
   ];
 
-  console.log(params);
+  // console.log(params);
 
   useEffect(() => {
     const fetchUserData = async () => {
@@ -165,9 +165,9 @@ export default function DishDetails() {
               Onclick={() => {
                 addFavouriteDish(dishDetails._id);
               }}
-              className="w-full flex justify-center gap-2 border rounded-md py-3 bg-neutral-100 hover:bg-neutral-200 font-semibold "
+              className="w-full flex justify-center gap-2 flex-wrap border rounded-md py-3 bg-neutral-100 hover:bg-neutral-200 font-semibold "
             >
-              <BaseIcon iconName="heart"> woahs ta lisbtd</BaseIcon> WISHLIST
+              <BaseIcon iconName="heart"></BaseIcon> WISHLIST
             </BaseButton>
           </div>
         </div>

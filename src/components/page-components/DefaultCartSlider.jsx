@@ -26,7 +26,6 @@ export default function DefaultCartSlider({ children }) {
     addToCart,
     decrementQuantity,
   } = useContext(CartContext);
-  console.log(cart);
 
   return (
     <>
@@ -46,28 +45,29 @@ export default function DefaultCartSlider({ children }) {
                 </BaseButton>
               </div>
 
-              <div className="">
-                <div className="bg-neutral-100 mb-5">
-                  <div className="">
-                    <h1 className="py-4 text-center font-semibold">
-                      CART ITEMS
+              {cart.length > 0 ? (
+                <div className="">
+                  <div className="bg-neutral-100 mb-5">
+                    <div className="">
+                      <h1 className="py-4 text-center font-semibold">
+                        CART ITEMS
+                      </h1>
+                    </div>
+                    <h1 className="text-center font-semibold text-white bg-emerald-500">
+                      Free delivery on all orders above ₹499{" "}
                     </h1>
                   </div>
-                  <h1 className="text-center font-semibold text-white bg-emerald-500">
-                    Free delivery on all orders above ₹499{" "}
-                  </h1>
-                </div>
-                <div className="flex flex-col divide-y mb-4 m-auto ">
-                  {cart.map((dishData, index) => {
-                    if (!dishData) return null;
-                    return (
-                      <div
-                        key={index}
-                        className=" py-3 px-5 hover:bg-slate-100"
-                      >
-                        <div className="flex gap-2">
-                          <div className="w-20">
-                            {/* <Link to={`/dishes/${dishData.dish._id}`}>
+                  <div className="flex flex-col divide-y mb-4 m-auto ">
+                    {cart.map((dishData, index) => {
+                      if (!dishData) return null;
+                      return (
+                        <div
+                          key={index}
+                          className=" py-3 px-5 hover:bg-slate-100"
+                        >
+                          <div className="flex gap-2">
+                            <div className="w-20">
+                              {/* <Link to={`/dishes/${dishData.dish._id}`}>
                               <img
                                 src={
                                   dishData &&
@@ -77,117 +77,134 @@ export default function DefaultCartSlider({ children }) {
                                 alt=""
                               />
                             </Link> */}
-                            <img
-                              src={
-                                dishData &&
-                                dishData.dish &&
-                                dishData.dish.imgUrl
-                              }
-                              alt="image"
-                            />
-                          </div>
-                          <div className="flex justify-between w-full">
-                            <div>
-                              <h1 className="text-neutral-800 font-semibold">
-                                {dishData.dish.dishName}
-                              </h1>
-                              <p className=" font-semibold text-emerald-500">
-                                ₹ {dishData.price}
-                              </p>
+                              <img
+                                src={
+                                  dishData &&
+                                  dishData.dish &&
+                                  dishData.dish.imgUrl
+                                }
+                                alt="image"
+                              />
                             </div>
-                            <div className="flex items-center gap-1 h-8  border rounded-md">
-                              <button
-                                className="bg-neutral-100 p-1"
-                                onClick={() => {
-                                  decrementQuantity(dishData.dish);
-                                }}
-                              >
-                                <BaseIcon
-                                  className="h-5 w-5 flex"
-                                  iconName={ICONS.Minus}
-                                ></BaseIcon>
-                              </button>
-                              <span className="p-1">{dishData.quantity}</span>
-                              <button
-                                className="bg-neutral-100 p-1"
-                                onClick={() => {
-                                  addToCart(dishData.dish);
-                                }}
-                              >
-                                <BaseIcon
-                                  className="h-5 w-5 flex"
-                                  iconName={ICONS.Plus}
-                                ></BaseIcon>
-                              </button>
-                            </div>
-                            <div>
-                              <BaseButton
-                                type="button"
-                                onClick={() => {
-                                  removeFromCart(dishData.dish._id);
-                                }}
-                                className="text-black"
-                              >
-                                <svg
-                                  fill="none"
-                                  viewBox="0 0 24 24"
-                                  strokeWidth="1.5"
-                                  stroke="currentColor"
-                                  aria-hidden="true"
-                                  className="w-6 p-1 hover:border hover:bg-slate-100"
+                            <div className="flex justify-between w-full">
+                              <div>
+                                <h1 className="text-neutral-800 font-semibold">
+                                  {dishData.dish.dishName}
+                                </h1>
+                                <p className=" font-semibold text-emerald-500">
+                                  ₹ {dishData.price}
+                                </p>
+                              </div>
+                              <div className="flex items-center gap-1 h-8  border rounded-md">
+                                <button
+                                  className="bg-neutral-100 p-1"
+                                  onClick={() => {
+                                    decrementQuantity(dishData.dish);
+                                  }}
                                 >
-                                  <path
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    d="M6 18L18 6M6 6l12 12"
-                                  />
-                                </svg>
-                              </BaseButton>
+                                  <BaseIcon
+                                    className="h-5 w-5 flex"
+                                    iconName={ICONS.Minus}
+                                  ></BaseIcon>
+                                </button>
+                                <span className="p-1">{dishData.quantity}</span>
+                                <button
+                                  className="bg-neutral-100 p-1"
+                                  onClick={() => {
+                                    addToCart(dishData.dish);
+                                  }}
+                                >
+                                  <BaseIcon
+                                    className="h-5 w-5 flex"
+                                    iconName={ICONS.Plus}
+                                  ></BaseIcon>
+                                </button>
+                              </div>
+                              <div>
+                                <BaseButton
+                                  type="button"
+                                  onClick={() => {
+                                    removeFromCart(dishData.dish._id);
+                                  }}
+                                  className="text-black"
+                                >
+                                  <svg
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    strokeWidth="1.5"
+                                    stroke="currentColor"
+                                    aria-hidden="true"
+                                    className="w-6 p-1 hover:border hover:bg-slate-100"
+                                  >
+                                    <path
+                                      strokeLinecap="round"
+                                      strokeLinejoin="round"
+                                      d="M6 18L18 6M6 6l12 12"
+                                    />
+                                  </svg>
+                                </BaseButton>
+                              </div>
                             </div>
                           </div>
                         </div>
+                      );
+                    })}
+                  </div>
+                  <div>
+                    <div className="border-2 py-2 px-2 mb-4 w-96 m-auto border-dashed">
+                      <h1 className="font-semibold">Bill Details</h1>
+                      <div className="flex justify-between">
+                        <p className="text-xs">Subtotal</p>
+                        <p className="text-xs"> {totalPrice}</p>
                       </div>
-                    );
-                  })}
-                </div>
-                <div>
-                  <div className="border-2 py-2 px-2 mb-4 w-96 m-auto border-dashed">
-                    <h1 className="font-semibold">Bill Details</h1>
-                    <div className="flex justify-between">
-                      <p className="text-xs">Subtotal</p>
-                      <p className="text-xs"> {totalPrice}</p>
-                    </div>
-                    {/* <div className="flex justify-between">
+                      {/* <div className="flex justify-between">
                       <p className="text-xs">Delivery Charge</p>
                       <p className="text-xs"> 39</p>
                     </div> */}
 
-                    <p>
-                      <small>
-                        {" "}
-                        Your cart value is less than ₹499 & delivery charge
-                        applies
-                      </small>
-                    </p>
-                    <hr className="mb-1 mt-1" />
-                    <div className="flex justify-between">
-                      <p className="text-sm font-semibold">Total</p>
-                      <p className="text-sm font-semibold"> ₹ {totalPrice}</p>
+                      <p>
+                        <small>
+                          {" "}
+                          Your cart value is less than ₹499 & delivery charge
+                          applies
+                        </small>
+                      </p>
+                      <hr className="mb-1 mt-1" />
+                      <div className="flex justify-between">
+                        <p className="text-sm font-semibold">Total</p>
+                        <p className="text-sm font-semibold"> ₹ {totalPrice}</p>
+                      </div>
                     </div>
                   </div>
-                </div>
 
-                <ConfirmationModal
-                  onProceed={orderKnow}
-                  modalText="Are you sure, you want to order your dish?"
-                >
-                  <div className="flex justify-center px-5">
-                    <BaseButton type="button" variant="loginBtn">
-                      Place Order
-                    </BaseButton>
+                  <ConfirmationModal
+                    onProceed={orderKnow}
+                    modalText="Are you sure, you want to order your dish?"
+                  >
+                    <div className="flex justify-center px-5">
+                      <BaseButton type="button" variant="loginBtn">
+                        Place Order
+                      </BaseButton>
+                    </div>
+                  </ConfirmationModal>
+                </div>
+              ) : (
+                <>
+                  <div className=" px-5 mt-8">
+                    <img
+                      src="https://cdn.dribbble.com/users/844846/screenshots/2981974/empty_cart_800x600_dribbble.png"
+                      alt=""
+                      className="object-cover object-center h-[30rem]"
+                    />
+                    <Link to="/dishes">
+                      <BaseButton variant="transparent">
+                        CONTINUE SHOPPING
+                      </BaseButton>
+                    </Link>
                   </div>
-                </ConfirmationModal>
-              </div>
+                </>
+              )}
+
               {/* </BaseSlider> */}
             </div>
           </div>

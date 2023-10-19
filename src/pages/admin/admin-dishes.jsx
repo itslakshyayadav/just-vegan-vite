@@ -33,17 +33,17 @@ export default function AdminDishes() {
                 />
               </Link>
               <div className="p-3">
-                <h2 className="mb-2 text-lg font-semibold tracking-tight text-neutral-800 dark:text-white">
+                <h2 className="mb-2 text-lg font-semibold tracking-tight text-neutral-800 ">
                   {dishItem.dishName}
                 </h2>
 
-                <p className="mb-3 font-bold text-neutral-700 dark:text-neutral-400">
+                <p className="mb-3 font-bold text-neutral-700">
                   ₹{dishItem.price ? dishItem.price : "110"}
                 </p>
                 <div className="flex justify-between items-center">
                   <button
                     href="#"
-                    className="inline-flex items-center px-4 py-2 text-sm text-center text-white bg-emerald-700 rounded-md hover:bg-emerald-800 focus:ring-4 focus:outline-none focus:ring-emerald-300 dark:bg-emerald-600 dark:hover:bg-emerald-700 dark:focus:ring-emerald-800"
+                    className="inline-flex items-center px-4 py-2 text-sm text-center text-white bg-emerald-700 rounded-md hover:bg-emerald-800 focus:ring-4 focus:outline-none focus:ring-emerald-300 "
                   >
                     Add to cart
                   </button>

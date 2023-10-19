@@ -43,7 +43,7 @@ export default function BaseButton(props) {
       btnClasses = "rounded-md py-2 px-4  text-left hover:bg-gray-100 w-full";
       break;
     case "transparent":
-      btnClasses = "rounded-md py-2 px-5 w-full";
+      btnClasses = "rounded-md py-2 px-5 w-full border hover:bg-gray-100";
       break;
     case "danger":
       btnClasses =

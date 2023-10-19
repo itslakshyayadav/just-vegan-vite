@@ -124,22 +124,30 @@ export default function SignUP() {
               />
             </div>
 
-            <ul className="flex flex-col md:flex-row gap-1 justify-center">
+            {/* <ul className="flex flex-col md:flex-row gap-1 justify-center">
               <li>
                 Already have an account?{" "}
-                <a
-                  href="login"
+                 <Link
+                  to="/login"
                   className="text-cyan-950 underline decoration-1"
                 >
                   Login
-                </a>
+                </Link> 
               </li>
-            </ul>
+            </ul>*/}
 
-            <div className="flex">
+            <div className="flex flex-col gap-4">
               <BaseButton type="submit" variant="signupBtn">
                 Create Account
               </BaseButton>
+              <div>
+                <p className="text-center mb-2">Already have an account?</p>
+                <Link to="/login">
+                  <BaseButton type="submit" variant="transparent">
+                    Login
+                  </BaseButton>
+                </Link>
+              </div>
             </div>
           </form>
         </div>
