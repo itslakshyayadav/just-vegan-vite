@@ -55,7 +55,7 @@ function BaseNavbarCopy() {
 
   return (
     <>
-      <nav className="bg-teal-950  top-0 w-full">
+      <nav className="bg-teal-950  top-0 w-full sticky">
         <div className="  sm:px-6 lg:px-5">
           <div className="relative flex h-16  items-center justify-between">
             <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">

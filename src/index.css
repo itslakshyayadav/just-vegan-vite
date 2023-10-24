@@ -15,6 +15,10 @@ a.list-link.active {
 a.navbar-link.active {
   border-bottom: 3px solid white;
 }
+a.breadcrumb-link.active {
+  border-bottom: 3px solid #2DD4BF;
+}
+
 
 .slide-left {
   animation-name: slideLeft;

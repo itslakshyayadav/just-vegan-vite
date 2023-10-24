@@ -1,10 +1,10 @@
 import axios from "axios";
 import { API_BASE_PATH } from "@/helpers/constants";
 
-function getDishes() {
+function getDishes(query) {
   return axios({
     method: "GET",
-    url: `${API_BASE_PATH}/dishes`,
+    url: query ? `${API_BASE_PATH}/dishes${query}` : `${API_BASE_PATH}/dishes`,
   });
 }
 

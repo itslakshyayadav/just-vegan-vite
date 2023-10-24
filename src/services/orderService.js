@@ -15,6 +15,23 @@ function getAllOrders(query) {
   });
 }
 
+function updateDeliveryStatus(deliveryStatus, orderId) {
+  const userAuthStore = localStorage.getItem("userAuth");
+  const userAuthObject = JSON.parse(userAuthStore);
+  return axios({
+    method: "PUT",
+    url: `${API_BASE_PATH}/orders/${orderId}`,
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${userAuthObject.accessToken}`,
+    },
+    data: {
+      deliveryStatus,
+    },
+  });
+}
+
 export default {
   getAllOrders,
+  updateDeliveryStatus,
 };

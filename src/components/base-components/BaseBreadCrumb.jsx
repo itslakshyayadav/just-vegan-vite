@@ -11,13 +11,19 @@ function BaseBreadCrumb(props) {
         breadcrumb.map((crumb, index) => {
           return (
             <li className="flex items-center" key={"crump" + index}>
-              <Link className="text-neutral-500 text-sm p-2" to={crumb.to}>
+              <Link
+                className="text-neutral-500 text-sm font-semibold p-2"
+                to={crumb.to}
+              >
                 {crumb.name}
               </Link>
-              <BaseIcon
-                className="h-3 w-3"
-                iconName={ICONS.ChevronRight}
-              ></BaseIcon>
+
+              {index < breadcrumb.length - 1 && (
+                <BaseIcon
+                  className="flex h-3 w-3"
+                  iconName={ICONS.ChevronRight}
+                ></BaseIcon>
+              )}
             </li>
           );
         })}

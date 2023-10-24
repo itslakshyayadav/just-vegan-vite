@@ -1,4 +1,3 @@
-// import { useState } from "react";
 import { Link, Outlet } from "react-router-dom";
 
 export default function AdminMain() {
@@ -25,10 +24,21 @@ export default function AdminMain() {
     },
   ];
 
+  // const fetchOrders = async (query) => {
+  //   try {
+  //     const response = await orderService.getAllOrders(query);
+  //     setUserOrders(response.data.payload);
+  //   } catch (error) {
+  //     if (error.response === 500) {
+  //       toast.error(error.response.statusText);
+  //     }
+  //   }
+  // };
+
   return (
     <div className="container mx-auto max-w-4xl lg:max-w-6xl my-6 px-4 md:px-6">
       <div className="flex  gap-8 items-center">
-        <ul className="flex flex-wrap gap-3">
+        <ul className="flex items-center flex-wrap gap-3">
           {navLinks.map((link, index) => {
             return (
               <li key={"navbar" + index}>
