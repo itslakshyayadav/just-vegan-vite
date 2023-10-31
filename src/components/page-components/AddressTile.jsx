@@ -8,6 +8,7 @@ import UserContext from "@/contexts/UserContext";
 export default function AddressTile(props) {
   const { addressRecord } = props;
   const userContext = useContext(UserContext);
+  const { user, reFetchUser } = useContext(UserContext);
 
   const removeAddress = async (addressId) => {
     try {
@@ -21,14 +22,42 @@ export default function AddressTile(props) {
       console.log("error");
     }
   };
+
+  const handleSetDefaultAddress = async (id) => {
+    try {
+      const defaultAddressResponse = await userService.setDefaultAddress(id);
+      if (defaultAddressResponse.status === 200) {
+        await reFetchUser();
+        toast.success("Default Address is set successfully.");
+      }
+    } catch (error) {
+      toast.error("Error occurred, while setting default address.");
+    }
+  };
+
   return (
     <div className="border border-slate-200 border-t-slate-100 m-auto mb-2 hover:shadow-md">
       <div className=" rounded-sm px-3 py-2 ">
         <div className="flex justify-between items-center">
           <h1 className=" font-sans font-bold ">{addressRecord.name}</h1>
-          <span className="font-sans flex items-center h-5 border uppercase bg-slate-100 font-semibold text-gray-500 rounded-xl   px-3">
-            <small>{addressRecord.addressType}</small>
-          </span>
+          <div className="flex gap-2 items-center">
+            {/* {user.defaultAddress &&
+            user.defaultAddress._id === addressRecord._id ? null : (
+              <button
+                type="button"
+                onClick={() => {
+                  handleSetDefaultAddress(addressRecord._id);
+                }}
+                className="border rounded-md hover:bg-slate-100 w-28 py-1 px-2 mt-2"
+              >
+                Set Default
+              </button>
+            )} */}
+
+            <span className="font-sans flex items-center h-5 border uppercase bg-slate-100 font-semibold text-gray-500 rounded-xl   px-3">
+              <small>{addressRecord.addressType}</small>
+            </span>
+          </div>
         </div>
 
         <h1 className="font-sans">
@@ -46,29 +75,8 @@ export default function AddressTile(props) {
         <h1 className="font-sans mt-2">
           <small>{addressRecord.phone1}</small>
         </h1>
-        {/* {isDeleteModalOpen && (
-            <BaseModal modalText="Are you sure you want to proceed?">
-              <BaseButton
-                type="button"
-                onClick={closeDeleteModal}
-                variant="neutral"
-              >
-                Cancel
-              </BaseButton>
-              <BaseButton
-                type="button"
-                onClick={() => {
-                  removeAddress(addressRecord._id);
-                  setDeleteModalOpen(false);
-                }}
-                variant="danger"
-              >
-                Proceed
-              </BaseButton>
-            </BaseModal>
-          )} */}
 
-        <div className="flex border-t border-slate-200  justify-between md:flex-none mt-2 px-3 py-3 items-center">
+        <div className="flex border-t border-slate-200 divide-x  justify-between md:flex-none mt-2 px-3 py-3 items-center">
           <div className="flex justify-center w-1/2 border-slate-200 ">
             <ConfirmationModal
               onProceed={() => {
@@ -83,18 +91,27 @@ export default function AddressTile(props) {
               </button>
             </ConfirmationModal>
           </div>
-          <div className="flex justify-center w-1/2  ">
-            <button
-              // to="/userId/address/addressId"
-              icon={<BaseIcon iconName=""></BaseIcon>}
-              className="px-32 font-sans text-xs font-bold  py-2 border text-indigo-800 rounded-sm"
-              type="submit"
-              // onClick={() => {
-              //   editAddress(addressRecord._id);
-              // }}
-            >
-              EDIT
-            </button>
+          <div className="flex justify-center w-1/2 items-center ">
+            {user.defaultAddress &&
+            user.defaultAddress._id === addressRecord._id ? null : (
+              <button
+                type="button"
+                onClick={() => {
+                  handleSetDefaultAddress(addressRecord._id);
+                }}
+                className="px-32 font-sans text-xs font-bold  py-2 border text-indigo-800 rounded-sm"
+              >
+                Set Default
+              </button>
+            )}
+            <span className="font-sans flex items-center uppercase font-semibold text-gray-500 rounded-xl px-3">
+              <small>
+                {user.defaultAddress &&
+                user.defaultAddress._id === addressRecord._id
+                  ? "Default"
+                  : null}
+              </small>
+            </span>
           </div>
         </div>
       </div>
