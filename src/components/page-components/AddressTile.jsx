@@ -69,7 +69,7 @@ export default function AddressTile(props) {
           )} */}
 
         <div className="flex border-t border-slate-200  justify-between md:flex-none mt-2 px-3 py-3 items-center">
-          <div className="flex justify-center w-1/2  border-slate-200 ">
+          <div className="flex justify-center w-1/2 border-slate-200 ">
             <ConfirmationModal
               onProceed={() => {
                 removeAddress(addressRecord._id);
@@ -83,11 +83,11 @@ export default function AddressTile(props) {
               </button>
             </ConfirmationModal>
           </div>
-          <div className="flex justify-center w-1/2 ">
+          <div className="flex justify-center w-1/2  ">
             <button
               // to="/userId/address/addressId"
               icon={<BaseIcon iconName=""></BaseIcon>}
-              className="px-32 font-sans text-xs font-bold py-2 border text-indigo-800 rounded-sm"
+              className="px-32 font-sans text-xs font-bold  py-2 border text-indigo-800 rounded-sm"
               type="submit"
               // onClick={() => {
               //   editAddress(addressRecord._id);

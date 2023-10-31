@@ -7,7 +7,6 @@ import { toast } from "react-toastify";
 const Dishes = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const [dishes, setDishes] = useState([]);
-  console.log(dishes);
   const fetchUserData = async (query) => {
     try {
       const response = await dishService.getDishes(query);
@@ -19,8 +18,8 @@ const Dishes = () => {
     }
   };
   useEffect(() => {
-    // const queryParams = searchParams.get("dishCategory");
-    fetchUserData();
+    const queryParams = searchParams.get("dishCategory");
+    fetchUserData(queryParams ? `?dishCategory=${queryParams}` : null);
   }, []);
 
   const dishCategoryTabs = [

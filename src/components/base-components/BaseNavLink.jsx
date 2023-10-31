@@ -13,8 +13,7 @@ export default function BaseNavLink(props) {
       btnClasses = "list-link px-5 py-3 divide-y hover:bg-neutral-100";
       break;
     case "breadcrumbLink":
-      btnClasses =
-        "breadcrumb-link py-3 px-2 text-white md:hover:text-teal-100";
+      btnClasses = "breadcrumb-link py-3 px-2";
       break;
 
     default:

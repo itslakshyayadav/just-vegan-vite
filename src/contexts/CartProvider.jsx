@@ -67,8 +67,8 @@ export default function CartProvider({ children }) {
         toast.success("Your Order placed successfully.");
       }
     } catch (error) {
-      console.log(error);
-      toast.error("Something went wrong");
+      // console.log(error);
+      toast.error("Please select default Address");
     }
   };
 

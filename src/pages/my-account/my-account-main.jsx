@@ -52,7 +52,7 @@ export default function MyAccountMain() {
               );
             })}
           </div>
-          <div className="grow   ">
+          <div className="grow">
             <Outlet></Outlet>
           </div>
         </div>
