@@ -1,7 +1,7 @@
 import BaseButton from "@/components/base-components/BaseButton";
 import userService from "@/services/userService";
 import { useContext, useState } from "react";
-import { Outlet, useNavigate } from "react-router-dom";
+import { Link, Outlet, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import UserContext from "@/contexts/UserContext";
 
@@ -181,9 +181,11 @@ const CreateAddress = () => {
               <BaseButton variant="primary" type="submit">
                 Submit
               </BaseButton>
-              <BaseButton type="submit" variant="neutral">
-                Cancel
-              </BaseButton>
+              <Link to="/my-account/my-address">
+                <BaseButton type="button" variant="neutral">
+                  Cancel
+                </BaseButton>
+              </Link>
             </div>
           </div>
         </div>
