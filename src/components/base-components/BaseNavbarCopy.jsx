@@ -39,10 +39,10 @@ function BaseNavbarCopy() {
       name: "My Account",
       to: "my-account",
     },
-    {
-      name: "Settings",
-      to: "setting",
-    },
+    // {
+    //   name: "Settings",
+    //   to: "setting",
+    // },
   ];
 
   const handleLogout = () => {

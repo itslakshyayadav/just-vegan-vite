@@ -1,17 +1,19 @@
 import BaseBreadCrumb from "@/components/base-components/BaseBreadCrumb";
 import BaseButton from "@/components/base-components/BaseButton";
 import BaseIcon from "@/components/base-components/BaseIcon";
-import BaseNavLink from "@/components/base-components/BaseNavLink";
-import { ICONS } from "@/helpers/constants";
+// import BaseNavLink from "@/components/base-components/BaseNavLink";
+import { DELIVERY_STATUS, ICONS } from "@/helpers/constants";
 import orderService from "@/services/orderService";
 import { useState, useEffect } from "react";
-import { useSearchParams } from "react-router-dom";
+import { useSearchParams, Link } from "react-router-dom";
 
 import { toast } from "react-toastify";
 
 function AdminOrders() {
   const [searchParams, setSearchParams] = useSearchParams();
   const [userOrders, setUserOrders] = useState([]);
+
+  console.log(userOrders);
 
   const fetchOrders = async (query) => {
     try {
@@ -23,7 +25,7 @@ function AdminOrders() {
       }
     }
   };
-
+  const queryParams = searchParams.get("deliveryStatus");
   useEffect(() => {
     const queryParams = searchParams.get("deliveryStatus");
     fetchOrders(queryParams && `?deliveryStatus=${queryParams}`);
@@ -35,12 +37,32 @@ function AdminOrders() {
   ];
 
   const deliveryStatusTabs = [
-    { name: "All", to: "" },
-    { name: "Received", to: "?deliveryStatus=received" },
-    { name: "Accepted", to: "?deliveryStatus=accepted" },
-    { name: "Declined", to: "?deliveryStatus=declined" },
-    { name: "Out for delivery", to: "?deliveryStatus=out-for-delivery" },
-    { name: "Delivered", to: "?deliveryStatus=delivered" },
+    { name: "All", classStatus: "", to: "" },
+    {
+      name: "Received",
+      classStatus: "received",
+      to: "?deliveryStatus=received",
+    },
+    {
+      name: "Accepted",
+      classStatus: "accepted",
+      to: "?deliveryStatus=accepted",
+    },
+    {
+      name: "Declined",
+      classStatus: "declined",
+      to: "?deliveryStatus=declined",
+    },
+    {
+      name: "Out for delivery",
+      classStatus: "out-for-delivery",
+      to: "?deliveryStatus=out-for-delivery",
+    },
+    {
+      name: "Delivered",
+      classStatus: "delivered",
+      to: "?deliveryStatus=delivered",
+    },
   ];
 
   const Data = [
@@ -223,17 +245,20 @@ function AdminOrders() {
         <ul className="flex gap-2 mb-4">
           {deliveryStatusTabs.map((tab, index) => {
             return (
-              <li className="flex items-center" key={"order-crump" + index}>
-                <BaseNavLink
-                  variant="breadcrumbLink"
-                  to={tab.to}
-                  onClick={() => {
-                    fetchOrders(tab.to);
-                  }}
-                >
-                  {tab.name}
-                </BaseNavLink>
-              </li>
+              <Link
+                to={tab.to}
+                key={"order-crump" + index}
+                className={`py-5 px-6 hover:text-teal-600 ${
+                  queryParams === tab.classStatus
+                    ? "text-teal-600 border-b-[3px] border-b-teal-600"
+                    : ""
+                }`}
+                onClick={() => {
+                  fetchOrders(tab.to);
+                }}
+              >
+                <li className="flex items-center">{tab.name}</li>
+              </Link>
             );
           })}
         </ul>

@@ -25,18 +25,18 @@ export default function AddressTile(props) {
     }
   };
 
-  const updateUserAddress = async (addressId) => {
-    try {
-      console.log(addressId);
-      const response = await userService.editAddress(addressId);
-      if (response.status === 200) {
-        toast.success("Address update successfully !");
-        userContext.reFetchUser();
-      }
-    } catch (error) {
-      console.log("error");
-    }
-  };
+  // const updateUserAddress = async (addressId) => {
+  //   try {
+  //     console.log(addressId);
+  //     const response = await userService.editAddress(addressId);
+  //     if (response.status === 200) {
+  //       toast.success("Address update successfully !");
+  //       userContext.reFetchUser();
+  //     }
+  //   } catch (error) {
+  //     console.log("error");
+  //   }
+  // };
 
   const handleSetDefaultAddress = async (id) => {
     try {
@@ -134,9 +134,9 @@ export default function AddressTile(props) {
               icon={<BaseIcon iconName=""></BaseIcon>}
               className="px-32 font-sans text-xs font-bold  py-2 border text-indigo-800 rounded-sm"
               type="submit"
-              onClick={() => {
-                updateUserAddress(addressRecord._id);
-              }}
+              // onClick={() => {
+              //   updateUserAddress(addressRecord._id);
+              // }}
             >
               EDIT
             </button>

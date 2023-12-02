@@ -39,8 +39,6 @@ export default function DishDetails() {
   }, []);
 
   const addFavouriteDish = async (id) => {
-    // toast.error("Please login to add a favorite dish.");
-
     try {
       const response = await dishService.addFavouriteDish(id);
       if (response.status === 200) {

@@ -61,7 +61,7 @@ export default function DefaultCartSlider({ children }) {
                         </h1>
                       </div>
                       <h1 className="text-center font-semibold text-white bg-emerald-500">
-                        Free delivery on all orders above ₹499{" "}
+                        Free delivery on all orders above ₹499
                       </h1>
                     </div>
                     <div className="flex flex-col divide-y mb-4 m-auto ">
@@ -70,8 +70,9 @@ export default function DefaultCartSlider({ children }) {
                         return (
                           <div
                             key={index}
-                            className=" py-3 px-5 hover:bg-slate-100"
+                            className="py-3 px-5 hover:bg-slate-100"
                           >
+                            {/* {dishData.quantity === 0?null:} */}
                             <div className="flex gap-2">
                               <div className="w-20">
                                 {/* <Link to={`/dishes/${dishData.dish._id}`}>
@@ -105,6 +106,7 @@ export default function DefaultCartSlider({ children }) {
                                 <div className="flex items-center gap-1 h-8  border rounded-md">
                                   <button
                                     className="bg-neutral-100 p-1"
+                                    disabled={dishData.quantity === 0}
                                     onClick={() => {
                                       decrementQuantity(dishData.dish);
                                     }}
