@@ -9,7 +9,10 @@ export default function CartProvider({ children }) {
   const { user } = useContext(UserContext);
   const currentData = JSON.parse(localStorage.getItem("cartData") || "[]");
   const [cart, setCart] = useState(currentData);
-  const totalPrice = cart.reduce((total, item) => total + item.price, 0);
+  const totalPrice = cart.reduce(
+    (total, item) => total + item.price * item.quantity,
+    0
+  );
   const totalQuantity = cart.reduce((total, item) => total + item.quantity, 0);
 
   const addToCart = async (dishItem) => {
@@ -17,8 +20,8 @@ export default function CartProvider({ children }) {
     if (cartItem !== -1) {
       const updatedCart = [...cart];
       updatedCart[cartItem].quantity += 1;
-      updatedCart[cartItem].price =
-        updatedCart[cartItem].quantity * dishItem.price;
+      // updatedCart[cartItem].price =
+      //   updatedCart[cartItem].quantity * dishItem.price;
       setCart(updatedCart);
       localStorage.setItem("cartData", JSON.stringify(updatedCart));
     } else {

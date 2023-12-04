@@ -74,7 +74,7 @@ export default function DefaultCartSlider({ children }) {
                           >
                             {/* {dishData.quantity === 0?null:} */}
                             <div className="flex gap-2">
-                              <div className="w-20">
+                              <div>
                                 {/* <Link to={`/dishes/${dishData.dish._id}`}>
                               <img
                                 src={
@@ -92,6 +92,7 @@ export default function DefaultCartSlider({ children }) {
                                     dishData.dish.imgUrl
                                   }
                                   alt="image"
+                                  className="w-20 h-20 object-cover shrink-0"
                                 />
                               </div>
                               <div className="flex justify-between w-full">
@@ -106,7 +107,7 @@ export default function DefaultCartSlider({ children }) {
                                 <div className="flex items-center gap-1 h-8  border rounded-md">
                                   <button
                                     className="bg-neutral-100 p-1"
-                                    disabled={dishData.quantity === 0}
+                                    disabled={dishData.quantity === 1}
                                     onClick={() => {
                                       decrementQuantity(dishData.dish);
                                     }}

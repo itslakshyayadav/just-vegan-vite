@@ -41,7 +41,7 @@ export default function DefaultAddressSlider({ children }) {
               <div className="px-5 py-3">
                 <h1 className="py-4">Change Location</h1>
 
-                <BaseButton type="button" variant="neutral">
+                {/* <BaseButton type="button" variant="neutral">
                   <div className="flex items-center gap-3">
                     <BaseIcon
                       iconName="my_location"
@@ -49,7 +49,7 @@ export default function DefaultAddressSlider({ children }) {
                     ></BaseIcon>
                     Detect my location
                   </div>
-                </BaseButton>
+                </BaseButton> */}
               </div>
             </div>
 

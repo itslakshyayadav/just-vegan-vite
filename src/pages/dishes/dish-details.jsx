@@ -160,7 +160,7 @@ export default function DishDetails() {
           <div className="w-1/3 ">
             <BaseButton
               type="button"
-              Onclick={() => {
+              onClick={() => {
                 addFavouriteDish(dishDetails._id);
               }}
               className="w-full flex justify-center gap-2 flex-wrap border rounded-md py-3 bg-neutral-100 hover:bg-neutral-200 font-semibold "
