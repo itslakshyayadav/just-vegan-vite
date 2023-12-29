@@ -5,8 +5,11 @@ import { toast } from "react-toastify";
 import BaseButton from "@/components/base-components/BaseButton";
 import BrandLogo from "../components/base-components/BrandLogo.jsx";
 import { Link } from "react-router-dom";
+import BaseIcon from "@/components/base-components/BaseIcon";
+import { ICONS } from "@/helpers/constants";
 
 export default function SignUP() {
+  const [passwordVisible, setPasswordVisible] = useState(false);
   const [signup, setSignup] = useState({
     name: "",
     emailId: "",
@@ -41,6 +44,10 @@ export default function SignUP() {
         toast.error(error.response.data);
       }
     }
+  };
+
+  const passwordVisibility = () => {
+    setPasswordVisible(!passwordVisible);
   };
 
   return (
@@ -112,16 +119,27 @@ export default function SignUP() {
                 required
               />
             </div>
-            <div className="flex text-center">
+            <div className="flex text-center relative">
               <input
                 style={{ backgroundColor: "rgb(246,247,245)" }}
-                type="password"
+                type={!passwordVisible ? "text" : "password"}
                 name="confirmPassword"
                 value={signup.confirmPassword}
                 onChange={handleChange}
                 className="px-2 py-2 rounded-md w-full"
                 placeholder="Confirm password"
               />
+              <button
+                type="button"
+                onClick={passwordVisibility}
+                className="absolute  right-5 top-2.5"
+              >
+                {passwordVisible ? (
+                  <BaseIcon iconName={ICONS.eyeHide} />
+                ) : (
+                  <BaseIcon iconName={ICONS.eyeShow} />
+                )}
+              </button>
             </div>
 
             {/* <ul className="flex flex-col md:flex-row gap-1 justify-center">

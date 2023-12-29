@@ -23,6 +23,8 @@ export const ICONS = {
   orderAccepted: "handThumbUp",
   check: "check",
   delivered: "delivered",
+  eyeShow: "eyeShow",
+  eyeHide: "eyeHide",
 };
 
 export const DELIVERY_STATUS = {
