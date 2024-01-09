@@ -5,7 +5,6 @@ import userService from "@/services/userService";
 export default function UserProvider({ children }) {
   const userPayload = JSON.parse(localStorage.getItem("userPayload") || "{}");
   const [user, setUser] = useState(userPayload);
-  // console.log(user);
 
   const reFetchUser = async () => {
     try {

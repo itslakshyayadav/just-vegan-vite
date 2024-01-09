@@ -65,3 +65,10 @@ a.breadcrumb-link.active {
     font-size: 16px;
   }
 }
+
+input[type="file"]{
+  display: none;
+}
+.lable{
+  cursor: pointer;
+}
