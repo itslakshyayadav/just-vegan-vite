@@ -5,18 +5,19 @@ import BaseIcon from "@/components/base-components/BaseIcon";
 import BaseNavLink from "./BaseNavLink";
 import Dropdown from "../Dropdown";
 import DefaultAddressSlider from "@/components/page-components/DefaultAddressSlider";
-import { ICONS } from "@/helpers/constants";
+// import { API_BASE_PATH, ICONS } from "@/helpers/constants";
 import DefaultCartSlider from "../page-components/DefaultCartSlider";
 import UserContext from "@/contexts/UserContext";
 import { useContext, useState } from "react";
 import CartContext from "@/contexts/CartContext";
+import { ICONS } from "@/helpers/constants";
 
 function BaseNavbarCopy() {
   const [isOpen, setIsOpen] = useState(false);
 
   const { user } = useContext(UserContext);
   const { totalQuantity } = useContext(CartContext);
-
+  console.log(user);
   const userAuthStore = localStorage.getItem("userAuth");
   let userAuthObject = {};
   if (userAuthStore) {
@@ -39,10 +40,6 @@ function BaseNavbarCopy() {
       name: "My Account",
       to: "my-account",
     },
-    // {
-    //   name: "Settings",
-    //   to: "setting",
-    // },
   ];
 
   const handleLogout = () => {
@@ -156,24 +153,32 @@ function BaseNavbarCopy() {
                   <>
                     <Dropdown
                       dropdownElement={
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          strokeWidth={1.5}
-                          stroke="currentColor"
-                          className="w-6 h-6"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            d="M17.982 18.725A7.488 7.488 0 0012 15.75a7.488 7.488 0 00-5.982 2.975m11.963 0a9 9 0 10-11.963 0m11.963 0A8.966 8.966 0 0112 21a8.966 8.966 0 01-5.982-2.275M15 9.75a3 3 0 11-6 0 3 3 0 016 0z"
+                        user.profileImage ? (
+                          <img
+                            src={user.profileImage}
+                            alt=""
+                            className="h-10 w-10 rounded-full object-cover"
                           />
-                        </svg>
+                        ) : (
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            strokeWidth={1.5}
+                            stroke="currentColor"
+                            className="w-6 h-6"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              d="M17.982 18.725A7.488 7.488 0 0012 15.75a7.488 7.488 0 00-5.982 2.975m11.963 0a9 9 0 10-11.963 0m11.963 0A8.966 8.966 0 0112 21a8.966 8.966 0 01-5.982-2.275M15 9.75a3 3 0 11-6 0 3 3 0 016 0z"
+                            />
+                          </svg>
+                        )
                       }
                     >
                       <div className="flex flex-col gap-1 py-1">
-                        <h1 className="px-4 py-1 font-semibold text-left">
+                        <h1 className="px-4 py-1  justify-between items-center font-semibold text-left">
                           <small>Hello {userAuthObject.name}</small>
                         </h1>
                         <hr />

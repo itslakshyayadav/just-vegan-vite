@@ -62,6 +62,7 @@ function loginUser(login) {
     data: login,
   });
 }
+
 function createAddress(addressModel) {
   const userAuthStore = localStorage.getItem("userAuth");
   const userAuthObject = JSON.parse(userAuthStore);

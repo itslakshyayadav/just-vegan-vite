@@ -1,14 +1,17 @@
 import { useEffect, useState } from "react";
-import { API_BASE_PATH } from "@/helpers/constants";
+import { API_BASE_PATH, ICONS } from "@/helpers/constants";
 import BaseButton from "@/components/base-components/BaseButton";
-// import { Link, Outlet } from "react-router-dom";
+import axios from "axios";
+import BaseIcon from "@/components/base-components/BaseIcon";
 
 export default function MyAccount() {
   const [userModel, setUserModel] = useState({});
+  const [image, setImage] = useState("");
+
+  const userAuthStore = localStorage.getItem("userAuth");
+  const userAuthObject = JSON.parse(userAuthStore);
 
   const fetchUser = async () => {
-    const userAuthStore = localStorage.getItem("userAuth");
-    const userAuthObject = JSON.parse(userAuthStore);
     const response = await fetch(
       `${API_BASE_PATH}/users/${userAuthObject.userId}`,
       {
@@ -20,10 +23,28 @@ export default function MyAccount() {
     const data = await response.json();
     setUserModel(data.payload);
   };
-
   useEffect(() => {
     fetchUser();
   }, []);
+
+  // upload image on my account section
+  const handleImageChange = (e) => {
+    const file = e.target.files[0];
+    setImage(file);
+  };
+
+  const handleUpload = async () => {
+    const formData = new FormData();
+    formData.append("image", image);
+    const apiEndpoint = `${API_BASE_PATH}/users/${userAuthObject.userId}/profile-image`;
+    const response = await axios.put(apiEndpoint, formData, {
+      headers: {
+        "Content-Type": "multipart/form-data",
+        Authorization: `Bearer ${userAuthObject.accessToken}`,
+      },
+    });
+    console.log("Image uploaded successfully:", response.data);
+  };
 
   return (
     <>
@@ -31,6 +52,33 @@ export default function MyAccount() {
         <div className="container border-2 rounded-md py-4 p-2">
           <div className="flex flex-col gap-2 px-5 py-3">
             <div className="flex flex-col gap-2">
+              <div className="flex items-center  gap-5">
+                <div className="flex items-center gap-4">
+                  <img
+                    src={userModel.profileImage}
+                    alt=""
+                    className="h-12 w-12 rounded-md object-cover"
+                  />
+                  <input
+                    type="file"
+                    id="toImage"
+                    onChange={handleImageChange}
+                    className="text-xs"
+                  />
+                  <label htmlFor="toImage" className="lable">
+                    <BaseIcon
+                      className="h-6 w-6 flex text-teal-700"
+                      iconName={ICONS.edit}
+                    ></BaseIcon>
+                  </label>
+                </div>
+                <button
+                  onClick={handleUpload}
+                  className="border py-1 px-3 rounded-lg hover:bg-teal-100"
+                >
+                  upload
+                </button>
+              </div>
               <label className="text-neutral-500 text-sm" htmlFor="name">
                 Name*
               </label>
