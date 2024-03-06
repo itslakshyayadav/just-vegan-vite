@@ -7,8 +7,11 @@ import BrandLogo from "../components/base-components/BrandLogo.jsx";
 import BaseButton from "@/components/base-components/BaseButton";
 import userService from "@/services/userService";
 import UserContext from "@/contexts/UserContext";
+import { ICONS } from "@/helpers/constants";
+import BaseIcon from "@/components/base-components/BaseIcon";
 
 export default function Login() {
+  const [passwordVisible, setPasswordVisible] = useState(false);
   const [login, setLogin] = useState({
     emailId: "",
     password: "",
@@ -63,6 +66,10 @@ export default function Login() {
     }
   };
 
+  const passwordVisibility = () => {
+    setPasswordVisible(!passwordVisible);
+  };
+
   return (
     <div className="grid lg:grid-cols-2">
       <div className="flex flex-col items-center px-5 py-3 mt-8 sm:w-full">
@@ -93,19 +100,29 @@ export default function Login() {
               placeholder="abcd@gmail.com"
             />
           </div>
-          <div className="flex grow text-center">
+          <div className="flex grow text-center relative">
             {/* <label htmlFor="password"> Password : </label> */}
             <input
               style={{ backgroundColor: "rgb(246,247,245)" }}
-              type="password"
+              type={passwordVisible ? "text" : "password"}
               name="password"
               value={login.password}
               onChange={handleChange}
-              className="px-2 py-2 rounded-md w-full"
+              className="px-2 py-2 rounded-md w-full  "
               placeholder="Password"
             />
+            <button
+              type="button"
+              onClick={passwordVisibility}
+              className="absolute  right-5 top-2.5"
+            >
+              {!passwordVisible ? (
+                <BaseIcon iconName={ICONS.eyeHide} />
+              ) : (
+                <BaseIcon iconName={ICONS.eyeShow} />
+              )}
+            </button>
           </div>
-
           <ul className="flex flex-col md:flex-row gap-1 justify-center">
             <li>
               <a href="/" className="text-cyan-950 underline decoration-1">

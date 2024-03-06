@@ -24,6 +24,8 @@ export const ICONS = {
   check: "check",
   delivered: "delivered",
   edit: "edit",
+  eyeShow: "eyeShow",
+  eyeHide: "eyeHide",
 };
 
 export const DELIVERY_STATUS = {
