@@ -74,15 +74,7 @@ export default function AddressTile(props) {
         <h1>
           <small>{addressRecord.state}</small>
         </h1>
-        <h1 className="font-semibold">
-          {/* <small>
-            {" "}
-            {user.defaultAddress &&
-            user.defaultAddress._id === addressRecord._id
-              ? "Default"
-              : null}
-          </small> */}
-        </h1>
+        <h1 className="font-semibold"></h1>
         <div className="flex justify-between items-center">
           <h1 className="font-sans mt-2">
             <small>{addressRecord.phone1}</small>
@@ -122,7 +114,7 @@ export default function AddressTile(props) {
               }}
             >
               <button
-                className="px-32 font-sans py-2  text-xs font-bold border text-red-600 rounded-sm"
+                className="px-32 font-sans py-2  text-xs font-bold  text-red-600 rounded-sm"
                 type="button"
               >
                 DELETE
@@ -132,7 +124,7 @@ export default function AddressTile(props) {
           <div className="flex justify-center w-1/2  ">
             <button
               icon={<BaseIcon iconName=""></BaseIcon>}
-              className="px-32 font-sans text-xs font-bold  py-2 border text-indigo-800 rounded-sm"
+              className="px-32 font-sans text-xs font-bold  py-2  text-indigo-800 rounded-sm"
               type="submit"
               // onClick={() => {
               //   updateUserAddress(addressRecord._id);

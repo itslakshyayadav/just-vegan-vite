@@ -34,25 +34,24 @@ export default function MyAccountMain() {
   return (
     <>
       <div className="container mx-auto max-w-4xl lg:max-w-6xl my-6 px-4 md:px-6">
-        <div className="flex gap-3  ">
-          <div className="shrink-0  divide-y flex flex-col ">
-            {accountPage.map((link, index) => {
-              return (
-                <BaseNavLink
-                  to={link.to}
-                  end
-                  key={"account-links" + index}
-                  variant="accountLink"
-                >
-                  <div className="flex gap-2 items-center">
-                    <BaseIcon iconName={link.iconName}></BaseIcon>
-                    <span>{link.name}</span>
-                  </div>
-                </BaseNavLink>
-              );
-            })}
+        <div className="flex flex-col md:flex-row gap-3">
+          <div className="w-full md:w-48 divide-y flex flex-col">
+            {accountPage.map((link, index) => (
+              <BaseNavLink
+                to={link.to}
+                end
+                key={"account-links" + index}
+                variant="accountLink"
+                className="p-3 md:px-3"
+              >
+                <div className="flex gap-2 items-center">
+                  <BaseIcon iconName={link.iconName}></BaseIcon>
+                  <span>{link.name}</span>
+                </div>
+              </BaseNavLink>
+            ))}
           </div>
-          <div className="grow">
+          <div className="w-full md:flex">
             <Outlet></Outlet>
           </div>
         </div>
